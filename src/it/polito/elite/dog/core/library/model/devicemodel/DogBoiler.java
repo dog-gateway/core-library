@@ -59,11 +59,19 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		}
 	}
 
-	public Measure<?,?>  getRemainingTime()
+	public void stopSuperHeating()
 	{
 		if(this.driver!=null)
 		{
-			return ((Boiler) this.driver).getRemainingTime();
+			((Boiler) this.driver).stopSuperHeating();
+		}
+	}
+
+	public Measure<?,?>  getStartTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((Boiler) this.driver).getStartTime();
 		}
 		 return null;
 	}
@@ -77,13 +85,12 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		 return null;
 	}
 
-	public Measure<?,?>  getEndTime()
+	public void standBy()
 	{
 		if(this.driver!=null)
 		{
-			return ((Boiler) this.driver).getEndTime();
+			((Boiler) this.driver).standBy();
 		}
-		 return null;
 	}
 
 	public void on()
@@ -94,19 +101,20 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		}
 	}
 
-	public void stopSuperHeating()
+	public Measure<?,?>  getRemainingTime()
 	{
 		if(this.driver!=null)
 		{
-			((Boiler) this.driver).stopSuperHeating();
+			return ((Boiler) this.driver).getRemainingTime();
 		}
+		 return null;
 	}
 
-	public Object[] getEventsAndAlerts()
+	public Measure<?,?>  getEndTime()
 	{
 		if(this.driver!=null)
 		{
-			return ((Boiler) this.driver).getEventsAndAlerts();
+			return ((Boiler) this.driver).getEndTime();
 		}
 		 return null;
 	}
@@ -119,12 +127,13 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		}
 	}
 
-	public void standBy()
+	public Object[] getEventsAndAlerts()
 	{
 		if(this.driver!=null)
 		{
-			((Boiler) this.driver).standBy();
+			return ((Boiler) this.driver).getEventsAndAlerts();
 		}
+		 return null;
 	}
 
 	public void off()
@@ -133,15 +142,6 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		{
 			((Boiler) this.driver).off();
 		}
-	}
-
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((Boiler) this.driver).getStartTime();
-		}
-		 return null;
 	}
 
 
@@ -155,13 +155,6 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
@@ -169,9 +162,9 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoppedSuperHeatingNotification*/
-	public void notifyStoppedSuperHeating(){
-		StoppedSuperHeatingNotification notificationEvent=new StoppedSuperHeatingNotification();
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -179,27 +172,6 @@ public class DogBoiler extends AbstractDevice implements Boiler
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert){
 		AlertNotification notificationEvent=new AlertNotification(alert );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -218,9 +190,16 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -228,6 +207,27 @@ public class DogBoiler extends AbstractDevice implements Boiler
 	/*Notification: StartedSuperHeatingNotification*/
 	public void notifyStartedSuperHeating(){
 		StartedSuperHeatingNotification notificationEvent=new StartedSuperHeatingNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StoppedSuperHeatingNotification*/
+	public void notifyStoppedSuperHeating(){
+		StoppedSuperHeatingNotification notificationEvent=new StoppedSuperHeatingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -37,41 +37,41 @@ public interface CompositeThermostat extends Thermostat, HVACSystem
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Boolean getOccupancy();
-	public Measure<?,?>  getTemperature();
+	public void deleteGroup(Integer groupID);
 	public DeviceStatus getState();
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
 	public Measure<?,?>  getSetpointTemperature();
 	public void cool();
-	public void deleteGroup(Integer groupID);
-	public void stopHeatingOrCooling();
-	public void storeGroup(Integer groupID);
-	public void setTemperatureAt(Measure<?,?>  temperature);
+	public Boolean getOccupancy();
 	public void heat();
+	public void stopHeatingOrCooling();
+	public Measure<?,?>  getTemperature();
+	public void storeGroup(Integer groupID);
+	public void deleteScene(Integer sceneNumber);
+	public void setTemperatureAt(Measure<?,?>  temperature);
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedStepUpNotification*/
-	public void notifySpeedUp();
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
-	/*Notification: CoolNotification*/
-	public void notifyCool();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: SpeedStepDownNotification*/
-	public void notifySpeedDown();
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
-	/*Notification: HumidityMeasurementNotification*/
-	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity);
 	/*Notification: SpeedControlNotification*/
 	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: CoolNotification*/
+	public void notifyCool();
+	/*Notification: SpeedStepDownNotification*/
+	public void notifySpeedDown();
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
+	/*Notification: HumidityMeasurementNotification*/
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity);
+	/*Notification: SpeedStepUpNotification*/
+	public void notifySpeedUp();
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
 	public void updateStatus();
 }

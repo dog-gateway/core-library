@@ -22,11 +22,11 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.CloseStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.OpenStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.CloseStateValue;
 
 
 

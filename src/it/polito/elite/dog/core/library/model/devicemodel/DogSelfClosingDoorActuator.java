@@ -59,6 +59,14 @@ public class DogSelfClosingDoorActuator extends AbstractDevice implements SelfCl
 		}
 	}
 
+	public void timedOn(Measure<?,?>  timeToOff)
+	{
+		if(this.driver!=null)
+		{
+			((SelfClosingDoorActuator) this.driver).timedOn(timeToOff);
+		}
+	}
+
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -73,14 +81,6 @@ public class DogSelfClosingDoorActuator extends AbstractDevice implements SelfCl
 		if(this.driver!=null)
 		{
 			((SelfClosingDoorActuator) this.driver).close();
-		}
-	}
-
-	public void timedOn(Measure<?,?>  timeToOff)
-	{
-		if(this.driver!=null)
-		{
-			((SelfClosingDoorActuator) this.driver).timedOn(timeToOff);
 		}
 	}
 

@@ -51,20 +51,20 @@ public class DogCo2Sensor extends AbstractDevice implements Co2Sensor
 	}
 
 
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((Co2Sensor) this.driver).getState();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getCo2Concentration()
 	{
 		if(this.driver!=null)
 		{
 			return ((Co2Sensor) this.driver).getCo2Concentration();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((Co2Sensor) this.driver).getState();
 		}
 		 return null;
 	}

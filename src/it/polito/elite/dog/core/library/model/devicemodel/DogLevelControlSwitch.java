@@ -64,6 +64,13 @@ public class DogLevelControlSwitch extends AbstractDevice implements LevelContro
 
 	/*Generated Notifications*/
 
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel){
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: LevelStepUpNotification*/
 	public void notifyStepUp(){
 		LevelStepUpNotification notificationEvent=new LevelStepUpNotification();
@@ -71,16 +78,9 @@ public class DogLevelControlSwitch extends AbstractDevice implements LevelContro
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -92,9 +92,9 @@ public class DogLevelControlSwitch extends AbstractDevice implements LevelContro
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

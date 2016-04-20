@@ -51,13 +51,12 @@ public class DogThermostatTemperatureSensor extends AbstractDevice implements Th
 	}
 
 
-	public Measure<?,?>  getTemperature()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((ThermostatTemperatureSensor) this.driver).getTemperature();
+			((ThermostatTemperatureSensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -86,11 +85,11 @@ public class DogThermostatTemperatureSensor extends AbstractDevice implements Th
 		}
 	}
 
-	public void deleteGroup(Integer groupID)
+	public void heat()
 	{
 		if(this.driver!=null)
 		{
-			((ThermostatTemperatureSensor) this.driver).deleteGroup(groupID);
+			((ThermostatTemperatureSensor) this.driver).heat();
 		}
 	}
 
@@ -100,6 +99,15 @@ public class DogThermostatTemperatureSensor extends AbstractDevice implements Th
 		{
 			((ThermostatTemperatureSensor) this.driver).stopHeatingOrCooling();
 		}
+	}
+
+	public Measure<?,?>  getTemperature()
+	{
+		if(this.driver!=null)
+		{
+			return ((ThermostatTemperatureSensor) this.driver).getTemperature();
+		}
+		 return null;
 	}
 
 	public void storeGroup(Integer groupID)
@@ -118,18 +126,24 @@ public class DogThermostatTemperatureSensor extends AbstractDevice implements Th
 		}
 	}
 
-	public void heat()
-	{
-		if(this.driver!=null)
-		{
-			((ThermostatTemperatureSensor) this.driver).heat();
-		}
-	}
-
 
 
 	/*Generated Notifications*/
 
+	/*Notification: CoolNotification*/
+	public void notifyCool(){
+		CoolNotification notificationEvent=new CoolNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: ChangedDesiredTemperatureNotification*/
 	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
 		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
@@ -144,16 +158,9 @@ public class DogThermostatTemperatureSensor extends AbstractDevice implements Th
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: CoolNotification*/
-	public void notifyCool(){
-		CoolNotification notificationEvent=new CoolNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling(){
+		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -165,16 +172,9 @@ public class DogThermostatTemperatureSensor extends AbstractDevice implements Th
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
-		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

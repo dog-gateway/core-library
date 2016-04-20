@@ -22,12 +22,12 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.DisassociatingStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.AssociatingStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.IdleStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.DisassociatingStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.AssociatingStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.IdleStateValue;
 
 
 

@@ -40,9 +40,9 @@ public interface ShutterButton extends Control
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedDownNotification*/
-	public void notifyPressedDown();
 	/*Notification: PressedUpNotification*/
 	public void notifyPressedUp();
+	/*Notification: PressedDownNotification*/
+	public void notifyPressedDown();
 	public void updateStatus();
 }

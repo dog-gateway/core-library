@@ -49,14 +49,6 @@ public class DogHueManager extends AbstractDevice implements HueManager
 	}
 
 
-	public void stopDiscovery()
-	{
-		if(this.driver!=null)
-		{
-			((HueManager) this.driver).stopDiscovery();
-		}
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -64,6 +56,14 @@ public class DogHueManager extends AbstractDevice implements HueManager
 			return ((HueManager) this.driver).getState();
 		}
 		 return null;
+	}
+
+	public void stopDiscovery()
+	{
+		if(this.driver!=null)
+		{
+			((HueManager) this.driver).stopDiscovery();
+		}
 	}
 
 	public void startDiscovery()
@@ -78,16 +78,16 @@ public class DogHueManager extends AbstractDevice implements HueManager
 
 	/*Generated Notifications*/
 
-	/*Notification: DiscoveryIdleNotification*/
-	public void notifyDeactivatedDiscovery(){
-		DiscoveryIdleNotification notificationEvent=new DiscoveryIdleNotification();
+	/*Notification: DiscoveryActiveNotification*/
+	public void notifyActivatedDiscovery(){
+		DiscoveryActiveNotification notificationEvent=new DiscoveryActiveNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: DiscoveryActiveNotification*/
-	public void notifyActivatedDiscovery(){
-		DiscoveryActiveNotification notificationEvent=new DiscoveryActiveNotification();
+	/*Notification: DiscoveryIdleNotification*/
+	public void notifyDeactivatedDiscovery(){
+		DiscoveryIdleNotification notificationEvent=new DiscoveryIdleNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

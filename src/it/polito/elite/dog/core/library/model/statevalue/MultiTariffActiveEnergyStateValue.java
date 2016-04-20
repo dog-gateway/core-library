@@ -45,7 +45,7 @@ public class MultiTariffActiveEnergyStateValue extends ContinuousValue
 	public MultiTariffActiveEnergyStateValue()
 	{
 		super();
-		this.setFeature("tariffID","");
 		this.setFeature("phaseID","");
+		this.setFeature("tariffID","");
 	}
 }

@@ -22,14 +22,14 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.HeatingStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.CoolingStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.OffStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.OnStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.CoolingStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.AutoRegulationStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.HeatingStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.OnStateValue;
 
 
 

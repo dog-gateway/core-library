@@ -51,24 +51,6 @@ public class DogEnergyAndPowerMeter extends AbstractDevice implements EnergyAndP
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue()
-	{
-		if(this.driver!=null)
-		{
-			return ((EnergyAndPowerMeter) this.driver).getReactiveEnergyValue();
-		}
-		 return null;
-	}
-
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((EnergyAndPowerMeter) this.driver).getState();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getActiveEnergyValue()
 	{
 		if(this.driver!=null)
@@ -83,6 +65,24 @@ public class DogEnergyAndPowerMeter extends AbstractDevice implements EnergyAndP
 		if(this.driver!=null)
 		{
 			return ((EnergyAndPowerMeter) this.driver).getActivePower();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((EnergyAndPowerMeter) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getReactiveEnergyValue()
+	{
+		if(this.driver!=null)
+		{
+			return ((EnergyAndPowerMeter) this.driver).getReactiveEnergyValue();
 		}
 		 return null;
 	}

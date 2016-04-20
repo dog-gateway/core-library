@@ -58,6 +58,14 @@ public class DogEnOceanGateway extends AbstractDevice implements EnOceanGateway
 		}
 	}
 
+	public void explicitTeachIn(ExplicitTeachInData teachInData)
+	{
+		if(this.driver!=null)
+		{
+			((EnOceanGateway) this.driver).explicitTeachIn(teachInData);
+		}
+	}
+
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -65,14 +73,6 @@ public class DogEnOceanGateway extends AbstractDevice implements EnOceanGateway
 			return ((EnOceanGateway) this.driver).getState();
 		}
 		 return null;
-	}
-
-	public void explicitTeachIn(ExplicitTeachInData teachInData)
-	{
-		if(this.driver!=null)
-		{
-			((EnOceanGateway) this.driver).explicitTeachIn(teachInData);
-		}
 	}
 
 	public void smartTeachIn()

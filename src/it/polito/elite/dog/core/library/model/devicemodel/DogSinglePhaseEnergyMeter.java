@@ -51,11 +51,11 @@ public class DogSinglePhaseEnergyMeter extends AbstractDevice implements SingleP
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue()
+	public Measure<?,?>  getActiveEnergyValue()
 	{
 		if(this.driver!=null)
 		{
-			return ((SinglePhaseEnergyMeter) this.driver).getReactiveEnergyValue();
+			return ((SinglePhaseEnergyMeter) this.driver).getActiveEnergyValue();
 		}
 		 return null;
 	}
@@ -69,11 +69,11 @@ public class DogSinglePhaseEnergyMeter extends AbstractDevice implements SingleP
 		 return null;
 	}
 
-	public Measure<?,?>  getActiveEnergyValue()
+	public Measure<?,?>  getReactiveEnergyValue()
 	{
 		if(this.driver!=null)
 		{
-			return ((SinglePhaseEnergyMeter) this.driver).getActiveEnergyValue();
+			return ((SinglePhaseEnergyMeter) this.driver).getReactiveEnergyValue();
 		}
 		 return null;
 	}

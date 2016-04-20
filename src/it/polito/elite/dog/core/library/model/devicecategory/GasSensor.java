@@ -29,7 +29,7 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 
 
 import it.polito.elite.dog.core.library.model.DeviceStatus;
-public interface GasSensor extends Sensor, GasSystem
+public interface GasSensor extends GasSystem, Sensor
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
@@ -40,9 +40,9 @@ public interface GasSensor extends Sensor, GasSystem
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	public void updateStatus();
 }

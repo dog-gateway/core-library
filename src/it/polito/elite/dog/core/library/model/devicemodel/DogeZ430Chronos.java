@@ -49,14 +49,6 @@ public class DogeZ430Chronos extends AbstractDevice implements eZ430Chronos
 	}
 
 
-	public void stop()
-	{
-		if(this.driver!=null)
-		{
-			((eZ430Chronos) this.driver).stop();
-		}
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -64,6 +56,14 @@ public class DogeZ430Chronos extends AbstractDevice implements eZ430Chronos
 			return ((eZ430Chronos) this.driver).getState();
 		}
 		 return null;
+	}
+
+	public void stop()
+	{
+		if(this.driver!=null)
+		{
+			((eZ430Chronos) this.driver).stop();
+		}
 	}
 
 	public void display(String msg)
@@ -86,16 +86,9 @@ public class DogeZ430Chronos extends AbstractDevice implements eZ430Chronos
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
-		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Double accX, Double accY, Double accZ){
-		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accX , accY , accZ );
+	public void notifyNew3DAccelerationValue(Double accZ, Double accX, Double accY){
+		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accZ , accX , accY );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -103,6 +96,13 @@ public class DogeZ430Chronos extends AbstractDevice implements eZ430Chronos
 	/*Notification: ReleasedMNotification*/
 	public void notifyReleased(String buttonID){
 		ReleasedMNotification notificationEvent=new ReleasedMNotification(buttonID );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID){
+		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

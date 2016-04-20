@@ -22,12 +22,12 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.ActivePushLinkAuthenticationStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.NeedingAuthenticationStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.AuthenticatedStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.AuthenticatedStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.ActivePushLinkAuthenticationStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.NeedingAuthenticationStateValue;
 
 
 

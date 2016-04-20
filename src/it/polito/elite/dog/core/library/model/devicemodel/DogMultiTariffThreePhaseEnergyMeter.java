@@ -51,15 +51,6 @@ public class DogMultiTariffThreePhaseEnergyMeter extends AbstractDevice implemen
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue(String phaseID, String tariffID)
-	{
-		if(this.driver!=null)
-		{
-			return ((MultiTariffThreePhaseEnergyMeter) this.driver).getReactiveEnergyValue(phaseID, tariffID);
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -74,6 +65,15 @@ public class DogMultiTariffThreePhaseEnergyMeter extends AbstractDevice implemen
 		if(this.driver!=null)
 		{
 			return ((MultiTariffThreePhaseEnergyMeter) this.driver).getActiveEnergyValue(phaseID, tariffID);
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getReactiveEnergyValue(String phaseID, String tariffID)
+	{
+		if(this.driver!=null)
+		{
+			return ((MultiTariffThreePhaseEnergyMeter) this.driver).getReactiveEnergyValue(phaseID, tariffID);
 		}
 		 return null;
 	}

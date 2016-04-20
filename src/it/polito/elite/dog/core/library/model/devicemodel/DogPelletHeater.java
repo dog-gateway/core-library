@@ -58,19 +58,19 @@ public class DogPelletHeater extends AbstractDevice implements PelletHeater
 		 return null;
 	}
 
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((PelletHeater) this.driver).on();
-		}
-	}
-
 	public void standBy()
 	{
 		if(this.driver!=null)
 		{
 			((PelletHeater) this.driver).standBy();
+		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((PelletHeater) this.driver).on();
 		}
 	}
 
@@ -86,9 +86,9 @@ public class DogPelletHeater extends AbstractDevice implements PelletHeater
 
 	/*Generated Notifications*/
 
-	/*Notification: FiringUpNotification*/
-	public void notifyFiringUp(){
-		FiringUpNotification notificationEvent=new FiringUpNotification();
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -100,9 +100,9 @@ public class DogPelletHeater extends AbstractDevice implements PelletHeater
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: HeatNotification*/
-	public void notifyHeat(){
-		HeatNotification notificationEvent=new HeatNotification();
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -114,16 +114,16 @@ public class DogPelletHeater extends AbstractDevice implements PelletHeater
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: FiringUpNotification*/
+	public void notifyFiringUp(){
+		FiringUpNotification notificationEvent=new FiringUpNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: HeatNotification*/
+	public void notifyHeat(){
+		HeatNotification notificationEvent=new HeatNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

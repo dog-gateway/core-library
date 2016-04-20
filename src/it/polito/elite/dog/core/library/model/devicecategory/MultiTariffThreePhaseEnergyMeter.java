@@ -37,9 +37,9 @@ public interface MultiTariffThreePhaseEnergyMeter extends MultiTariffEnergyMeter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getReactiveEnergyValue(String phaseID, String tariffID);
 	public DeviceStatus getState();
 	public Measure<?,?>  getActiveEnergyValue(String phaseID, String tariffID);
+	public Measure<?,?>  getReactiveEnergyValue(String phaseID, String tariffID);
 
 
 	/*Generated Notifications*/

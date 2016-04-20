@@ -51,11 +51,27 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 	}
 
 
-	public void stepDown()
+	public void speedDown()
 	{
 		if(this.driver!=null)
 		{
-			((HeatingAndCoolingUnit) this.driver).stepDown();
+			((HeatingAndCoolingUnit) this.driver).speedDown();
+		}
+	}
+
+	public void speedUp()
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).speedUp();
+		}
+	}
+
+	public void deleteGroup(Integer groupID)
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).deleteGroup(groupID);
 		}
 	}
 
@@ -68,11 +84,51 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		 return null;
 	}
 
-	public void setSpeed(Measure<?,?>  speed)
+	public void cool()
 	{
 		if(this.driver!=null)
 		{
-			((HeatingAndCoolingUnit) this.driver).setSpeed(speed);
+			((HeatingAndCoolingUnit) this.driver).cool();
+		}
+	}
+
+	public void heat()
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).heat();
+		}
+	}
+
+	public void set(Object value)
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).set(value);
+		}
+	}
+
+	public void storeGroup(Integer groupID)
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).storeGroup(groupID);
+		}
+	}
+
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).stepDown();
+		}
+	}
+
+	public void stepUp()
+	{
+		if(this.driver!=null)
+		{
+			((HeatingAndCoolingUnit) this.driver).stepUp();
 		}
 	}
 
@@ -92,59 +148,11 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		}
 	}
 
-	public void deleteGroup(Integer groupID)
+	public void setSpeed(Measure<?,?>  speed)
 	{
 		if(this.driver!=null)
 		{
-			((HeatingAndCoolingUnit) this.driver).deleteGroup(groupID);
-		}
-	}
-
-	public void storeGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).storeGroup(groupID);
-		}
-	}
-
-	public void speedDown()
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).speedDown();
-		}
-	}
-
-	public void off()
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).off();
-		}
-	}
-
-	public void speedUp()
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).speedUp();
-		}
-	}
-
-	public void stepUp()
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).stepUp();
-		}
-	}
-
-	public void storeScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).storeScene(sceneNumber);
+			((HeatingAndCoolingUnit) this.driver).setSpeed(speed);
 		}
 	}
 
@@ -156,19 +164,11 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		}
 	}
 
-	public void set(Object value)
+	public void off()
 	{
 		if(this.driver!=null)
 		{
-			((HeatingAndCoolingUnit) this.driver).set(value);
-		}
-	}
-
-	public void cool()
-	{
-		if(this.driver!=null)
-		{
-			((HeatingAndCoolingUnit) this.driver).cool();
+			((HeatingAndCoolingUnit) this.driver).off();
 		}
 	}
 
@@ -180,11 +180,11 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		}
 	}
 
-	public void heat()
+	public void storeScene(Integer sceneNumber)
 	{
 		if(this.driver!=null)
 		{
-			((HeatingAndCoolingUnit) this.driver).heat();
+			((HeatingAndCoolingUnit) this.driver).storeScene(sceneNumber);
 		}
 	}
 
@@ -192,9 +192,51 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedStepUpNotification*/
-	public void notifySpeedUp(){
-		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel){
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SpeedControlNotification*/
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
+		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SpeedStepDownNotification*/
+	public void notifySpeedDown(){
+		SpeedStepDownNotification notificationEvent=new SpeedStepDownNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LevelStepDownNotification*/
+	public void notifyStepDown(){
+		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -213,44 +255,9 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
-		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: CoolNotification*/
 	public void notifyCool(){
 		CoolNotification notificationEvent=new CoolNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LevelStepDownNotification*/
-	public void notifyStepDown(){
-		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -262,16 +269,23 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SpeedStepDownNotification*/
-	public void notifySpeedDown(){
-		SpeedStepDownNotification notificationEvent=new SpeedStepDownNotification();
+	/*Notification: SpeedStepUpNotification*/
+	public void notifySpeedUp(){
+		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling(){
+		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -283,23 +297,9 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: SpeedControlNotification*/
-	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
-		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
-		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

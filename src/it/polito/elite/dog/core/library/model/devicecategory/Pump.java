@@ -31,48 +31,48 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface Pump extends Actuator, HVACSystem
+public interface Pump extends HVACSystem, Actuator
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stepDown();
-	public DeviceStatus getState();
-	public void on();
 	public void deleteGroup(Integer groupID);
-	public void storeGroup(Integer groupID);
-	public void off();
-	public Measure<?,?>  getFlowRate();
-	public void stepUp();
-	public Measure<?,?>  getTemperature();
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
+	public DeviceStatus getState();
 	public void set(Object value);
+	public void storeGroup(Integer groupID);
+	public void stepDown();
+	public Measure<?,?>  getFlowRate();
 	public Measure<?,?>  getPressure();
+	public void stepUp();
+	public void on();
+	public Measure<?,?>  getTemperature();
+	public void deleteScene(Integer sceneNumber);
+	public void off();
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
-	/*Notification: FlowRateMeasurementNotification*/
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: OffNotification*/
-	public void notifyOff();
-	/*Notification: PressureMeasurementNotification*/
-	public void notifyNewPressureValue(Measure<?,?>  pressureValue);
+	/*Notification: FlowRateMeasurementNotification*/
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: PressureMeasurementNotification*/
+	public void notifyNewPressureValue(Measure<?,?>  pressureValue);
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();
 }

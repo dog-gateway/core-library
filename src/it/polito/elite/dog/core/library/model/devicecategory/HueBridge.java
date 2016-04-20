@@ -35,9 +35,9 @@ public interface HueBridge extends HueComponent
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public DeviceStatus getState();
-	public void stopPushLinkAuth();
 	public void startPushLinkAuth();
+	public void stopPushLinkAuth();
+	public DeviceStatus getState();
 
 
 	/*Generated Notifications*/

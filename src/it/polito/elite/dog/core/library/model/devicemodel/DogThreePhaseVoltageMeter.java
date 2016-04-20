@@ -51,15 +51,6 @@ public class DogThreePhaseVoltageMeter extends AbstractDevice implements ThreePh
 	}
 
 
-	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1)
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseVoltageMeter) this.driver).getLLVoltageValue(phaseID2, phaseID1);
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -74,6 +65,15 @@ public class DogThreePhaseVoltageMeter extends AbstractDevice implements ThreePh
 		if(this.driver!=null)
 		{
 			return ((ThreePhaseVoltageMeter) this.driver).getLNVoltageValue(phaseID);
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseVoltageMeter) this.driver).getLLVoltageValue(phaseID2, phaseID1);
 		}
 		 return null;
 	}

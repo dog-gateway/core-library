@@ -77,6 +77,14 @@ public class DogThermostat extends AbstractDevice implements Thermostat
 		}
 	}
 
+	public void heat()
+	{
+		if(this.driver!=null)
+		{
+			((Thermostat) this.driver).heat();
+		}
+	}
+
 	public void stopHeatingOrCooling()
 	{
 		if(this.driver!=null)
@@ -93,25 +101,10 @@ public class DogThermostat extends AbstractDevice implements Thermostat
 		}
 	}
 
-	public void heat()
-	{
-		if(this.driver!=null)
-		{
-			((Thermostat) this.driver).heat();
-		}
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
-		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: CoolNotification*/
 	public void notifyCool(){
 		CoolNotification notificationEvent=new CoolNotification();
@@ -119,9 +112,9 @@ public class DogThermostat extends AbstractDevice implements Thermostat
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: HeatNotification*/
-	public void notifyHeat(){
-		HeatNotification notificationEvent=new HeatNotification();
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -129,6 +122,13 @@ public class DogThermostat extends AbstractDevice implements Thermostat
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling(){
 		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: HeatNotification*/
+	public void notifyHeat(){
+		HeatNotification notificationEvent=new HeatNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

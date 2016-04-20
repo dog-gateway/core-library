@@ -40,9 +40,9 @@ public interface RockerSwitch extends Switch
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID);
 	/*Notification: ReleasedMNotification*/
 	public void notifyReleased(String buttonID);
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID);
 	public void updateStatus();
 }

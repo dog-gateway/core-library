@@ -37,19 +37,19 @@ public interface LightSensor extends Sensor
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
+	public void deleteGroup(Integer groupID);
 	public DeviceStatus getState();
 	public Measure<?,?>  getLuminance();
-	public void deleteGroup(Integer groupID);
 	public void storeGroup(Integer groupID);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: LuminosityMeasurementNotification*/
-	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: LuminosityMeasurementNotification*/
+	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue);
 	public void updateStatus();
 }

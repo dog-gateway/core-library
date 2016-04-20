@@ -51,15 +51,6 @@ public class DogMultiTariffSinglePhaseEnergyMeter extends AbstractDevice impleme
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue(String tariffID)
-	{
-		if(this.driver!=null)
-		{
-			return ((MultiTariffSinglePhaseEnergyMeter) this.driver).getReactiveEnergyValue(tariffID);
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -78,20 +69,29 @@ public class DogMultiTariffSinglePhaseEnergyMeter extends AbstractDevice impleme
 		 return null;
 	}
 
+	public Measure<?,?>  getReactiveEnergyValue(String tariffID)
+	{
+		if(this.driver!=null)
+		{
+			return ((MultiTariffSinglePhaseEnergyMeter) this.driver).getReactiveEnergyValue(tariffID);
+		}
+		 return null;
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: MultiTariffSinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(String tariffID, Measure<?,?>  value){
-		MultiTariffSinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new MultiTariffSinglePhaseReactiveEnergyMeasurementNotification(tariffID , value );
+	/*Notification: MultiTariffSinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(String tariffID, Measure<?,?>  value){
+		MultiTariffSinglePhaseActiveEnergyMeasurementNotification notificationEvent=new MultiTariffSinglePhaseActiveEnergyMeasurementNotification(tariffID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MultiTariffSinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(String tariffID, Measure<?,?>  value){
-		MultiTariffSinglePhaseActiveEnergyMeasurementNotification notificationEvent=new MultiTariffSinglePhaseActiveEnergyMeasurementNotification(tariffID , value );
+	/*Notification: MultiTariffSinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(String tariffID, Measure<?,?>  value){
+		MultiTariffSinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new MultiTariffSinglePhaseReactiveEnergyMeasurementNotification(tariffID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

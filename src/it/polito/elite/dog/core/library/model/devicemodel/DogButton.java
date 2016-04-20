@@ -62,16 +62,16 @@ public class DogButton extends AbstractDevice implements Button
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedNotification*/
-	public void notifyPressed(){
-		PressedNotification notificationEvent=new PressedNotification();
+	/*Notification: ReleasedNotification*/
+	public void notifyReleased(){
+		ReleasedNotification notificationEvent=new ReleasedNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ReleasedNotification*/
-	public void notifyReleased(){
-		ReleasedNotification notificationEvent=new ReleasedNotification();
+	/*Notification: PressedNotification*/
+	public void notifyPressed(){
+		PressedNotification notificationEvent=new PressedNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

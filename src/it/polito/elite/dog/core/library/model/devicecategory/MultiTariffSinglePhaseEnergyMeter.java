@@ -37,16 +37,16 @@ public interface MultiTariffSinglePhaseEnergyMeter extends MultiTariffEnergyMete
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getReactiveEnergyValue(String tariffID);
 	public DeviceStatus getState();
 	public Measure<?,?>  getActiveEnergyValue(String tariffID);
+	public Measure<?,?>  getReactiveEnergyValue(String tariffID);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: MultiTariffSinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(String tariffID, Measure<?,?>  value);
 	/*Notification: MultiTariffSinglePhaseActiveEnergyMeasurementNotification*/
 	public void notifyNewActiveEnergyValue(String tariffID, Measure<?,?>  value);
+	/*Notification: MultiTariffSinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(String tariffID, Measure<?,?>  value);
 	public void updateStatus();
 }

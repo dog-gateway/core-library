@@ -51,11 +51,11 @@ public class DogPump extends AbstractDevice implements Pump
 	}
 
 
-	public void stepDown()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			((Pump) this.driver).stepDown();
+			((Pump) this.driver).deleteGroup(groupID);
 		}
 	}
 
@@ -68,19 +68,11 @@ public class DogPump extends AbstractDevice implements Pump
 		 return null;
 	}
 
-	public void on()
+	public void set(Object value)
 	{
 		if(this.driver!=null)
 		{
-			((Pump) this.driver).on();
-		}
-	}
-
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((Pump) this.driver).deleteGroup(groupID);
+			((Pump) this.driver).set(value);
 		}
 	}
 
@@ -92,11 +84,11 @@ public class DogPump extends AbstractDevice implements Pump
 		}
 	}
 
-	public void off()
+	public void stepDown()
 	{
 		if(this.driver!=null)
 		{
-			((Pump) this.driver).off();
+			((Pump) this.driver).stepDown();
 		}
 	}
 
@@ -109,11 +101,28 @@ public class DogPump extends AbstractDevice implements Pump
 		 return null;
 	}
 
+	public Measure<?,?>  getPressure()
+	{
+		if(this.driver!=null)
+		{
+			return ((Pump) this.driver).getPressure();
+		}
+		 return null;
+	}
+
 	public void stepUp()
 	{
 		if(this.driver!=null)
 		{
 			((Pump) this.driver).stepUp();
+		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((Pump) this.driver).on();
 		}
 	}
 
@@ -126,14 +135,6 @@ public class DogPump extends AbstractDevice implements Pump
 		 return null;
 	}
 
-	public void storeScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((Pump) this.driver).storeScene(sceneNumber);
-		}
-	}
-
 	public void deleteScene(Integer sceneNumber)
 	{
 		if(this.driver!=null)
@@ -142,44 +143,29 @@ public class DogPump extends AbstractDevice implements Pump
 		}
 	}
 
-	public void set(Object value)
+	public void off()
 	{
 		if(this.driver!=null)
 		{
-			((Pump) this.driver).set(value);
+			((Pump) this.driver).off();
 		}
 	}
 
-	public Measure<?,?>  getPressure()
+	public void storeScene(Integer sceneNumber)
 	{
 		if(this.driver!=null)
 		{
-			return ((Pump) this.driver).getPressure();
+			((Pump) this.driver).storeScene(sceneNumber);
 		}
-		 return null;
 	}
 
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
-		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
-		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel){
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -191,23 +177,16 @@ public class DogPump extends AbstractDevice implements Pump
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -219,6 +198,13 @@ public class DogPump extends AbstractDevice implements Pump
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: PressureMeasurementNotification*/
 	public void notifyNewPressureValue(Measure<?,?>  pressureValue){
 		PressureMeasurementNotification notificationEvent=new PressureMeasurementNotification(pressureValue );
@@ -226,9 +212,23 @@ public class DogPump extends AbstractDevice implements Pump
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber){
+		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

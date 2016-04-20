@@ -49,6 +49,14 @@ public class DogZWaveGateway extends AbstractDevice implements ZWaveGateway
 	}
 
 
+	public void disassociate()
+	{
+		if(this.driver!=null)
+		{
+			((ZWaveGateway) this.driver).disassociate();
+		}
+	}
+
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -66,28 +74,20 @@ public class DogZWaveGateway extends AbstractDevice implements ZWaveGateway
 		}
 	}
 
-	public void disassociate()
-	{
-		if(this.driver!=null)
-		{
-			((ZWaveGateway) this.driver).disassociate();
-		}
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: IdleNotification*/
-	public void notifyIdle(){
-		IdleNotification notificationEvent=new IdleNotification();
+	/*Notification: AssociatingDeviceNotification*/
+	public void notifyAssociating(){
+		AssociatingDeviceNotification notificationEvent=new AssociatingDeviceNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: AssociatingDeviceNotification*/
-	public void notifyAssociating(){
-		AssociatingDeviceNotification notificationEvent=new AssociatingDeviceNotification();
+	/*Notification: IdleNotification*/
+	public void notifyIdle(){
+		IdleNotification notificationEvent=new IdleNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -51,19 +51,20 @@ public class DogDvd extends AbstractDevice implements Dvd
 	}
 
 
-	public void setVolume(Integer volume)
+	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
 		{
-			((Dvd) this.driver).setVolume(volume);
+			return ((Dvd) this.driver).getState();
 		}
+		 return null;
 	}
 
-	public void next()
+	public void rew()
 	{
 		if(this.driver!=null)
 		{
-			((Dvd) this.driver).next();
+			((Dvd) this.driver).rew();
 		}
 	}
 
@@ -75,21 +76,44 @@ public class DogDvd extends AbstractDevice implements Dvd
 		}
 	}
 
-	public void rew()
+	public void next()
 	{
 		if(this.driver!=null)
 		{
-			((Dvd) this.driver).rew();
+			((Dvd) this.driver).next();
 		}
 	}
 
-	public DeviceStatus getState()
+	public void increaseVolume()
 	{
 		if(this.driver!=null)
 		{
-			return ((Dvd) this.driver).getState();
+			((Dvd) this.driver).increaseVolume();
 		}
-		 return null;
+	}
+
+	public void pause()
+	{
+		if(this.driver!=null)
+		{
+			((Dvd) this.driver).pause();
+		}
+	}
+
+	public void setVolume(Integer volume)
+	{
+		if(this.driver!=null)
+		{
+			((Dvd) this.driver).setVolume(volume);
+		}
+	}
+
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((Dvd) this.driver).standBy();
+		}
 	}
 
 	public void decreaseVolume()
@@ -105,6 +129,30 @@ public class DogDvd extends AbstractDevice implements Dvd
 		if(this.driver!=null)
 		{
 			((Dvd) this.driver).on();
+		}
+	}
+
+	public void stop()
+	{
+		if(this.driver!=null)
+		{
+			((Dvd) this.driver).stop();
+		}
+	}
+
+	public void play()
+	{
+		if(this.driver!=null)
+		{
+			((Dvd) this.driver).play();
+		}
+	}
+
+	public void fwd()
+	{
+		if(this.driver!=null)
+		{
+			((Dvd) this.driver).fwd();
 		}
 	}
 
@@ -124,96 +172,13 @@ public class DogDvd extends AbstractDevice implements Dvd
 		}
 	}
 
-	public void increaseVolume()
-	{
-		if(this.driver!=null)
-		{
-			((Dvd) this.driver).increaseVolume();
-		}
-	}
-
-	public void stop()
-	{
-		if(this.driver!=null)
-		{
-			((Dvd) this.driver).stop();
-		}
-	}
-
-	public void fwd()
-	{
-		if(this.driver!=null)
-		{
-			((Dvd) this.driver).fwd();
-		}
-	}
-
-	public void pause()
-	{
-		if(this.driver!=null)
-		{
-			((Dvd) this.driver).pause();
-		}
-	}
-
-	public void play()
-	{
-		if(this.driver!=null)
-		{
-			((Dvd) this.driver).play();
-		}
-	}
-
-	public void standBy()
-	{
-		if(this.driver!=null)
-		{
-			((Dvd) this.driver).standBy();
-		}
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: PlayNotification*/
-	public void notifyPlay(){
-		PlayNotification notificationEvent=new PlayNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: PausePlaybackNotification*/
-	public void notifyPause(){
-		PausePlaybackNotification notificationEvent=new PausePlaybackNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: ForwardNotification*/
-	public void notifyFwd(){
-		ForwardNotification notificationEvent=new ForwardNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel){
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -225,9 +190,23 @@ public class DogDvd extends AbstractDevice implements Dvd
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: RewindNotification*/
-	public void notifyRew(){
-		RewindNotification notificationEvent=new RewindNotification();
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ForwardNotification*/
+	public void notifyFwd(){
+		ForwardNotification notificationEvent=new ForwardNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: TrackControlNotification*/
+	public void notifyChangedTrack(String trackId){
+		TrackControlNotification notificationEvent=new TrackControlNotification(trackId );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -239,9 +218,30 @@ public class DogDvd extends AbstractDevice implements Dvd
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: TrackControlNotification*/
-	public void notifyChangedTrack(String trackId){
-		TrackControlNotification notificationEvent=new TrackControlNotification(trackId );
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: RewindNotification*/
+	public void notifyRew(){
+		RewindNotification notificationEvent=new RewindNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: PlayNotification*/
+	public void notifyPlay(){
+		PlayNotification notificationEvent=new PlayNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: PausePlaybackNotification*/
+	public void notifyPause(){
+		PausePlaybackNotification notificationEvent=new PausePlaybackNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

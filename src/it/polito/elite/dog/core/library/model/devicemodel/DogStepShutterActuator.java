@@ -49,14 +49,6 @@ public class DogStepShutterActuator extends AbstractDevice implements StepShutte
 	}
 
 
-	public void stepDown()
-	{
-		if(this.driver!=null)
-		{
-			((StepShutterActuator) this.driver).stepDown();
-		}
-	}
-
 	public void stepUp()
 	{
 		if(this.driver!=null)
@@ -82,14 +74,6 @@ public class DogStepShutterActuator extends AbstractDevice implements StepShutte
 		}
 	}
 
-	public void down()
-	{
-		if(this.driver!=null)
-		{
-			((StepShutterActuator) this.driver).down();
-		}
-	}
-
 	public void up()
 	{
 		if(this.driver!=null)
@@ -98,20 +82,29 @@ public class DogStepShutterActuator extends AbstractDevice implements StepShutte
 		}
 	}
 
+	public void down()
+	{
+		if(this.driver!=null)
+		{
+			((StepShutterActuator) this.driver).down();
+		}
+	}
+
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((StepShutterActuator) this.driver).stepDown();
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: RestNotification*/
-	public void notifyResting(){
-		RestNotification notificationEvent=new RestNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: RestDownNotification*/
-	public void notifyRestingDown(){
-		RestDownNotification notificationEvent=new RestDownNotification();
+	/*Notification: MovingDownNotification*/
+	public void notifyMovingDown(){
+		MovingDownNotification notificationEvent=new MovingDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -123,9 +116,9 @@ public class DogStepShutterActuator extends AbstractDevice implements StepShutte
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MovingDownNotification*/
-	public void notifyMovingDown(){
-		MovingDownNotification notificationEvent=new MovingDownNotification();
+	/*Notification: RestDownNotification*/
+	public void notifyRestingDown(){
+		RestDownNotification notificationEvent=new RestDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -133,6 +126,13 @@ public class DogStepShutterActuator extends AbstractDevice implements StepShutte
 	/*Notification: MovingUpNotification*/
 	public void notifyMovingUp(){
 		MovingUpNotification notificationEvent=new MovingUpNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: RestNotification*/
+	public void notifyResting(){
+		RestNotification notificationEvent=new RestNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

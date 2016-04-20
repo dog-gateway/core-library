@@ -53,11 +53,19 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 	}
 
 
-	public void stepDown()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			((ColorDimmableLight) this.driver).stepDown();
+			((ColorDimmableLight) this.driver).deleteGroup(groupID);
+		}
+	}
+
+	public void setColorRGB(RGBColor colorRGB)
+	{
+		if(this.driver!=null)
+		{
+			((ColorDimmableLight) this.driver).setColorRGB(colorRGB);
 		}
 	}
 
@@ -78,38 +86,6 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 		 return null;
 	}
 
-	public void setColorRGB(RGBColor colorRGB)
-	{
-		if(this.driver!=null)
-		{
-			((ColorDimmableLight) this.driver).setColorRGB(colorRGB);
-		}
-	}
-
-	public void storeScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((ColorDimmableLight) this.driver).storeScene(sceneNumber);
-		}
-	}
-
-	public void deleteScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((ColorDimmableLight) this.driver).deleteScene(sceneNumber);
-		}
-	}
-
-	public void set(Object value)
-	{
-		if(this.driver!=null)
-		{
-			((ColorDimmableLight) this.driver).set(value);
-		}
-	}
-
 	public void on()
 	{
 		if(this.driver!=null)
@@ -118,11 +94,11 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 		}
 	}
 
-	public void deleteGroup(Integer groupID)
+	public void set(Object value)
 	{
 		if(this.driver!=null)
 		{
-			((ColorDimmableLight) this.driver).deleteGroup(groupID);
+			((ColorDimmableLight) this.driver).set(value);
 		}
 	}
 
@@ -142,6 +118,14 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 		}
 	}
 
+	public void deleteScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((ColorDimmableLight) this.driver).deleteScene(sceneNumber);
+		}
+	}
+
 	public void off()
 	{
 		if(this.driver!=null)
@@ -150,34 +134,29 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 		}
 	}
 
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((ColorDimmableLight) this.driver).stepDown();
+		}
+	}
+
+	public void storeScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((ColorDimmableLight) this.driver).storeScene(sceneNumber);
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
-		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: ColorHSBNotification*/
+	public void notifyChangedColorHSB(HSBColor colorHSB){
+		ColorHSBNotification notificationEvent=new ColorHSBNotification(colorHSB );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -189,16 +168,9 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ColorRGBNotification*/
-	public void notifyChangedColorRGB(RGBColor colorRGB){
-		ColorRGBNotification notificationEvent=new ColorRGBNotification(colorRGB );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -210,9 +182,37 @@ public class DogColorDimmableLight extends AbstractDevice implements ColorDimmab
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ColorHSBNotification*/
-	public void notifyChangedColorHSB(HSBColor colorHSB){
-		ColorHSBNotification notificationEvent=new ColorHSBNotification(colorHSB );
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ColorRGBNotification*/
+	public void notifyChangedColorRGB(RGBColor colorRGB){
+		ColorRGBNotification notificationEvent=new ColorRGBNotification(colorRGB );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber){
+		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

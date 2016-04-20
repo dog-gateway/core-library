@@ -31,43 +31,43 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface SinglePhaseElectricityMeter extends SinglePhaseApparentPowerMeter, SinglePhaseVoltageMeter, SinglePhaseEnergyMeter, SinglePhaseReactivePowerMeter, SinglePhaseActivePowerMeter, FrequencyMeter, PowerFactorMeter, SinglePhaseCurrentMeter
+public interface SinglePhaseElectricityMeter extends SinglePhaseCurrentMeter, FrequencyMeter, PowerFactorMeter, SinglePhaseReactivePowerMeter, SinglePhaseActivePowerMeter, SinglePhaseEnergyMeter, SinglePhaseApparentPowerMeter, SinglePhaseVoltageMeter
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getReactiveEnergyValue();
 	public Measure<?,?>  getReactivePower();
-	public Measure<?,?>  getFrequency();
-	public DeviceStatus getState();
-	public Measure<?,?>  getPowerFactor();
 	public Measure<?,?>  getActiveEnergyValue();
-	public Measure<?,?>  getPhaseNeutralVoltageValue();
-	public Measure<?,?>  getElectricCurrentValue();
-	public Measure<?,?>  getApparentPower();
 	public Measure<?,?>  getActivePower();
+	public DeviceStatus getState();
+	public Measure<?,?>  getElectricCurrentValue();
+	public Measure<?,?>  getFrequency();
+	public Measure<?,?>  getReactiveEnergyValue();
+	public Measure<?,?>  getPhaseNeutralVoltageValue();
+	public Measure<?,?>  getPowerFactor();
+	public Measure<?,?>  getApparentPower();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
-	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
-	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
-	/*Notification: SinglePhaseReactivePowerMeasurementNotification*/
-	public void notifyNewReactivePowerValue(Measure<?,?>  powerValue);
 	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
 	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue);
-	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
+	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
 	/*Notification: PowerFactorMeasurementNotification*/
 	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
-	/*Notification: SinglePhaseVoltageMeasurementNotification*/
-	public void notifyNewPhaseNeutralVoltageValue(Measure<?,?>  lnVoltage);
+	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
 	/*Notification: SinglePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(Measure<?,?>  value);
+	/*Notification: FrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
+	/*Notification: SinglePhaseVoltageMeasurementNotification*/
+	public void notifyNewPhaseNeutralVoltageValue(Measure<?,?>  lnVoltage);
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: SinglePhaseReactivePowerMeasurementNotification*/
+	public void notifyNewReactivePowerValue(Measure<?,?>  powerValue);
 	public void updateStatus();
 }

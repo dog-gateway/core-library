@@ -37,58 +37,58 @@ public interface HiFi extends Entertainment
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void setVolume(Integer volume);
-	public void next();
-	public void prev();
-	public void rew();
 	public DeviceStatus getState();
-	public void decreaseVolume();
-	public void timedOn(Measure<?,?>  timeToOff);
-	public void on();
-	public void setChannel(Integer channel);
-	public void goToTrack(Integer trackNumber);
-	public void off();
-	public void increaseVolume();
-	public void stop();
-	public void fwd();
-	public void set(Object value);
+	public void rew();
 	public void source(String source);
-	public void down();
+	public void prev();
+	public void next();
+	public void increaseVolume();
+	public void set(Object value);
 	public void pause();
+	public void timedOn(Measure<?,?>  timeToOff);
+	public void setVolume(Integer volume);
+	public void standBy();
+	public void decreaseVolume();
+	public void on();
+	public void stop();
 	public void play();
 	public void up();
-	public void standBy();
+	public void fwd();
+	public void down();
+	public void goToTrack(Integer trackNumber);
+	public void setChannel(Integer channel);
+	public void off();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: PlayNotification*/
-	public void notifyPlay();
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: OffNotification*/
-	public void notifyOff();
-	/*Notification: TrackControlNotification*/
-	public void notifyChangedTrack(String trackId);
-	/*Notification: SourceSelectionNotification*/
-	public void notifyChangedSource(String sourceId);
-	/*Notification: TuningStepDownNotification*/
-	public void notifyChannelStepUp();
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: PausePlaybackNotification*/
-	public void notifyPause();
-	/*Notification: ForwardNotification*/
-	public void notifyFwd();
-	/*Notification: TuningStepUpNotification*/
-	public void notifyChannelStepDown();
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
-	/*Notification: RewindNotification*/
-	public void notifyRew();
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId);
+	/*Notification: SourceSelectionNotification*/
+	public void notifyChangedSource(String sourceId);
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel);
+	/*Notification: TuningStepUpNotification*/
+	public void notifyChannelStepDown();
 	/*Notification: StopPlaybackNotification*/
 	public void notifyStop();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: RewindNotification*/
+	public void notifyRew();
+	/*Notification: TuningStepDownNotification*/
+	public void notifyChannelStepUp();
+	/*Notification: PausePlaybackNotification*/
+	public void notifyPause();
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: ForwardNotification*/
+	public void notifyFwd();
+	/*Notification: TrackControlNotification*/
+	public void notifyChangedTrack(String trackId);
+	/*Notification: PlayNotification*/
+	public void notifyPlay();
 	public void updateStatus();
 }

@@ -51,20 +51,20 @@ public class DogFrequencyMeter extends AbstractDevice implements FrequencyMeter
 	}
 
 
-	public Measure<?,?>  getFrequency()
-	{
-		if(this.driver!=null)
-		{
-			return ((FrequencyMeter) this.driver).getFrequency();
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
 		{
 			return ((FrequencyMeter) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getFrequency()
+	{
+		if(this.driver!=null)
+		{
+			return ((FrequencyMeter) this.driver).getFrequency();
 		}
 		 return null;
 	}

@@ -37,56 +37,56 @@ public interface Fridge extends WhiteGoods
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public DeviceStatus getState();
-	public void stopSuperCooling();
-	public Measure<?,?>  getEndTime();
-	public void on();
-	public void stopHeatingOrCooling();
-	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime);
-	public void off();
-	public Measure<?,?>  getRemainingTime();
-	public void startSuperCooling();
-	public void cool();
-	public Object[] getEventsAndAlerts();
-	public void setTemperatureAt(Measure<?,?>  temperature);
-	public void heat();
 	public Measure<?,?>  getStartTime();
+	public DeviceStatus getState();
+	public void cool();
+	public void heat();
+	public Measure<?,?>  getEndTime();
 	public void standBy();
+	public void on();
+	public Measure<?,?>  getRemainingTime();
+	public void stopHeatingOrCooling();
+	public void startSuperCooling();
+	public void stopSuperCooling();
+	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime);
+	public Object[] getEventsAndAlerts();
+	public void off();
+	public void setTemperatureAt(Measure<?,?>  temperature);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events);
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event);
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime);
 	/*Notification: RemainingTimeChangedNotification*/
 	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: StartedSuperCoolingNotification*/
 	public void notifyStartedSuperCooling();
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
-	/*Notification: StoppedSuperCoolingNotification*/
-	public void notifyStoppedSuperCooling();
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime);
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
+	/*Notification: StoppedSuperCoolingNotification*/
+	public void notifyStoppedSuperCooling();
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime);
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
 	public void updateStatus();
 }

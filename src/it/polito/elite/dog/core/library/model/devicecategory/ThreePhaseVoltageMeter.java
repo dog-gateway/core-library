@@ -37,9 +37,9 @@ public interface ThreePhaseVoltageMeter extends VoltageMeter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1);
 	public DeviceStatus getState();
 	public Measure<?,?>  getLNVoltageValue(String phaseID);
+	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1);
 
 
 	/*Generated Notifications*/

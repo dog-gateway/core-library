@@ -76,27 +76,19 @@ public class DogAirConditioningSystem extends AbstractDevice implements AirCondi
 		}
 	}
 
-	public void stopHeatingOrCooling()
-	{
-		if(this.driver!=null)
-		{
-			((AirConditioningSystem) this.driver).stopHeatingOrCooling();
-		}
-	}
-
-	public void setTemperatureAt(Measure<?,?>  temperature)
-	{
-		if(this.driver!=null)
-		{
-			((AirConditioningSystem) this.driver).setTemperatureAt(temperature);
-		}
-	}
-
 	public void heat()
 	{
 		if(this.driver!=null)
 		{
 			((AirConditioningSystem) this.driver).heat();
+		}
+	}
+
+	public void stopHeatingOrCooling()
+	{
+		if(this.driver!=null)
+		{
+			((AirConditioningSystem) this.driver).stopHeatingOrCooling();
 		}
 	}
 
@@ -108,34 +100,21 @@ public class DogAirConditioningSystem extends AbstractDevice implements AirCondi
 		}
 	}
 
+	public void setTemperatureAt(Measure<?,?>  temperature)
+	{
+		if(this.driver!=null)
+		{
+			((AirConditioningSystem) this.driver).setTemperatureAt(temperature);
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
-		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: CoolNotification*/
 	public void notifyCool(){
 		CoolNotification notificationEvent=new CoolNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: HeatNotification*/
-	public void notifyHeat(){
-		HeatNotification notificationEvent=new HeatNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -147,9 +126,30 @@ public class DogAirConditioningSystem extends AbstractDevice implements AirCondi
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling(){
 		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: HeatNotification*/
+	public void notifyHeat(){
+		HeatNotification notificationEvent=new HeatNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -48,17 +48,21 @@ public class TridimensionalAccelerationNotification implements ParametricNotific
 	{
 		 return TridimensionalAccelerationNotification.notificationTopic; 
 	}
+	private Double accZ;
 	private Double accX;
 	private Double accY;
-	private Double accZ;
 
-	public TridimensionalAccelerationNotification(Double accX, Double accY, Double accZ)
+	public TridimensionalAccelerationNotification(Double accZ, Double accX, Double accY)
 	{
 
+		this.accZ=accZ;
 		this.accX=accX;
 		this.accY=accY;
-		this.accZ=accZ;
 	}
+	@NotificationParam("accZ")
+	public Double getAccZ(){
+		return this.accZ;
+}
 	@NotificationParam("accX")
 	public Double getAccX(){
 		return this.accX;
@@ -66,10 +70,6 @@ public class TridimensionalAccelerationNotification implements ParametricNotific
 	@NotificationParam("accY")
 	public Double getAccY(){
 		return this.accY;
-}
-	@NotificationParam("accZ")
-	public Double getAccZ(){
-		return this.accZ;
 }
 
 }

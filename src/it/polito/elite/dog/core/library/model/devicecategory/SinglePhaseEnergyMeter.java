@@ -37,9 +37,9 @@ public interface SinglePhaseEnergyMeter extends SingleTariffEnergyMeter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getReactiveEnergyValue();
-	public DeviceStatus getState();
 	public Measure<?,?>  getActiveEnergyValue();
+	public DeviceStatus getState();
+	public Measure<?,?>  getReactiveEnergyValue();
 
 
 	/*Generated Notifications*/

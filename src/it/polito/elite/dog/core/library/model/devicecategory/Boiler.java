@@ -38,43 +38,43 @@ public interface Boiler extends WhiteGoods
 	public static int MATCH_MANUFACTURER=0;
 
 	public void startSuperHeating();
-	public Measure<?,?>  getRemainingTime();
-	public DeviceStatus getState();
-	public Measure<?,?>  getEndTime();
-	public void on();
 	public void stopSuperHeating();
-	public Object[] getEventsAndAlerts();
-	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime);
-	public void standBy();
-	public void off();
 	public Measure<?,?>  getStartTime();
+	public DeviceStatus getState();
+	public void standBy();
+	public void on();
+	public Measure<?,?>  getRemainingTime();
+	public Measure<?,?>  getEndTime();
+	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime);
+	public Object[] getEventsAndAlerts();
+	public void off();
 
 
 	/*Generated Notifications*/
 
 	/*Notification: MultipleEventNotification*/
 	public void notifyNewEventSet(Object[] events);
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event);
-	/*Notification: StoppedSuperHeatingNotification*/
-	public void notifyStoppedSuperHeating();
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime);
 	/*Notification: RemainingTimeChangedNotification*/
 	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts);
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	/*Notification: StartedSuperHeatingNotification*/
 	public void notifyStartedSuperHeating();
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime);
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime);
+	/*Notification: StoppedSuperHeatingNotification*/
+	public void notifyStoppedSuperHeating();
 	public void updateStatus();
 }

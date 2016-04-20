@@ -51,6 +51,31 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 	}
 
 
+	public void start()
+	{
+		if(this.driver!=null)
+		{
+			((ElectricalOven) this.driver).start();
+		}
+	}
+
+	public void stopSuperHeating()
+	{
+		if(this.driver!=null)
+		{
+			((ElectricalOven) this.driver).stopSuperHeating();
+		}
+	}
+
+	public Measure<?,?>  getStartTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((ElectricalOven) this.driver).getStartTime();
+		}
+		 return null;
+	}
+
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -69,35 +94,35 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		 return null;
 	}
 
+	public void pause()
+	{
+		if(this.driver!=null)
+		{
+			((ElectricalOven) this.driver).pause();
+		}
+	}
+
+	public void startSuperHeating()
+	{
+		if(this.driver!=null)
+		{
+			((ElectricalOven) this.driver).startSuperHeating();
+		}
+	}
+
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((ElectricalOven) this.driver).standBy();
+		}
+	}
+
 	public void on()
 	{
 		if(this.driver!=null)
 		{
 			((ElectricalOven) this.driver).on();
-		}
-	}
-
-	public void stopSuperHeating()
-	{
-		if(this.driver!=null)
-		{
-			((ElectricalOven) this.driver).stopSuperHeating();
-		}
-	}
-
-	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime)
-	{
-		if(this.driver!=null)
-		{
-			((ElectricalOven) this.driver).setStartTime(endTime, remainingTime, startTime);
-		}
-	}
-
-	public void off()
-	{
-		if(this.driver!=null)
-		{
-			((ElectricalOven) this.driver).off();
 		}
 	}
 
@@ -110,14 +135,6 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		 return null;
 	}
 
-	public void startSuperHeating()
-	{
-		if(this.driver!=null)
-		{
-			((ElectricalOven) this.driver).startSuperHeating();
-		}
-	}
-
 	public void stop()
 	{
 		if(this.driver!=null)
@@ -126,11 +143,11 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		}
 	}
 
-	public void start()
+	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime)
 	{
 		if(this.driver!=null)
 		{
-			((ElectricalOven) this.driver).start();
+			((ElectricalOven) this.driver).setStartTime(endTime, remainingTime, startTime);
 		}
 	}
 
@@ -143,28 +160,11 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		 return null;
 	}
 
-	public void pause()
+	public void off()
 	{
 		if(this.driver!=null)
 		{
-			((ElectricalOven) this.driver).pause();
-		}
-	}
-
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((ElectricalOven) this.driver).getStartTime();
-		}
-		 return null;
-	}
-
-	public void standBy()
-	{
-		if(this.driver!=null)
-		{
-			((ElectricalOven) this.driver).standBy();
+			((ElectricalOven) this.driver).off();
 		}
 	}
 
@@ -172,30 +172,16 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 
 	/*Generated Notifications*/
 
-	/*Notification: StartApplianceNotification*/
-	public void notifyStart(){
-		StartApplianceNotification notificationEvent=new StartApplianceNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events){
-		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -207,16 +193,9 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
-		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+	/*Notification: PauseApplianceNotification*/
+	public void notifyPause(){
+		PauseApplianceNotification notificationEvent=new PauseApplianceNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -228,6 +207,27 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events){
+		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
+		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: OffNotification*/
 	public void notifyOff(){
 		OffNotification notificationEvent=new OffNotification();
@@ -235,23 +235,16 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoppedSuperHeatingNotification*/
-	public void notifyStoppedSuperHeating(){
-		StoppedSuperHeatingNotification notificationEvent=new StoppedSuperHeatingNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: StartApplianceNotification*/
+	public void notifyStart(){
+		StartApplianceNotification notificationEvent=new StartApplianceNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -263,16 +256,23 @@ public class DogElectricalOven extends AbstractDevice implements ElectricalOven
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PauseApplianceNotification*/
-	public void notifyPause(){
-		PauseApplianceNotification notificationEvent=new PauseApplianceNotification();
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StoppedSuperHeatingNotification*/
+	public void notifyStoppedSuperHeating(){
+		StoppedSuperHeatingNotification notificationEvent=new StoppedSuperHeatingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

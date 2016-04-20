@@ -39,39 +39,39 @@ public interface ColorDimmableLight extends DimmableLight
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stepDown();
+	public void deleteGroup(Integer groupID);
+	public void setColorRGB(RGBColor colorRGB);
 	public void stepUp();
 	public DeviceStatus getState();
-	public void setColorRGB(RGBColor colorRGB);
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
-	public void set(Object value);
 	public void on();
-	public void deleteGroup(Integer groupID);
+	public void set(Object value);
 	public void setColorHSB(HSBColor colorHSB);
 	public void storeGroup(Integer groupID);
+	public void deleteScene(Integer sceneNumber);
 	public void off();
+	public void stepDown();
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: ColorRGBNotification*/
-	public void notifyChangedColorRGB(RGBColor colorRGB);
-	/*Notification: OffNotification*/
-	public void notifyOff();
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: ColorHSBNotification*/
 	public void notifyChangedColorHSB(HSBColor colorHSB);
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: ColorRGBNotification*/
+	public void notifyChangedColorRGB(RGBColor colorRGB);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();
 }

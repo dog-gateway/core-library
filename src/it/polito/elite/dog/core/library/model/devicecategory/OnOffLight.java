@@ -35,28 +35,28 @@ public interface OnOffLight extends SimpleLamp
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public DeviceStatus getState();
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
-	public void on();
 	public void deleteGroup(Integer groupID);
+	public DeviceStatus getState();
+	public void on();
 	public void storeGroup(Integer groupID);
+	public void deleteScene(Integer sceneNumber);
 	public void off();
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
 
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();
 }

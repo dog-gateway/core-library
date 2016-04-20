@@ -35,25 +35,25 @@ public interface StepShutterActuator extends ShutterActuator
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stepDown();
 	public void stepUp();
 	public DeviceStatus getState();
 	public void rest();
-	public void down();
 	public void up();
+	public void down();
+	public void stepDown();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: RestNotification*/
-	public void notifyResting();
-	/*Notification: RestDownNotification*/
-	public void notifyRestingDown();
-	/*Notification: RestUpNotification*/
-	public void notifyRestingUp();
 	/*Notification: MovingDownNotification*/
 	public void notifyMovingDown();
+	/*Notification: RestUpNotification*/
+	public void notifyRestingUp();
+	/*Notification: RestDownNotification*/
+	public void notifyRestingDown();
 	/*Notification: MovingUpNotification*/
 	public void notifyMovingUp();
+	/*Notification: RestNotification*/
+	public void notifyResting();
 	public void updateStatus();
 }

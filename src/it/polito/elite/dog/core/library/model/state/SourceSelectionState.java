@@ -22,15 +22,15 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.CDStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.Tape2StateValue;
-import it.polito.elite.dog.core.library.model.statevalue.Tape1StateValue;
-import it.polito.elite.dog.core.library.model.statevalue.PhonoStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.TunerStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.AuxStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.CDStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.PhonoStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.Tape2StateValue;
+import it.polito.elite.dog.core.library.model.statevalue.AuxStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.Tape1StateValue;
 
 
 

@@ -51,11 +51,19 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((EnergyMeteringPowerOutlet) this.driver).getReactiveEnergyValue();
+			((EnergyMeteringPowerOutlet) this.driver).deleteGroup(groupID);
+		}
+	}
+
+	public Measure<?,?>  getActiveEnergyValue()
+	{
+		if(this.driver!=null)
+		{
+			return ((EnergyMeteringPowerOutlet) this.driver).getActiveEnergyValue();
 		}
 		 return null;
 	}
@@ -69,20 +77,13 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 		 return null;
 	}
 
-	public void storeScene(Integer sceneNumber)
+	public Measure<?,?>  getReactiveEnergyValue()
 	{
 		if(this.driver!=null)
 		{
-			((EnergyMeteringPowerOutlet) this.driver).storeScene(sceneNumber);
+			return ((EnergyMeteringPowerOutlet) this.driver).getReactiveEnergyValue();
 		}
-	}
-
-	public void deleteScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((EnergyMeteringPowerOutlet) this.driver).deleteScene(sceneNumber);
-		}
+		 return null;
 	}
 
 	public void on()
@@ -90,23 +91,6 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 		if(this.driver!=null)
 		{
 			((EnergyMeteringPowerOutlet) this.driver).on();
-		}
-	}
-
-	public Measure<?,?>  getActiveEnergyValue()
-	{
-		if(this.driver!=null)
-		{
-			return ((EnergyMeteringPowerOutlet) this.driver).getActiveEnergyValue();
-		}
-		 return null;
-	}
-
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((EnergyMeteringPowerOutlet) this.driver).deleteGroup(groupID);
 		}
 	}
 
@@ -118,6 +102,14 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 		}
 	}
 
+	public void deleteScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((EnergyMeteringPowerOutlet) this.driver).deleteScene(sceneNumber);
+		}
+	}
+
 	public void off()
 	{
 		if(this.driver!=null)
@@ -126,31 +118,18 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 		}
 	}
 
+	public void storeScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((EnergyMeteringPowerOutlet) this.driver).storeScene(sceneNumber);
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
-		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
 		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
@@ -158,16 +137,16 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -179,9 +158,30 @@ public class DogEnergyMeteringPowerOutlet extends AbstractDevice implements Ener
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber){
+		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

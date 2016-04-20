@@ -22,12 +22,12 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.HeatingStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.RinseHoldStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.HeatingStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.WashRinseStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.RinseHoldStateValue;
 
 
 

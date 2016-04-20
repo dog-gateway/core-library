@@ -82,16 +82,16 @@ public class DogWaterConsumptionMeter extends AbstractDevice implements WaterCon
 
 	/*Generated Notifications*/
 
-	/*Notification: ColdWaterM3MeasurementNotification*/
-	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater){
-		ColdWaterM3MeasurementNotification notificationEvent=new ColdWaterM3MeasurementNotification(m3OfColdWater );
+	/*Notification: HotWaterM3MeasurementNotification*/
+	public void notifyNewHotWaterAmountInM3(Measure<?,?>  m3OfHotWater){
+		HotWaterM3MeasurementNotification notificationEvent=new HotWaterM3MeasurementNotification(m3OfHotWater );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: HotWaterM3MeasurementNotification*/
-	public void notifyNewHotWaterAmountInM3(Measure<?,?>  m3OfHotWater){
-		HotWaterM3MeasurementNotification notificationEvent=new HotWaterM3MeasurementNotification(m3OfHotWater );
+	/*Notification: ColdWaterM3MeasurementNotification*/
+	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater){
+		ColdWaterM3MeasurementNotification notificationEvent=new ColdWaterM3MeasurementNotification(m3OfColdWater );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

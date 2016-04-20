@@ -51,6 +51,15 @@ public class DogFridge extends AbstractDevice implements Fridge
 	}
 
 
+	public Measure<?,?>  getStartTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((Fridge) this.driver).getStartTime();
+		}
+		 return null;
+	}
+
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -60,11 +69,19 @@ public class DogFridge extends AbstractDevice implements Fridge
 		 return null;
 	}
 
-	public void stopSuperCooling()
+	public void cool()
 	{
 		if(this.driver!=null)
 		{
-			((Fridge) this.driver).stopSuperCooling();
+			((Fridge) this.driver).cool();
+		}
+	}
+
+	public void heat()
+	{
+		if(this.driver!=null)
+		{
+			((Fridge) this.driver).heat();
 		}
 	}
 
@@ -77,35 +94,19 @@ public class DogFridge extends AbstractDevice implements Fridge
 		 return null;
 	}
 
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((Fridge) this.driver).standBy();
+		}
+	}
+
 	public void on()
 	{
 		if(this.driver!=null)
 		{
 			((Fridge) this.driver).on();
-		}
-	}
-
-	public void stopHeatingOrCooling()
-	{
-		if(this.driver!=null)
-		{
-			((Fridge) this.driver).stopHeatingOrCooling();
-		}
-	}
-
-	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime)
-	{
-		if(this.driver!=null)
-		{
-			((Fridge) this.driver).setStartTime(endTime, remainingTime, startTime);
-		}
-	}
-
-	public void off()
-	{
-		if(this.driver!=null)
-		{
-			((Fridge) this.driver).off();
 		}
 	}
 
@@ -118,6 +119,14 @@ public class DogFridge extends AbstractDevice implements Fridge
 		 return null;
 	}
 
+	public void stopHeatingOrCooling()
+	{
+		if(this.driver!=null)
+		{
+			((Fridge) this.driver).stopHeatingOrCooling();
+		}
+	}
+
 	public void startSuperCooling()
 	{
 		if(this.driver!=null)
@@ -126,11 +135,19 @@ public class DogFridge extends AbstractDevice implements Fridge
 		}
 	}
 
-	public void cool()
+	public void stopSuperCooling()
 	{
 		if(this.driver!=null)
 		{
-			((Fridge) this.driver).cool();
+			((Fridge) this.driver).stopSuperCooling();
+		}
+	}
+
+	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime)
+	{
+		if(this.driver!=null)
+		{
+			((Fridge) this.driver).setStartTime(endTime, remainingTime, startTime);
 		}
 	}
 
@@ -143,6 +160,14 @@ public class DogFridge extends AbstractDevice implements Fridge
 		 return null;
 	}
 
+	public void off()
+	{
+		if(this.driver!=null)
+		{
+			((Fridge) this.driver).off();
+		}
+	}
+
 	public void setTemperatureAt(Measure<?,?>  temperature)
 	{
 		if(this.driver!=null)
@@ -151,49 +176,10 @@ public class DogFridge extends AbstractDevice implements Fridge
 		}
 	}
 
-	public void heat()
-	{
-		if(this.driver!=null)
-		{
-			((Fridge) this.driver).heat();
-		}
-	}
-
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((Fridge) this.driver).getStartTime();
-		}
-		 return null;
-	}
-
-	public void standBy()
-	{
-		if(this.driver!=null)
-		{
-			((Fridge) this.driver).standBy();
-		}
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events){
-		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
@@ -201,9 +187,9 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
-		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -215,16 +201,30 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: CoolNotification*/
-	public void notifyCool(){
-		CoolNotification notificationEvent=new CoolNotification();
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events){
+		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: CoolNotification*/
+	public void notifyCool(){
+		CoolNotification notificationEvent=new CoolNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -243,23 +243,9 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: HeatNotification*/
-	public void notifyHeat(){
-		HeatNotification notificationEvent=new HeatNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -271,9 +257,16 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling(){
+		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -285,9 +278,16 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
-		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: HeatNotification*/
+	public void notifyHeat(){
+		HeatNotification notificationEvent=new HeatNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -37,34 +37,34 @@ public interface EnergyMeteringPowerOutlet extends SinglePhaseEnergyMeter, Mains
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getReactiveEnergyValue();
-	public DeviceStatus getState();
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
-	public void on();
-	public Measure<?,?>  getActiveEnergyValue();
 	public void deleteGroup(Integer groupID);
+	public Measure<?,?>  getActiveEnergyValue();
+	public DeviceStatus getState();
+	public Measure<?,?>  getReactiveEnergyValue();
+	public void on();
 	public void storeGroup(Integer groupID);
+	public void deleteScene(Integer sceneNumber);
 	public void off();
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
-	/*Notification: OffNotification*/
-	public void notifyOff();
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();
 }

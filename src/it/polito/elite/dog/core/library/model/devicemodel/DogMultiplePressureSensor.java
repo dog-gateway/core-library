@@ -51,20 +51,20 @@ public class DogMultiplePressureSensor extends AbstractDevice implements Multipl
 	}
 
 
-	public Measure<?,?>  getPressureFrom(String sensorURI)
-	{
-		if(this.driver!=null)
-		{
-			return ((MultiplePressureSensor) this.driver).getPressureFrom(sensorURI);
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
 		{
 			return ((MultiplePressureSensor) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getPressureFrom(String sensorURI)
+	{
+		if(this.driver!=null)
+		{
+			return ((MultiplePressureSensor) this.driver).getPressureFrom(sensorURI);
 		}
 		 return null;
 	}

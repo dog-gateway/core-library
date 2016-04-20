@@ -22,9 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.HueStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.SaturationStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.BrightnessStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.SaturationStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.HueStateValue;
 
 
 

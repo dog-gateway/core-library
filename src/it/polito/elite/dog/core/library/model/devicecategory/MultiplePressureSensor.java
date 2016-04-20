@@ -31,14 +31,14 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface MultiplePressureSensor extends Sensor, HVACSystem
+public interface MultiplePressureSensor extends HVACSystem, Sensor
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getPressureFrom(String sensorURI);
 	public DeviceStatus getState();
+	public Measure<?,?>  getPressureFrom(String sensorURI);
 
 
 	/*Generated Notifications*/

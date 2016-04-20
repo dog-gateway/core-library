@@ -50,19 +50,11 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 	}
 
 
-	public void zoomOut()
+	public void decreaseLuminosity()
 	{
 		if(this.driver!=null)
 		{
-			((SnapshotCamera) this.driver).zoomOut();
-		}
-	}
-
-	public void increaseContrast()
-	{
-		if(this.driver!=null)
-		{
-			((SnapshotCamera) this.driver).increaseContrast();
+			((SnapshotCamera) this.driver).decreaseLuminosity();
 		}
 	}
 
@@ -73,6 +65,30 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 			return ((SnapshotCamera) this.driver).getState();
 		}
 		 return null;
+	}
+
+	public void panLeft()
+	{
+		if(this.driver!=null)
+		{
+			((SnapshotCamera) this.driver).panLeft();
+		}
+	}
+
+	public void increaseColor()
+	{
+		if(this.driver!=null)
+		{
+			((SnapshotCamera) this.driver).increaseColor();
+		}
+	}
+
+	public void panDown()
+	{
+		if(this.driver!=null)
+		{
+			((SnapshotCamera) this.driver).panDown();
+		}
 	}
 
 	public void panRight()
@@ -91,14 +107,6 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 		}
 	}
 
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((SnapshotCamera) this.driver).on();
-		}
-	}
-
 	public void panUp()
 	{
 		if(this.driver!=null)
@@ -107,60 +115,19 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 		}
 	}
 
-	public void decreaseLuminosity()
+	public void zoomOut()
 	{
 		if(this.driver!=null)
 		{
-			((SnapshotCamera) this.driver).decreaseLuminosity();
+			((SnapshotCamera) this.driver).zoomOut();
 		}
 	}
 
-	public void off()
+	public void zoomIn()
 	{
 		if(this.driver!=null)
 		{
-			((SnapshotCamera) this.driver).off();
-		}
-	}
-
-	public void panDown()
-	{
-		if(this.driver!=null)
-		{
-			((SnapshotCamera) this.driver).panDown();
-		}
-	}
-
-	public Image grabPicture()
-	{
-		if(this.driver!=null)
-		{
-			return ((SnapshotCamera) this.driver).grabPicture();
-		}
-		 return null;
-	}
-
-	public void increaseColor()
-	{
-		if(this.driver!=null)
-		{
-			((SnapshotCamera) this.driver).increaseColor();
-		}
-	}
-
-	public void panLeft()
-	{
-		if(this.driver!=null)
-		{
-			((SnapshotCamera) this.driver).panLeft();
-		}
-	}
-
-	public void decreaseQuality()
-	{
-		if(this.driver!=null)
-		{
-			((SnapshotCamera) this.driver).decreaseQuality();
+			((SnapshotCamera) this.driver).zoomIn();
 		}
 	}
 
@@ -169,6 +136,14 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 		if(this.driver!=null)
 		{
 			((SnapshotCamera) this.driver).increaseQuality();
+		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((SnapshotCamera) this.driver).on();
 		}
 	}
 
@@ -188,11 +163,36 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 		}
 	}
 
-	public void zoomIn()
+	public void decreaseQuality()
 	{
 		if(this.driver!=null)
 		{
-			((SnapshotCamera) this.driver).zoomIn();
+			((SnapshotCamera) this.driver).decreaseQuality();
+		}
+	}
+
+	public void increaseContrast()
+	{
+		if(this.driver!=null)
+		{
+			((SnapshotCamera) this.driver).increaseContrast();
+		}
+	}
+
+	public Image grabPicture()
+	{
+		if(this.driver!=null)
+		{
+			return ((SnapshotCamera) this.driver).grabPicture();
+		}
+		 return null;
+	}
+
+	public void off()
+	{
+		if(this.driver!=null)
+		{
+			((SnapshotCamera) this.driver).off();
 		}
 	}
 
@@ -200,16 +200,16 @@ public class DogSnapshotCamera extends AbstractDevice implements SnapshotCamera
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -51,22 +51,12 @@ public class DogQuadSensor extends AbstractDevice implements QuadSensor
 	}
 
 
-	public Measure<?,?>  getRelativeHumidity()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((QuadSensor) this.driver).getRelativeHumidity();
+			((QuadSensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
-	}
-
-	public Measure<?,?>  getTemperature()
-	{
-		if(this.driver!=null)
-		{
-			return ((QuadSensor) this.driver).getTemperature();
-		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -87,12 +77,22 @@ public class DogQuadSensor extends AbstractDevice implements QuadSensor
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
+	public Measure<?,?>  getRelativeHumidity()
 	{
 		if(this.driver!=null)
 		{
-			((QuadSensor) this.driver).deleteGroup(groupID);
+			return ((QuadSensor) this.driver).getRelativeHumidity();
 		}
+		 return null;
+	}
+
+	public Measure<?,?>  getTemperature()
+	{
+		if(this.driver!=null)
+		{
+			return ((QuadSensor) this.driver).getTemperature();
+		}
+		 return null;
 	}
 
 	public void storeGroup(Integer groupID)
@@ -107,16 +107,9 @@ public class DogQuadSensor extends AbstractDevice implements QuadSensor
 
 	/*Generated Notifications*/
 
-	/*Notification: LuminosityMeasurementNotification*/
-	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
-		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
-		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -128,9 +121,9 @@ public class DogQuadSensor extends AbstractDevice implements QuadSensor
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: SimpleMovementNotification*/
+	public void notifyStartedMovement(){
+		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -142,16 +135,23 @@ public class DogQuadSensor extends AbstractDevice implements QuadSensor
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SimpleMovementNotification*/
-	public void notifyStartedMovement(){
-		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LuminosityMeasurementNotification*/
+	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
+		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

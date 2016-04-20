@@ -36,24 +36,24 @@ public interface PelletHeater extends Heater
 	public static int MATCH_MANUFACTURER=0;
 
 	public DeviceStatus getState();
-	public void on();
 	public void standBy();
+	public void on();
 	public void off();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: FiringUpNotification*/
-	public void notifyFiringUp();
-	/*Notification: CoolNotification*/
-	public void notifyCool();
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
+	/*Notification: CoolNotification*/
+	public void notifyCool();
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: FiringUpNotification*/
+	public void notifyFiringUp();
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
 	public void updateStatus();
 }

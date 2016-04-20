@@ -37,8 +37,8 @@ public interface GasMeter extends Meter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getM3GasConsumed();
 	public DeviceStatus getState();
+	public Measure<?,?>  getM3GasConsumed();
 
 
 	/*Generated Notifications*/

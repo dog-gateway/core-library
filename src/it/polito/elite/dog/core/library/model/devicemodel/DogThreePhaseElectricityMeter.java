@@ -51,56 +51,11 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 	}
 
 
-	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1)
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getLLVoltageValue(phaseID2, phaseID1);
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getReactiveEnergyValue()
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getReactiveEnergyValue();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getReactivePower(String phaseID)
 	{
 		if(this.driver!=null)
 		{
 			return ((ThreePhaseElectricityMeter) this.driver).getReactivePower(phaseID);
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getFrequency()
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getFrequency();
-		}
-		 return null;
-	}
-
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getState();
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getPowerFactor()
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getPowerFactor();
 		}
 		 return null;
 	}
@@ -114,29 +69,11 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		 return null;
 	}
 
-	public Measure<?,?>  getLNVoltageValue(String phaseID)
+	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
 		{
-			return ((ThreePhaseElectricityMeter) this.driver).getLNVoltageValue(phaseID);
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getElectricCurrentValue(String phaseID)
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getElectricCurrentValue(phaseID);
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getApparentPower(String phaseID)
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseElectricityMeter) this.driver).getApparentPower(phaseID);
+			return ((ThreePhaseElectricityMeter) this.driver).getState();
 		}
 		 return null;
 	}
@@ -150,20 +87,76 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		 return null;
 	}
 
+	public Measure<?,?>  getFrequency()
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getFrequency();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getReactiveEnergyValue()
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getReactiveEnergyValue();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getElectricCurrentValue(String phaseID)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getElectricCurrentValue(phaseID);
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getLNVoltageValue(String phaseID)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getLNVoltageValue(phaseID);
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getPowerFactor()
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getPowerFactor();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getLLVoltageValue(phaseID2, phaseID1);
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getApparentPower(String phaseID)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseElectricityMeter) this.driver).getApparentPower(phaseID);
+		}
+		 return null;
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
-		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
-	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseReactivePowerMeasurementNotification notificationEvent=new ThreePhaseReactivePowerMeasurementNotification(phaseID , value );
+	/*Notification: PowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
+		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -175,9 +168,9 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+	/*Notification: ThreePhaseActivePowerMeasurementNotification*/
+	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseActivePowerMeasurementNotification notificationEvent=new ThreePhaseActivePowerMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -189,9 +182,9 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
-	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseLLVoltageMeasurementNotification notificationEvent=new ThreePhaseLLVoltageMeasurementNotification(phaseID , value );
+	/*Notification: FrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
+		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -203,16 +196,16 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseActivePowerMeasurementNotification*/
-	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseActivePowerMeasurementNotification notificationEvent=new ThreePhaseActivePowerMeasurementNotification(phaseID , value );
+	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
+	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseReactivePowerMeasurementNotification notificationEvent=new ThreePhaseReactivePowerMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -220,6 +213,13 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 	/*Notification: ThreePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value){
 		ThreePhaseCurrentMeasurementNotification notificationEvent=new ThreePhaseCurrentMeasurementNotification(phaseID , value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
+	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseLLVoltageMeasurementNotification notificationEvent=new ThreePhaseLLVoltageMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

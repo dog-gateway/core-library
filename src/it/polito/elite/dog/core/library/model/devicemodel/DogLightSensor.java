@@ -51,6 +51,14 @@ public class DogLightSensor extends AbstractDevice implements LightSensor
 	}
 
 
+	public void deleteGroup(Integer groupID)
+	{
+		if(this.driver!=null)
+		{
+			((LightSensor) this.driver).deleteGroup(groupID);
+		}
+	}
+
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -69,14 +77,6 @@ public class DogLightSensor extends AbstractDevice implements LightSensor
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((LightSensor) this.driver).deleteGroup(groupID);
-		}
-	}
-
 	public void storeGroup(Integer groupID)
 	{
 		if(this.driver!=null)
@@ -89,9 +89,9 @@ public class DogLightSensor extends AbstractDevice implements LightSensor
 
 	/*Generated Notifications*/
 
-	/*Notification: LuminosityMeasurementNotification*/
-	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
-		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -103,9 +103,9 @@ public class DogLightSensor extends AbstractDevice implements LightSensor
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: LuminosityMeasurementNotification*/
+	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
+		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

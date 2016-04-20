@@ -33,7 +33,7 @@ import it.polito.elite.dog.core.library.model.climate.DailyClimateSchedule;
 
 import javax.measure.Measure;
 
-public interface ThermostaticRadiatorValve extends Actuator, Thermostat, HVACSystem
+public interface ThermostaticRadiatorValve extends Thermostat, HVACSystem, Actuator
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
@@ -42,27 +42,27 @@ public interface ThermostaticRadiatorValve extends Actuator, Thermostat, HVACSys
 	public void setDailyClimateSchedule(DailyClimateSchedule daySchedule);
 	public DeviceStatus getState();
 	public Measure<?,?>  getSetpointTemperature();
-	public Object[] getDaySchedule(Integer weekDay);
 	public void cool();
-	public void stopHeatingOrCooling();
-	public void setTemperatureAt(Measure<?,?>  temperature);
 	public void heat();
+	public void stopHeatingOrCooling();
 	public void setClimateSchedule(DailyClimateSchedule[] dailySchedules);
+	public Object[] getDaySchedule(Integer weekDay);
+	public void setTemperatureAt(Measure<?,?>  temperature);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: DailyClimateScheduleNotification*/
-	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule);
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
+	/*Notification: DailyClimateScheduleNotification*/
+	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule);
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling();
 	/*Notification: HeatNotification*/
 	public void notifyHeat();
 	/*Notification: WeeklyClimateScheduleNotification*/
 	public void notifyChangedWeeklyClimateSchedule(DailyClimateSchedule[] dailySchedules);
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling();
 	public void updateStatus();
 }

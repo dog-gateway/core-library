@@ -62,16 +62,16 @@ public class DogShutterButton extends AbstractDevice implements ShutterButton
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedDownNotification*/
-	public void notifyPressedDown(){
-		PressedDownNotification notificationEvent=new PressedDownNotification();
+	/*Notification: PressedUpNotification*/
+	public void notifyPressedUp(){
+		PressedUpNotification notificationEvent=new PressedUpNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PressedUpNotification*/
-	public void notifyPressedUp(){
-		PressedUpNotification notificationEvent=new PressedUpNotification();
+	/*Notification: PressedDownNotification*/
+	public void notifyPressedDown(){
+		PressedDownNotification notificationEvent=new PressedDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

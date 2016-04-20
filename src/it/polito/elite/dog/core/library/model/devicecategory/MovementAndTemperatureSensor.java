@@ -31,29 +31,29 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface MovementAndTemperatureSensor extends MovementSensor, SingleTemperatureSensor
+public interface MovementAndTemperatureSensor extends SingleTemperatureSensor, MovementSensor
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getTemperature();
-	public DeviceStatus getState();
 	public void deleteGroup(Integer groupID);
+	public DeviceStatus getState();
+	public Measure<?,?>  getTemperature();
 	public void storeGroup(Integer groupID);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
-	/*Notification: SimpleNoMovementNotification*/
-	public void notifyCeasedMovement();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: SimpleMovementNotification*/
-	public void notifyStartedMovement();
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: SimpleNoMovementNotification*/
+	public void notifyCeasedMovement();
+	/*Notification: SimpleMovementNotification*/
+	public void notifyStartedMovement();
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	public void updateStatus();
 }

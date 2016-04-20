@@ -66,14 +66,6 @@ public class DogShutterActuator extends AbstractDevice implements ShutterActuato
 		}
 	}
 
-	public void down()
-	{
-		if(this.driver!=null)
-		{
-			((ShutterActuator) this.driver).down();
-		}
-	}
-
 	public void up()
 	{
 		if(this.driver!=null)
@@ -82,20 +74,21 @@ public class DogShutterActuator extends AbstractDevice implements ShutterActuato
 		}
 	}
 
+	public void down()
+	{
+		if(this.driver!=null)
+		{
+			((ShutterActuator) this.driver).down();
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: RestNotification*/
-	public void notifyResting(){
-		RestNotification notificationEvent=new RestNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: RestDownNotification*/
-	public void notifyRestingDown(){
-		RestDownNotification notificationEvent=new RestDownNotification();
+	/*Notification: MovingDownNotification*/
+	public void notifyMovingDown(){
+		MovingDownNotification notificationEvent=new MovingDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -107,9 +100,9 @@ public class DogShutterActuator extends AbstractDevice implements ShutterActuato
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MovingDownNotification*/
-	public void notifyMovingDown(){
-		MovingDownNotification notificationEvent=new MovingDownNotification();
+	/*Notification: RestDownNotification*/
+	public void notifyRestingDown(){
+		RestDownNotification notificationEvent=new RestDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -117,6 +110,13 @@ public class DogShutterActuator extends AbstractDevice implements ShutterActuato
 	/*Notification: MovingUpNotification*/
 	public void notifyMovingUp(){
 		MovingUpNotification notificationEvent=new MovingUpNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: RestNotification*/
+	public void notifyResting(){
+		RestNotification notificationEvent=new RestNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

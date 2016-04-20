@@ -51,14 +51,6 @@ public class DogDimmerLamp extends AbstractDevice implements DimmerLamp
 	}
 
 
-	public void stepDown()
-	{
-		if(this.driver!=null)
-		{
-			((DimmerLamp) this.driver).stepDown();
-		}
-	}
-
 	public void stepUp()
 	{
 		if(this.driver!=null)
@@ -76,19 +68,19 @@ public class DogDimmerLamp extends AbstractDevice implements DimmerLamp
 		 return null;
 	}
 
-	public void set(Object value)
-	{
-		if(this.driver!=null)
-		{
-			((DimmerLamp) this.driver).set(value);
-		}
-	}
-
 	public void on()
 	{
 		if(this.driver!=null)
 		{
 			((DimmerLamp) this.driver).on();
+		}
+	}
+
+	public void set(Object value)
+	{
+		if(this.driver!=null)
+		{
+			((DimmerLamp) this.driver).set(value);
 		}
 	}
 
@@ -100,17 +92,18 @@ public class DogDimmerLamp extends AbstractDevice implements DimmerLamp
 		}
 	}
 
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((DimmerLamp) this.driver).stepDown();
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel){
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
@@ -121,6 +114,13 @@ public class DogDimmerLamp extends AbstractDevice implements DimmerLamp
 	/*Notification: OffNotification*/
 	public void notifyOff(){
 		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

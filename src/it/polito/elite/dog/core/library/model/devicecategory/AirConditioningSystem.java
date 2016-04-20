@@ -40,25 +40,25 @@ public interface AirConditioningSystem extends HVACSystem
 	public DeviceStatus getState();
 	public void on();
 	public void cool();
-	public void stopHeatingOrCooling();
-	public void setTemperatureAt(Measure<?,?>  temperature);
 	public void heat();
+	public void stopHeatingOrCooling();
 	public void off();
+	public void setTemperatureAt(Measure<?,?>  temperature);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
 	public void updateStatus();
 }

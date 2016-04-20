@@ -29,7 +29,7 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 
 
 import it.polito.elite.dog.core.library.model.DeviceStatus;
-public interface PresenceSensor extends Sensor, AccessControlSystem
+public interface PresenceSensor extends AccessControlSystem, Sensor
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;

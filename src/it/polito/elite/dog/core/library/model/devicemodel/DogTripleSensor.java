@@ -51,13 +51,12 @@ public class DogTripleSensor extends AbstractDevice implements TripleSensor
 	}
 
 
-	public Measure<?,?>  getTemperature()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((TripleSensor) this.driver).getTemperature();
+			((TripleSensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -78,12 +77,13 @@ public class DogTripleSensor extends AbstractDevice implements TripleSensor
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
+	public Measure<?,?>  getTemperature()
 	{
 		if(this.driver!=null)
 		{
-			((TripleSensor) this.driver).deleteGroup(groupID);
+			return ((TripleSensor) this.driver).getTemperature();
 		}
+		 return null;
 	}
 
 	public void storeGroup(Integer groupID)
@@ -98,16 +98,9 @@ public class DogTripleSensor extends AbstractDevice implements TripleSensor
 
 	/*Generated Notifications*/
 
-	/*Notification: LuminosityMeasurementNotification*/
-	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
-		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
-		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -119,13 +112,6 @@ public class DogTripleSensor extends AbstractDevice implements TripleSensor
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: SimpleMovementNotification*/
 	public void notifyStartedMovement(){
 		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
@@ -133,9 +119,23 @@ public class DogTripleSensor extends AbstractDevice implements TripleSensor
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LuminosityMeasurementNotification*/
+	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
+		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -37,8 +37,8 @@ public interface EnOceanGateway extends EnOceanComponent
 	public static int MATCH_MANUFACTURER=0;
 
 	public void teachIn();
-	public DeviceStatus getState();
 	public void explicitTeachIn(ExplicitTeachInData teachInData);
+	public DeviceStatus getState();
 	public void smartTeachIn();
 
 

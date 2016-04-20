@@ -37,22 +37,22 @@ public interface TemperatureAndHumiditySensor extends SingleTemperatureSensor, H
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
+	public void deleteGroup(Integer groupID);
+	public DeviceStatus getState();
 	public Measure<?,?>  getRelativeHumidity();
 	public Measure<?,?>  getTemperature();
-	public DeviceStatus getState();
-	public void deleteGroup(Integer groupID);
 	public void storeGroup(Integer groupID);
 
 
 	/*Generated Notifications*/
 
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: HumidityMeasurementNotification*/
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity);
 	/*Notification: TemperatureMeasurementNotification*/
 	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
 	/*Notification: JoinGroupNotification*/
 	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: HumidityMeasurementNotification*/
-	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity);
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	public void updateStatus();
 }

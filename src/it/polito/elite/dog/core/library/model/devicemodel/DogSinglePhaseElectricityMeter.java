@@ -51,47 +51,11 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue()
-	{
-		if(this.driver!=null)
-		{
-			return ((SinglePhaseElectricityMeter) this.driver).getReactiveEnergyValue();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getReactivePower()
 	{
 		if(this.driver!=null)
 		{
 			return ((SinglePhaseElectricityMeter) this.driver).getReactivePower();
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getFrequency()
-	{
-		if(this.driver!=null)
-		{
-			return ((SinglePhaseElectricityMeter) this.driver).getFrequency();
-		}
-		 return null;
-	}
-
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((SinglePhaseElectricityMeter) this.driver).getState();
-		}
-		 return null;
-	}
-
-	public Measure<?,?>  getPowerFactor()
-	{
-		if(this.driver!=null)
-		{
-			return ((SinglePhaseElectricityMeter) this.driver).getPowerFactor();
 		}
 		 return null;
 	}
@@ -105,11 +69,20 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		 return null;
 	}
 
-	public Measure<?,?>  getPhaseNeutralVoltageValue()
+	public Measure<?,?>  getActivePower()
 	{
 		if(this.driver!=null)
 		{
-			return ((SinglePhaseElectricityMeter) this.driver).getPhaseNeutralVoltageValue();
+			return ((SinglePhaseElectricityMeter) this.driver).getActivePower();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((SinglePhaseElectricityMeter) this.driver).getState();
 		}
 		 return null;
 	}
@@ -123,6 +96,42 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		 return null;
 	}
 
+	public Measure<?,?>  getFrequency()
+	{
+		if(this.driver!=null)
+		{
+			return ((SinglePhaseElectricityMeter) this.driver).getFrequency();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getReactiveEnergyValue()
+	{
+		if(this.driver!=null)
+		{
+			return ((SinglePhaseElectricityMeter) this.driver).getReactiveEnergyValue();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getPhaseNeutralVoltageValue()
+	{
+		if(this.driver!=null)
+		{
+			return ((SinglePhaseElectricityMeter) this.driver).getPhaseNeutralVoltageValue();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getPowerFactor()
+	{
+		if(this.driver!=null)
+		{
+			return ((SinglePhaseElectricityMeter) this.driver).getPowerFactor();
+		}
+		 return null;
+	}
+
 	public Measure<?,?>  getApparentPower()
 	{
 		if(this.driver!=null)
@@ -132,22 +141,13 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		 return null;
 	}
 
-	public Measure<?,?>  getActivePower()
-	{
-		if(this.driver!=null)
-		{
-			return ((SinglePhaseElectricityMeter) this.driver).getActivePower();
-		}
-		 return null;
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
-		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
+	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue){
+		SinglePhaseApparentPowerMeasurementNotification notificationEvent=new SinglePhaseApparentPowerMeasurementNotification(powerValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -159,16 +159,9 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseReactivePowerMeasurementNotification*/
-	public void notifyNewReactivePowerValue(Measure<?,?>  powerValue){
-		SinglePhaseReactivePowerMeasurementNotification notificationEvent=new SinglePhaseReactivePowerMeasurementNotification(powerValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue){
-		SinglePhaseApparentPowerMeasurementNotification notificationEvent=new SinglePhaseApparentPowerMeasurementNotification(powerValue );
+	/*Notification: PowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
+		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -180,16 +173,16 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+	/*Notification: SinglePhaseCurrentMeasurementNotification*/
+	public void notifyNewCurrentValue(Measure<?,?>  value){
+		SinglePhaseCurrentMeasurementNotification notificationEvent=new SinglePhaseCurrentMeasurementNotification(value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
+	/*Notification: FrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
+		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -201,9 +194,16 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseCurrentMeasurementNotification*/
-	public void notifyNewCurrentValue(Measure<?,?>  value){
-		SinglePhaseCurrentMeasurementNotification notificationEvent=new SinglePhaseCurrentMeasurementNotification(value );
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SinglePhaseReactivePowerMeasurementNotification*/
+	public void notifyNewReactivePowerValue(Measure<?,?>  powerValue){
+		SinglePhaseReactivePowerMeasurementNotification notificationEvent=new SinglePhaseReactivePowerMeasurementNotification(powerValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

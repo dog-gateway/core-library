@@ -51,20 +51,20 @@ public class DogGasMeter extends AbstractDevice implements GasMeter
 	}
 
 
-	public Measure<?,?>  getM3GasConsumed()
-	{
-		if(this.driver!=null)
-		{
-			return ((GasMeter) this.driver).getM3GasConsumed();
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
 		{
 			return ((GasMeter) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getM3GasConsumed()
+	{
+		if(this.driver!=null)
+		{
+			return ((GasMeter) this.driver).getM3GasConsumed();
 		}
 		 return null;
 	}

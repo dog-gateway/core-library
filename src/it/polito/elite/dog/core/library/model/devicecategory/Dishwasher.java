@@ -37,47 +37,47 @@ public interface Dishwasher extends WhiteGoods
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
+	public void start();
+	public Measure<?,?>  getStartTime();
+	public DeviceStatus getState();
+	public void standBy();
+	public void on();
 	public Measure<?,?>  getRemainingTime();
 	public void stop();
-	public DeviceStatus getState();
 	public Measure<?,?>  getEndTime();
-	public void on();
-	public void start();
-	public void pause();
-	public Object[] getEventsAndAlerts();
 	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime);
-	public void standBy();
+	public Object[] getEventsAndAlerts();
+	public void pause();
 	public void off();
-	public Measure<?,?>  getStartTime();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StartApplianceNotification*/
-	public void notifyStart();
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events);
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event);
-	/*Notification: AlertNotification*/
-	public void notifyNewAlert(Object alert);
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime);
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
-	/*Notification: StopApplianceNotification*/
-	public void notifyStop();
-	/*Notification: OffNotification*/
-	public void notifyOff();
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: PauseApplianceNotification*/
-	public void notifyPause();
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
+	/*Notification: AlertNotification*/
+	public void notifyNewAlert(Object alert);
+	/*Notification: PauseApplianceNotification*/
+	public void notifyPause();
+	/*Notification: StopApplianceNotification*/
+	public void notifyStop();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events);
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts);
+	/*Notification: StartApplianceNotification*/
+	public void notifyStart();
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime);
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime);
 	public void updateStatus();
 }

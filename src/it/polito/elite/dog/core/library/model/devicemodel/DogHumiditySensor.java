@@ -51,20 +51,20 @@ public class DogHumiditySensor extends AbstractDevice implements HumiditySensor
 	}
 
 
-	public Measure<?,?>  getRelativeHumidity()
-	{
-		if(this.driver!=null)
-		{
-			return ((HumiditySensor) this.driver).getRelativeHumidity();
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
 		{
 			return ((HumiditySensor) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getRelativeHumidity()
+	{
+		if(this.driver!=null)
+		{
+			return ((HumiditySensor) this.driver).getRelativeHumidity();
 		}
 		 return null;
 	}

@@ -38,33 +38,33 @@ public interface Radio extends Entertainment
 	public static int MATCH_MANUFACTURER=0;
 
 	public void setVolume(Integer volume);
-	public void increaseVolume();
 	public DeviceStatus getState();
-	public void decreaseVolume();
-	public void set(Object value);
-	public void on();
-	public void setChannel(Integer channel);
-	public void down();
-	public void up();
 	public void standBy();
+	public void decreaseVolume();
+	public void on();
+	public void increaseVolume();
+	public void up();
+	public void set(Object value);
+	public void down();
+	public void setChannel(Integer channel);
 	public void off();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: TuningStepDownNotification*/
-	public void notifyChannelStepUp();
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: TuningStepUpNotification*/
-	public void notifyChannelStepDown();
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: OffNotification*/
-	public void notifyOff();
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
 	/*Notification: ChannelControlNotification*/
 	public void notifyChangedChannel(String channelId);
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel);
+	/*Notification: TuningStepUpNotification*/
+	public void notifyChannelStepDown();
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: TuningStepDownNotification*/
+	public void notifyChannelStepUp();
 	public void updateStatus();
 }

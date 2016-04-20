@@ -37,8 +37,8 @@ public interface Co2Sensor extends Sensor
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public DeviceStatus getState();
 	public Measure<?,?>  getCo2Concentration();
+	public DeviceStatus getState();
 
 
 	/*Generated Notifications*/

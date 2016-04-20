@@ -22,12 +22,12 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.PauseStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.RunningStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.IdleStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.PauseStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.RunningStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.IdleStateValue;
 
 
 

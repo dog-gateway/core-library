@@ -37,44 +37,44 @@ public interface Dvd extends Entertainment
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void setVolume(Integer volume);
-	public void next();
-	public void prev();
-	public void rew();
 	public DeviceStatus getState();
+	public void rew();
+	public void prev();
+	public void next();
+	public void increaseVolume();
+	public void pause();
+	public void setVolume(Integer volume);
+	public void standBy();
 	public void decreaseVolume();
 	public void on();
+	public void stop();
+	public void play();
+	public void fwd();
 	public void goToTrack(Integer trackNumber);
 	public void off();
-	public void increaseVolume();
-	public void stop();
-	public void fwd();
-	public void pause();
-	public void play();
-	public void standBy();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: PlayNotification*/
-	public void notifyPlay();
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: PausePlaybackNotification*/
-	public void notifyPause();
-	/*Notification: ForwardNotification*/
-	public void notifyFwd();
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
-	/*Notification: RewindNotification*/
-	public void notifyRew();
-	/*Notification: StopPlaybackNotification*/
-	public void notifyStop();
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: ForwardNotification*/
+	public void notifyFwd();
 	/*Notification: TrackControlNotification*/
 	public void notifyChangedTrack(String trackId);
+	/*Notification: StopPlaybackNotification*/
+	public void notifyStop();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: RewindNotification*/
+	public void notifyRew();
+	/*Notification: PlayNotification*/
+	public void notifyPlay();
+	/*Notification: PausePlaybackNotification*/
+	public void notifyPause();
 	public void updateStatus();
 }

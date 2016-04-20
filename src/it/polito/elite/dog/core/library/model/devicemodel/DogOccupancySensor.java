@@ -49,13 +49,12 @@ public class DogOccupancySensor extends AbstractDevice implements OccupancySenso
 	}
 
 
-	public Boolean getOccupancy()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((OccupancySensor) this.driver).getOccupancy();
+			((OccupancySensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -67,12 +66,13 @@ public class DogOccupancySensor extends AbstractDevice implements OccupancySenso
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
+	public Boolean getOccupancy()
 	{
 		if(this.driver!=null)
 		{
-			((OccupancySensor) this.driver).deleteGroup(groupID);
+			return ((OccupancySensor) this.driver).getOccupancy();
 		}
+		 return null;
 	}
 
 	public void storeGroup(Integer groupID)

@@ -51,20 +51,20 @@ public class DogPressureSensor extends AbstractDevice implements PressureSensor
 	}
 
 
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((PressureSensor) this.driver).getState();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getPressure()
 	{
 		if(this.driver!=null)
 		{
 			return ((PressureSensor) this.driver).getPressure();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((PressureSensor) this.driver).getState();
 		}
 		 return null;
 	}

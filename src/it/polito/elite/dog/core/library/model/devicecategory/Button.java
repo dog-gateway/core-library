@@ -40,9 +40,9 @@ public interface Button extends Control
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedNotification*/
-	public void notifyPressed();
 	/*Notification: ReleasedNotification*/
 	public void notifyReleased();
+	/*Notification: PressedNotification*/
+	public void notifyPressed();
 	public void updateStatus();
 }

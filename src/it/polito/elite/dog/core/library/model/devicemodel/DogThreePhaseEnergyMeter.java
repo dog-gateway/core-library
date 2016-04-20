@@ -51,15 +51,6 @@ public class DogThreePhaseEnergyMeter extends AbstractDevice implements ThreePha
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue(String phaseID)
-	{
-		if(this.driver!=null)
-		{
-			return ((ThreePhaseEnergyMeter) this.driver).getReactiveEnergyValue(phaseID);
-		}
-		 return null;
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -78,20 +69,29 @@ public class DogThreePhaseEnergyMeter extends AbstractDevice implements ThreePha
 		 return null;
 	}
 
+	public Measure<?,?>  getReactiveEnergyValue(String phaseID)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThreePhaseEnergyMeter) this.driver).getReactiveEnergyValue(phaseID);
+		}
+		 return null;
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: ThreePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseReactiveEnergyMeasurementNotification notificationEvent=new ThreePhaseReactiveEnergyMeasurementNotification(phaseID , value );
+	/*Notification: ThreePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseActiveEnergyMeasurementNotification notificationEvent=new ThreePhaseActiveEnergyMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseActiveEnergyMeasurementNotification notificationEvent=new ThreePhaseActiveEnergyMeasurementNotification(phaseID , value );
+	/*Notification: ThreePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseReactiveEnergyMeasurementNotification notificationEvent=new ThreePhaseReactiveEnergyMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

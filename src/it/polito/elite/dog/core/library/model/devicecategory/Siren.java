@@ -42,9 +42,9 @@ public interface Siren extends Acoustic
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	public void updateStatus();
 }

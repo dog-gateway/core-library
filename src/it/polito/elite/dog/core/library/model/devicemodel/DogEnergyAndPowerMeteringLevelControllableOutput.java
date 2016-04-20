@@ -51,11 +51,11 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 	}
 
 
-	public void stepDown()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).stepDown();
+			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).deleteGroup(groupID);
 		}
 	}
 
@@ -64,47 +64,6 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		if(this.driver!=null)
 		{
 			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).stepUp();
-		}
-	}
-
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((EnergyAndPowerMeteringLevelControllableOutput) this.driver).getState();
-		}
-		 return null;
-	}
-
-	public void storeScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).storeScene(sceneNumber);
-		}
-	}
-
-	public void deleteScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).deleteScene(sceneNumber);
-		}
-	}
-
-	public void set(Object value)
-	{
-		if(this.driver!=null)
-		{
-			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).set(value);
-		}
-	}
-
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).on();
 		}
 	}
 
@@ -117,14 +76,6 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).deleteGroup(groupID);
-		}
-	}
-
 	public Measure<?,?>  getActivePower()
 	{
 		if(this.driver!=null)
@@ -132,6 +83,31 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 			return ((EnergyAndPowerMeteringLevelControllableOutput) this.driver).getActivePower();
 		}
 		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((EnergyAndPowerMeteringLevelControllableOutput) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).on();
+		}
+	}
+
+	public void set(Object value)
+	{
+		if(this.driver!=null)
+		{
+			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).set(value);
+		}
 	}
 
 	public void storeGroup(Integer groupID)
@@ -142,11 +118,35 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		}
 	}
 
+	public void deleteScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).deleteScene(sceneNumber);
+		}
+	}
+
 	public void off()
 	{
 		if(this.driver!=null)
 		{
 			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).off();
+		}
+	}
+
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).stepDown();
+		}
+	}
+
+	public void storeScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((EnergyAndPowerMeteringLevelControllableOutput) this.driver).storeScene(sceneNumber);
 		}
 	}
 
@@ -161,34 +161,6 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
-		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel){
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
@@ -196,9 +168,16 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -210,9 +189,30 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber){
+		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

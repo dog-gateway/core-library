@@ -35,19 +35,19 @@ public interface eZ430Chronos extends Clock
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stop();
 	public DeviceStatus getState();
+	public void stop();
 	public void display(String msg);
 	public void play();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID);
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Double accX, Double accY, Double accZ);
+	public void notifyNew3DAccelerationValue(Double accZ, Double accX, Double accY);
 	/*Notification: ReleasedMNotification*/
 	public void notifyReleased(String buttonID);
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID);
 	public void updateStatus();
 }

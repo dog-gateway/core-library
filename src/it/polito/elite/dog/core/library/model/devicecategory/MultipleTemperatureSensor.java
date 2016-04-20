@@ -31,25 +31,25 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface MultipleTemperatureSensor extends TemperatureSensor, HVACSystem
+public interface MultipleTemperatureSensor extends HVACSystem, TemperatureSensor
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getTemperatureFrom(String sensorURI);
-	public DeviceStatus getState();
 	public void deleteGroup(Integer groupID);
+	public DeviceStatus getState();
 	public void storeGroup(Integer groupID);
+	public Measure<?,?>  getTemperatureFrom(String sensorURI);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	public void updateStatus();
 }

@@ -51,14 +51,6 @@ public class DogKnob extends AbstractDevice implements Knob
 	}
 
 
-	public void stepDown()
-	{
-		if(this.driver!=null)
-		{
-			((Knob) this.driver).stepDown();
-		}
-	}
-
 	public void stepUp()
 	{
 		if(this.driver!=null)
@@ -81,6 +73,14 @@ public class DogKnob extends AbstractDevice implements Knob
 		if(this.driver!=null)
 		{
 			((Knob) this.driver).set(value);
+		}
+	}
+
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((Knob) this.driver).stepDown();
 		}
 	}
 

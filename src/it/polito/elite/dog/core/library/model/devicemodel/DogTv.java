@@ -59,14 +59,6 @@ public class DogTv extends AbstractDevice implements Tv
 		}
 	}
 
-	public void increaseVolume()
-	{
-		if(this.driver!=null)
-		{
-			((Tv) this.driver).increaseVolume();
-		}
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -76,19 +68,19 @@ public class DogTv extends AbstractDevice implements Tv
 		 return null;
 	}
 
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((Tv) this.driver).standBy();
+		}
+	}
+
 	public void decreaseVolume()
 	{
 		if(this.driver!=null)
 		{
 			((Tv) this.driver).decreaseVolume();
-		}
-	}
-
-	public void set(Object value)
-	{
-		if(this.driver!=null)
-		{
-			((Tv) this.driver).set(value);
 		}
 	}
 
@@ -100,19 +92,11 @@ public class DogTv extends AbstractDevice implements Tv
 		}
 	}
 
-	public void setChannel(Integer channel)
+	public void increaseVolume()
 	{
 		if(this.driver!=null)
 		{
-			((Tv) this.driver).setChannel(channel);
-		}
-	}
-
-	public void down()
-	{
-		if(this.driver!=null)
-		{
-			((Tv) this.driver).down();
+			((Tv) this.driver).increaseVolume();
 		}
 	}
 
@@ -124,11 +108,27 @@ public class DogTv extends AbstractDevice implements Tv
 		}
 	}
 
-	public void standBy()
+	public void set(Object value)
 	{
 		if(this.driver!=null)
 		{
-			((Tv) this.driver).standBy();
+			((Tv) this.driver).set(value);
+		}
+	}
+
+	public void down()
+	{
+		if(this.driver!=null)
+		{
+			((Tv) this.driver).down();
+		}
+	}
+
+	public void setChannel(Integer channel)
+	{
+		if(this.driver!=null)
+		{
+			((Tv) this.driver).setChannel(channel);
 		}
 	}
 
@@ -144,23 +144,9 @@ public class DogTv extends AbstractDevice implements Tv
 
 	/*Generated Notifications*/
 
-	/*Notification: TuningStepDownNotification*/
-	public void notifyChannelStepUp(){
-		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: TuningStepUpNotification*/
-	public void notifyChannelStepDown(){
-		TuningStepUpNotification notificationEvent=new TuningStepUpNotification();
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -172,6 +158,20 @@ public class DogTv extends AbstractDevice implements Tv
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId){
+		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: TuningStepUpNotification*/
+	public void notifyChannelStepDown(){
+		TuningStepUpNotification notificationEvent=new TuningStepUpNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: OffNotification*/
 	public void notifyOff(){
 		OffNotification notificationEvent=new OffNotification();
@@ -179,16 +179,16 @@ public class DogTv extends AbstractDevice implements Tv
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId){
-		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+	/*Notification: TuningStepDownNotification*/
+	public void notifyChannelStepUp(){
+		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

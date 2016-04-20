@@ -37,8 +37,8 @@ public interface FrequencyMeter extends ElectricityMeter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getFrequency();
 	public DeviceStatus getState();
+	public Measure<?,?>  getFrequency();
 
 
 	/*Generated Notifications*/

@@ -51,22 +51,12 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 	}
 
 
-	public Boolean getOccupancy()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((CompositeThermostat) this.driver).getOccupancy();
+			((CompositeThermostat) this.driver).deleteGroup(groupID);
 		}
-		 return null;
-	}
-
-	public Measure<?,?>  getTemperature()
-	{
-		if(this.driver!=null)
-		{
-			return ((CompositeThermostat) this.driver).getTemperature();
-		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -76,22 +66,6 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 			return ((CompositeThermostat) this.driver).getState();
 		}
 		 return null;
-	}
-
-	public void storeScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((CompositeThermostat) this.driver).storeScene(sceneNumber);
-		}
-	}
-
-	public void deleteScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((CompositeThermostat) this.driver).deleteScene(sceneNumber);
-		}
 	}
 
 	public Measure<?,?>  getSetpointTemperature()
@@ -111,11 +85,20 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 		}
 	}
 
-	public void deleteGroup(Integer groupID)
+	public Boolean getOccupancy()
 	{
 		if(this.driver!=null)
 		{
-			((CompositeThermostat) this.driver).deleteGroup(groupID);
+			return ((CompositeThermostat) this.driver).getOccupancy();
+		}
+		 return null;
+	}
+
+	public void heat()
+	{
+		if(this.driver!=null)
+		{
+			((CompositeThermostat) this.driver).heat();
 		}
 	}
 
@@ -127,11 +110,28 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 		}
 	}
 
+	public Measure<?,?>  getTemperature()
+	{
+		if(this.driver!=null)
+		{
+			return ((CompositeThermostat) this.driver).getTemperature();
+		}
+		 return null;
+	}
+
 	public void storeGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
 			((CompositeThermostat) this.driver).storeGroup(groupID);
+		}
+	}
+
+	public void deleteScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((CompositeThermostat) this.driver).deleteScene(sceneNumber);
 		}
 	}
 
@@ -143,11 +143,11 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 		}
 	}
 
-	public void heat()
+	public void storeScene(Integer sceneNumber)
 	{
 		if(this.driver!=null)
 		{
-			((CompositeThermostat) this.driver).heat();
+			((CompositeThermostat) this.driver).storeScene(sceneNumber);
 		}
 	}
 
@@ -155,55 +155,6 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedStepUpNotification*/
-	public void notifySpeedUp(){
-		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
-		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: CoolNotification*/
-	public void notifyCool(){
-		CoolNotification notificationEvent=new CoolNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: SpeedStepDownNotification*/
-	public void notifySpeedDown(){
-		SpeedStepDownNotification notificationEvent=new SpeedStepDownNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: HeatNotification*/
-	public void notifyHeat(){
-		HeatNotification notificationEvent=new HeatNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: HumidityMeasurementNotification*/
-	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity){
-		HumidityMeasurementNotification notificationEvent=new HumidityMeasurementNotification(relativeHumidity );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: SpeedControlNotification*/
 	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
 		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
@@ -218,9 +169,58 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: CoolNotification*/
+	public void notifyCool(){
+		CoolNotification notificationEvent=new CoolNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SpeedStepDownNotification*/
+	public void notifySpeedDown(){
+		SpeedStepDownNotification notificationEvent=new SpeedStepDownNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: HumidityMeasurementNotification*/
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity){
+		HumidityMeasurementNotification notificationEvent=new HumidityMeasurementNotification(relativeHumidity );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SpeedStepUpNotification*/
+	public void notifySpeedUp(){
+		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling(){
 		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: HeatNotification*/
+	public void notifyHeat(){
+		HeatNotification notificationEvent=new HeatNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

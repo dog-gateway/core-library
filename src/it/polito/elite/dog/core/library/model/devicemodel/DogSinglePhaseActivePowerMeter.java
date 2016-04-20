@@ -51,20 +51,20 @@ public class DogSinglePhaseActivePowerMeter extends AbstractDevice implements Si
 	}
 
 
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((SinglePhaseActivePowerMeter) this.driver).getState();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getActivePower()
 	{
 		if(this.driver!=null)
 		{
 			return ((SinglePhaseActivePowerMeter) this.driver).getActivePower();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((SinglePhaseActivePowerMeter) this.driver).getState();
 		}
 		 return null;
 	}

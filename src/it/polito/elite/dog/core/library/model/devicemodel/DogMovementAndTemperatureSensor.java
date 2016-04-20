@@ -51,13 +51,12 @@ public class DogMovementAndTemperatureSensor extends AbstractDevice implements M
 	}
 
 
-	public Measure<?,?>  getTemperature()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((MovementAndTemperatureSensor) this.driver).getTemperature();
+			((MovementAndTemperatureSensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -69,12 +68,13 @@ public class DogMovementAndTemperatureSensor extends AbstractDevice implements M
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
+	public Measure<?,?>  getTemperature()
 	{
 		if(this.driver!=null)
 		{
-			((MovementAndTemperatureSensor) this.driver).deleteGroup(groupID);
+			return ((MovementAndTemperatureSensor) this.driver).getTemperature();
 		}
+		 return null;
 	}
 
 	public void storeGroup(Integer groupID)
@@ -89,9 +89,9 @@ public class DogMovementAndTemperatureSensor extends AbstractDevice implements M
 
 	/*Generated Notifications*/
 
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
-		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -103,13 +103,6 @@ public class DogMovementAndTemperatureSensor extends AbstractDevice implements M
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: SimpleMovementNotification*/
 	public void notifyStartedMovement(){
 		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
@@ -117,9 +110,16 @@ public class DogMovementAndTemperatureSensor extends AbstractDevice implements M
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

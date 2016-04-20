@@ -51,11 +51,28 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 	}
 
 
-	public Measure<?,?>  getReactiveEnergyValue()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((MeteringPowerOutlet) this.driver).getReactiveEnergyValue();
+			((MeteringPowerOutlet) this.driver).deleteGroup(groupID);
+		}
+	}
+
+	public Measure<?,?>  getActiveEnergyValue()
+	{
+		if(this.driver!=null)
+		{
+			return ((MeteringPowerOutlet) this.driver).getActiveEnergyValue();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getActivePower()
+	{
+		if(this.driver!=null)
+		{
+			return ((MeteringPowerOutlet) this.driver).getActivePower();
 		}
 		 return null;
 	}
@@ -69,29 +86,13 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		 return null;
 	}
 
-	public Measure<?,?>  getPowerFactor()
+	public Measure<?,?>  getReactiveEnergyValue()
 	{
 		if(this.driver!=null)
 		{
-			return ((MeteringPowerOutlet) this.driver).getPowerFactor();
+			return ((MeteringPowerOutlet) this.driver).getReactiveEnergyValue();
 		}
 		 return null;
-	}
-
-	public void storeScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((MeteringPowerOutlet) this.driver).storeScene(sceneNumber);
-		}
-	}
-
-	public void deleteScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((MeteringPowerOutlet) this.driver).deleteScene(sceneNumber);
-		}
 	}
 
 	public void on()
@@ -102,28 +103,11 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		}
 	}
 
-	public Measure<?,?>  getActiveEnergyValue()
+	public Measure<?,?>  getPowerFactor()
 	{
 		if(this.driver!=null)
 		{
-			return ((MeteringPowerOutlet) this.driver).getActiveEnergyValue();
-		}
-		 return null;
-	}
-
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((MeteringPowerOutlet) this.driver).deleteGroup(groupID);
-		}
-	}
-
-	public Measure<?,?>  getActivePower()
-	{
-		if(this.driver!=null)
-		{
-			return ((MeteringPowerOutlet) this.driver).getActivePower();
+			return ((MeteringPowerOutlet) this.driver).getPowerFactor();
 		}
 		 return null;
 	}
@@ -136,11 +120,27 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		}
 	}
 
+	public void deleteScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((MeteringPowerOutlet) this.driver).deleteScene(sceneNumber);
+		}
+	}
+
 	public void off()
 	{
 		if(this.driver!=null)
 		{
 			((MeteringPowerOutlet) this.driver).off();
+		}
+	}
+
+	public void storeScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((MeteringPowerOutlet) this.driver).storeScene(sceneNumber);
 		}
 	}
 
@@ -155,23 +155,9 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
-		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: PowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
+		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -183,23 +169,16 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -211,9 +190,30 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber){
+		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

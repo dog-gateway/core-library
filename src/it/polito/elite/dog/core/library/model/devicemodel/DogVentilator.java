@@ -51,6 +51,14 @@ public class DogVentilator extends AbstractDevice implements Ventilator
 	}
 
 
+	public void speedDown()
+	{
+		if(this.driver!=null)
+		{
+			((Ventilator) this.driver).speedDown();
+		}
+	}
+
 	public void speedUp()
 	{
 		if(this.driver!=null)
@@ -68,14 +76,6 @@ public class DogVentilator extends AbstractDevice implements Ventilator
 		 return null;
 	}
 
-	public void setSpeed(Measure<?,?>  speed)
-	{
-		if(this.driver!=null)
-		{
-			((Ventilator) this.driver).setSpeed(speed);
-		}
-	}
-
 	public void on()
 	{
 		if(this.driver!=null)
@@ -84,11 +84,11 @@ public class DogVentilator extends AbstractDevice implements Ventilator
 		}
 	}
 
-	public void speedDown()
+	public void setSpeed(Measure<?,?>  speed)
 	{
 		if(this.driver!=null)
 		{
-			((Ventilator) this.driver).speedDown();
+			((Ventilator) this.driver).setSpeed(speed);
 		}
 	}
 
@@ -104,9 +104,16 @@ public class DogVentilator extends AbstractDevice implements Ventilator
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedStepUpNotification*/
-	public void notifySpeedUp(){
-		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
+	/*Notification: SpeedControlNotification*/
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
+		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -125,16 +132,9 @@ public class DogVentilator extends AbstractDevice implements Ventilator
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SpeedControlNotification*/
-	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
-		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: SpeedStepUpNotification*/
+	public void notifySpeedUp(){
+		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

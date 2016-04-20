@@ -51,19 +51,11 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 	}
 
 
-	public void disableGas()
+	public Measure<?,?>  getStartTime()
 	{
 		if(this.driver!=null)
 		{
-			((GasCooker) this.driver).disableGas();
-		}
-	}
-
-	public Measure<?,?>  getRemainingTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((GasCooker) this.driver).getRemainingTime();
+			return ((GasCooker) this.driver).getStartTime();
 		}
 		 return null;
 	}
@@ -77,13 +69,12 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		 return null;
 	}
 
-	public Measure<?,?>  getEndTime()
+	public void standBy()
 	{
 		if(this.driver!=null)
 		{
-			return ((GasCooker) this.driver).getEndTime();
+			((GasCooker) this.driver).standBy();
 		}
-		 return null;
 	}
 
 	public void on()
@@ -94,11 +85,28 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		}
 	}
 
-	public Object[] getEventsAndAlerts()
+	public Measure<?,?>  getRemainingTime()
 	{
 		if(this.driver!=null)
 		{
-			return ((GasCooker) this.driver).getEventsAndAlerts();
+			return ((GasCooker) this.driver).getRemainingTime();
+		}
+		 return null;
+	}
+
+	public void disableGas()
+	{
+		if(this.driver!=null)
+		{
+			((GasCooker) this.driver).disableGas();
+		}
+	}
+
+	public Measure<?,?>  getEndTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((GasCooker) this.driver).getEndTime();
 		}
 		 return null;
 	}
@@ -111,12 +119,13 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		}
 	}
 
-	public void standBy()
+	public Object[] getEventsAndAlerts()
 	{
 		if(this.driver!=null)
 		{
-			((GasCooker) this.driver).standBy();
+			return ((GasCooker) this.driver).getEventsAndAlerts();
 		}
+		 return null;
 	}
 
 	public void off()
@@ -125,15 +134,6 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		{
 			((GasCooker) this.driver).off();
 		}
-	}
-
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((GasCooker) this.driver).getStartTime();
-		}
-		 return null;
 	}
 
 
@@ -147,13 +147,6 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
@@ -161,30 +154,16 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert){
 		AlertNotification notificationEvent=new AlertNotification(alert );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -203,9 +182,30 @@ public class DogGasCooker extends AbstractDevice implements GasCooker
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -38,9 +38,9 @@ public interface SelfClosingDoorActuator extends DoorActuator
 	public static int MATCH_MANUFACTURER=0;
 
 	public void open();
+	public void timedOn(Measure<?,?>  timeToOff);
 	public DeviceStatus getState();
 	public void close();
-	public void timedOn(Measure<?,?>  timeToOff);
 
 
 	/*Generated Notifications*/

@@ -37,8 +37,8 @@ public interface SinglePhaseActivePowerMeter extends ActivePowerMeter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public DeviceStatus getState();
 	public Measure<?,?>  getActivePower();
+	public DeviceStatus getState();
 
 
 	/*Generated Notifications*/

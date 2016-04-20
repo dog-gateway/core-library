@@ -35,16 +35,16 @@ public interface HueManager extends HueComponent
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stopDiscovery();
 	public DeviceStatus getState();
+	public void stopDiscovery();
 	public void startDiscovery();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: DiscoveryIdleNotification*/
-	public void notifyDeactivatedDiscovery();
 	/*Notification: DiscoveryActiveNotification*/
 	public void notifyActivatedDiscovery();
+	/*Notification: DiscoveryIdleNotification*/
+	public void notifyDeactivatedDiscovery();
 	public void updateStatus();
 }

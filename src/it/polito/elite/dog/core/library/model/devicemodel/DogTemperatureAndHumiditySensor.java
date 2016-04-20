@@ -51,6 +51,23 @@ public class DogTemperatureAndHumiditySensor extends AbstractDevice implements T
 	}
 
 
+	public void deleteGroup(Integer groupID)
+	{
+		if(this.driver!=null)
+		{
+			((TemperatureAndHumiditySensor) this.driver).deleteGroup(groupID);
+		}
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((TemperatureAndHumiditySensor) this.driver).getState();
+		}
+		 return null;
+	}
+
 	public Measure<?,?>  getRelativeHumidity()
 	{
 		if(this.driver!=null)
@@ -69,23 +86,6 @@ public class DogTemperatureAndHumiditySensor extends AbstractDevice implements T
 		 return null;
 	}
 
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((TemperatureAndHumiditySensor) this.driver).getState();
-		}
-		 return null;
-	}
-
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((TemperatureAndHumiditySensor) this.driver).deleteGroup(groupID);
-		}
-	}
-
 	public void storeGroup(Integer groupID)
 	{
 		if(this.driver!=null)
@@ -98,16 +98,9 @@ public class DogTemperatureAndHumiditySensor extends AbstractDevice implements T
 
 	/*Generated Notifications*/
 
-	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
-		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -119,9 +112,16 @@ public class DogTemperatureAndHumiditySensor extends AbstractDevice implements T
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: TemperatureMeasurementNotification*/
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

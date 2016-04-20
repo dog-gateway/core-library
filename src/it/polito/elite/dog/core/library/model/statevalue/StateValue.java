@@ -22,11 +22,11 @@
 package it.polito.elite.dog.core.library.model.statevalue;
 
 
-import java.io.Serializable;
-
+import java.util.HashMap;
 
 import javax.measure.DecimalMeasure;
-import java.util.HashMap;
+import java.io.Serializable;
+
 
 
 

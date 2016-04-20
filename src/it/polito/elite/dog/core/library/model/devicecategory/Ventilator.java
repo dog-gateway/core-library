@@ -37,25 +37,25 @@ public interface Ventilator extends VentilatingSystem
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
+	public void speedDown();
 	public void speedUp();
 	public DeviceStatus getState();
-	public void setSpeed(Measure<?,?>  speed);
 	public void on();
-	public void speedDown();
+	public void setSpeed(Measure<?,?>  speed);
 	public void off();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedStepUpNotification*/
-	public void notifySpeedUp();
-	/*Notification: SpeedStepDownNotification*/
-	public void notifySpeedDown();
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: SpeedControlNotification*/
 	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: SpeedStepDownNotification*/
+	public void notifySpeedDown();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: SpeedStepUpNotification*/
+	public void notifySpeedUp();
 	public void updateStatus();
 }

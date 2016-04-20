@@ -36,31 +36,31 @@ public interface SnapshotCamera extends SurveillanceCamera
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void zoomOut();
-	public void increaseContrast();
+	public void decreaseLuminosity();
 	public DeviceStatus getState();
+	public void panLeft();
+	public void increaseColor();
+	public void panDown();
 	public void panRight();
 	public void increaseLuminosity();
-	public void on();
 	public void panUp();
-	public void decreaseLuminosity();
-	public void off();
-	public void panDown();
-	public Image grabPicture();
-	public void increaseColor();
-	public void panLeft();
-	public void decreaseQuality();
+	public void zoomOut();
+	public void zoomIn();
 	public void increaseQuality();
+	public void on();
 	public void decreaseColor();
 	public void decreaseContrast();
-	public void zoomIn();
+	public void decreaseQuality();
+	public void increaseContrast();
+	public Image grabPicture();
+	public void off();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	public void updateStatus();
 }

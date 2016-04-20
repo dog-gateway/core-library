@@ -51,13 +51,12 @@ public class DogMultipleTemperatureSensor extends AbstractDevice implements Mult
 	}
 
 
-	public Measure<?,?>  getTemperatureFrom(String sensorURI)
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((MultipleTemperatureSensor) this.driver).getTemperatureFrom(sensorURI);
+			((MultipleTemperatureSensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -69,14 +68,6 @@ public class DogMultipleTemperatureSensor extends AbstractDevice implements Mult
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((MultipleTemperatureSensor) this.driver).deleteGroup(groupID);
-		}
-	}
-
 	public void storeGroup(Integer groupID)
 	{
 		if(this.driver!=null)
@@ -85,13 +76,22 @@ public class DogMultipleTemperatureSensor extends AbstractDevice implements Mult
 		}
 	}
 
+	public Measure<?,?>  getTemperatureFrom(String sensorURI)
+	{
+		if(this.driver!=null)
+		{
+			return ((MultipleTemperatureSensor) this.driver).getTemperatureFrom(sensorURI);
+		}
+		 return null;
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
-		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -103,9 +103,9 @@ public class DogMultipleTemperatureSensor extends AbstractDevice implements Mult
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
+		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

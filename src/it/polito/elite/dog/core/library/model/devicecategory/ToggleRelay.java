@@ -41,9 +41,9 @@ public interface ToggleRelay extends Control
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	public void updateStatus();
 }

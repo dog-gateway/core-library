@@ -37,55 +37,55 @@ public interface WashingMachine extends WhiteGoods
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
+	public void start();
+	public Measure<?,?>  getStartTime();
+	public DeviceStatus getState();
+	public void standBy();
+	public void on();
 	public Measure<?,?>  getRemainingTime();
 	public void stop();
-	public DeviceStatus getState();
 	public Measure<?,?>  getEndTime();
-	public void on();
-	public void start();
-	public void pause();
-	public Object[] getEventsAndAlerts();
 	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime);
-	public void standBy();
+	public Object[] getEventsAndAlerts();
+	public void pause();
 	public void off();
-	public Measure<?,?>  getStartTime();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StartedHeatingCycleNotification*/
-	public void notifyStartedHeatingCycle();
-	/*Notification: StartApplianceNotification*/
-	public void notifyStart();
-	/*Notification: StoppedHeatingCycleNotification*/
-	public void notifyStoppedHeatingCycle();
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events);
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event);
-	/*Notification: StartedWashingNotification*/
-	public void notifyStartedWashOrRinseCycle();
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
+	/*Notification: PauseApplianceNotification*/
+	public void notifyPause();
+	/*Notification: StopApplianceNotification*/
+	public void notifyStop();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events);
 	/*Notification: StoppedWashingNotification*/
 	public void notifyStoppedWashOrRinseCycle();
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime);
 	/*Notification: RemainingTimeChangedNotification*/
 	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
-	/*Notification: StopApplianceNotification*/
-	public void notifyStop();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts);
+	/*Notification: StartedHeatingCycleNotification*/
+	public void notifyStartedHeatingCycle();
+	/*Notification: StartApplianceNotification*/
+	public void notifyStart();
+	/*Notification: StartedWashingNotification*/
+	public void notifyStartedWashOrRinseCycle();
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime);
+	/*Notification: StoppedHeatingCycleNotification*/
+	public void notifyStoppedHeatingCycle();
 	/*Notification: StartTimeChangedNotification*/
 	public void notifyChangedStartTime(Measure<?,?>  startTime);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
-	/*Notification: PauseApplianceNotification*/
-	public void notifyPause();
 	public void updateStatus();
 }

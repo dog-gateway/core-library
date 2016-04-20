@@ -51,13 +51,12 @@ public class DogSingleTemperatureSensor extends AbstractDevice implements Single
 	}
 
 
-	public Measure<?,?>  getTemperature()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			return ((SingleTemperatureSensor) this.driver).getTemperature();
+			((SingleTemperatureSensor) this.driver).deleteGroup(groupID);
 		}
-		 return null;
 	}
 
 	public DeviceStatus getState()
@@ -69,12 +68,13 @@ public class DogSingleTemperatureSensor extends AbstractDevice implements Single
 		 return null;
 	}
 
-	public void deleteGroup(Integer groupID)
+	public Measure<?,?>  getTemperature()
 	{
 		if(this.driver!=null)
 		{
-			((SingleTemperatureSensor) this.driver).deleteGroup(groupID);
+			return ((SingleTemperatureSensor) this.driver).getTemperature();
 		}
+		 return null;
 	}
 
 	public void storeGroup(Integer groupID)
@@ -89,6 +89,13 @@ public class DogSingleTemperatureSensor extends AbstractDevice implements Single
 
 	/*Generated Notifications*/
 
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: TemperatureMeasurementNotification*/
 	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
 		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
@@ -99,13 +106,6 @@ public class DogSingleTemperatureSensor extends AbstractDevice implements Single
 	/*Notification: JoinGroupNotification*/
 	public void notifyJoinedGroup(Integer groupNumber){
 		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

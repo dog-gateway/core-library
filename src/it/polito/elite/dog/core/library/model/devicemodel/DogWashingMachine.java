@@ -51,6 +51,48 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 	}
 
 
+	public void start()
+	{
+		if(this.driver!=null)
+		{
+			((WashingMachine) this.driver).start();
+		}
+	}
+
+	public Measure<?,?>  getStartTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((WashingMachine) this.driver).getStartTime();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((WashingMachine) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((WashingMachine) this.driver).standBy();
+		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((WashingMachine) this.driver).on();
+		}
+	}
+
 	public Measure<?,?>  getRemainingTime()
 	{
 		if(this.driver!=null)
@@ -68,53 +110,11 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 		}
 	}
 
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((WashingMachine) this.driver).getState();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getEndTime()
 	{
 		if(this.driver!=null)
 		{
 			return ((WashingMachine) this.driver).getEndTime();
-		}
-		 return null;
-	}
-
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((WashingMachine) this.driver).on();
-		}
-	}
-
-	public void start()
-	{
-		if(this.driver!=null)
-		{
-			((WashingMachine) this.driver).start();
-		}
-	}
-
-	public void pause()
-	{
-		if(this.driver!=null)
-		{
-			((WashingMachine) this.driver).pause();
-		}
-	}
-
-	public Object[] getEventsAndAlerts()
-	{
-		if(this.driver!=null)
-		{
-			return ((WashingMachine) this.driver).getEventsAndAlerts();
 		}
 		 return null;
 	}
@@ -127,11 +127,20 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 		}
 	}
 
-	public void standBy()
+	public Object[] getEventsAndAlerts()
 	{
 		if(this.driver!=null)
 		{
-			((WashingMachine) this.driver).standBy();
+			return ((WashingMachine) this.driver).getEventsAndAlerts();
+		}
+		 return null;
+	}
+
+	public void pause()
+	{
+		if(this.driver!=null)
+		{
+			((WashingMachine) this.driver).pause();
 		}
 	}
 
@@ -143,54 +152,10 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 		}
 	}
 
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((WashingMachine) this.driver).getStartTime();
-		}
-		 return null;
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StartedHeatingCycleNotification*/
-	public void notifyStartedHeatingCycle(){
-		StartedHeatingCycleNotification notificationEvent=new StartedHeatingCycleNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartApplianceNotification*/
-	public void notifyStart(){
-		StartApplianceNotification notificationEvent=new StartApplianceNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StoppedHeatingCycleNotification*/
-	public void notifyStoppedHeatingCycle(){
-		StoppedHeatingCycleNotification notificationEvent=new StoppedHeatingCycleNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events){
-		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
@@ -198,9 +163,9 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StartedWashingNotification*/
-	public void notifyStartedWashOrRinseCycle(){
-		StartedWashingNotification notificationEvent=new StartedWashingNotification();
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -212,16 +177,37 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoppedWashingNotification*/
-	public void notifyStoppedWashOrRinseCycle(){
-		StoppedWashingNotification notificationEvent=new StoppedWashingNotification();
+	/*Notification: PauseApplianceNotification*/
+	public void notifyPause(){
+		PauseApplianceNotification notificationEvent=new PauseApplianceNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+	/*Notification: StopApplianceNotification*/
+	public void notifyStop(){
+		StopApplianceNotification notificationEvent=new StopApplianceNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events){
+		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StoppedWashingNotification*/
+	public void notifyStoppedWashOrRinseCycle(){
+		StoppedWashingNotification notificationEvent=new StoppedWashingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -240,9 +226,44 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StopApplianceNotification*/
-	public void notifyStop(){
-		StopApplianceNotification notificationEvent=new StopApplianceNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartedHeatingCycleNotification*/
+	public void notifyStartedHeatingCycle(){
+		StartedHeatingCycleNotification notificationEvent=new StartedHeatingCycleNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartApplianceNotification*/
+	public void notifyStart(){
+		StartApplianceNotification notificationEvent=new StartApplianceNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartedWashingNotification*/
+	public void notifyStartedWashOrRinseCycle(){
+		StartedWashingNotification notificationEvent=new StartedWashingNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StoppedHeatingCycleNotification*/
+	public void notifyStoppedHeatingCycle(){
+		StoppedHeatingCycleNotification notificationEvent=new StoppedHeatingCycleNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -250,27 +271,6 @@ public class DogWashingMachine extends AbstractDevice implements WashingMachine
 	/*Notification: StartTimeChangedNotification*/
 	public void notifyChangedStartTime(Measure<?,?>  startTime){
 		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: PauseApplianceNotification*/
-	public void notifyPause(){
-		PauseApplianceNotification notificationEvent=new PauseApplianceNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

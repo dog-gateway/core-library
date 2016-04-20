@@ -62,16 +62,16 @@ public class DogRockerSwitch extends AbstractDevice implements RockerSwitch
 
 	/*Generated Notifications*/
 
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
-		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
+	/*Notification: ReleasedMNotification*/
+	public void notifyReleased(String buttonID){
+		ReleasedMNotification notificationEvent=new ReleasedMNotification(buttonID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ReleasedMNotification*/
-	public void notifyReleased(String buttonID){
-		ReleasedMNotification notificationEvent=new ReleasedMNotification(buttonID );
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID){
+		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

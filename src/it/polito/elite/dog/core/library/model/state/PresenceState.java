@@ -22,11 +22,11 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.PresentStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.NotPresentState;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.NotPresentState;
+import it.polito.elite.dog.core.library.model.statevalue.PresentStateValue;
 
 
 

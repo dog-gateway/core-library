@@ -51,11 +51,11 @@ public class DogStove extends AbstractDevice implements Stove
 	}
 
 
-	public Measure<?,?>  getRemainingTime()
+	public Measure<?,?>  getStartTime()
 	{
 		if(this.driver!=null)
 		{
-			return ((Stove) this.driver).getRemainingTime();
+			return ((Stove) this.driver).getStartTime();
 		}
 		 return null;
 	}
@@ -69,13 +69,12 @@ public class DogStove extends AbstractDevice implements Stove
 		 return null;
 	}
 
-	public Measure<?,?>  getEndTime()
+	public void standBy()
 	{
 		if(this.driver!=null)
 		{
-			return ((Stove) this.driver).getEndTime();
+			((Stove) this.driver).standBy();
 		}
-		 return null;
 	}
 
 	public void on()
@@ -86,11 +85,20 @@ public class DogStove extends AbstractDevice implements Stove
 		}
 	}
 
-	public Object[] getEventsAndAlerts()
+	public Measure<?,?>  getRemainingTime()
 	{
 		if(this.driver!=null)
 		{
-			return ((Stove) this.driver).getEventsAndAlerts();
+			return ((Stove) this.driver).getRemainingTime();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getEndTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((Stove) this.driver).getEndTime();
 		}
 		 return null;
 	}
@@ -103,12 +111,13 @@ public class DogStove extends AbstractDevice implements Stove
 		}
 	}
 
-	public void standBy()
+	public Object[] getEventsAndAlerts()
 	{
 		if(this.driver!=null)
 		{
-			((Stove) this.driver).standBy();
+			return ((Stove) this.driver).getEventsAndAlerts();
 		}
+		 return null;
 	}
 
 	public void off()
@@ -117,15 +126,6 @@ public class DogStove extends AbstractDevice implements Stove
 		{
 			((Stove) this.driver).off();
 		}
-	}
-
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((Stove) this.driver).getStartTime();
-		}
-		 return null;
 	}
 
 
@@ -139,13 +139,6 @@ public class DogStove extends AbstractDevice implements Stove
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
@@ -153,30 +146,16 @@ public class DogStove extends AbstractDevice implements Stove
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert){
 		AlertNotification notificationEvent=new AlertNotification(alert );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -195,9 +174,30 @@ public class DogStove extends AbstractDevice implements Stove
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -37,32 +37,32 @@ public interface ThermostatTemperatureSensor extends Thermostat, SingleTemperatu
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getTemperature();
+	public void deleteGroup(Integer groupID);
 	public DeviceStatus getState();
 	public Measure<?,?>  getSetpointTemperature();
 	public void cool();
-	public void deleteGroup(Integer groupID);
+	public void heat();
 	public void stopHeatingOrCooling();
+	public Measure<?,?>  getTemperature();
 	public void storeGroup(Integer groupID);
 	public void setTemperatureAt(Measure<?,?>  temperature);
-	public void heat();
 
 
 	/*Generated Notifications*/
 
+	/*Notification: CoolNotification*/
+	public void notifyCool();
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: ChangedDesiredTemperatureNotification*/
 	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
 	/*Notification: TemperatureMeasurementNotification*/
 	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
-	/*Notification: CoolNotification*/
-	public void notifyCool();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	public void updateStatus();
 }

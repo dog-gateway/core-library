@@ -22,14 +22,14 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.RestTripleStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.RaisingStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.UpTripleStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.LoweringStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.DownTripleStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.UpTripleStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.RestTripleStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.LoweringStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.RaisingStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.DownTripleStateValue;
 
 
 

@@ -51,11 +51,11 @@ public class DogShadeActuator extends AbstractDevice implements ShadeActuator
 	}
 
 
-	public void stepDown()
+	public void deleteGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
-			((ShadeActuator) this.driver).stepDown();
+			((ShadeActuator) this.driver).deleteGroup(groupID);
 		}
 	}
 
@@ -76,19 +76,11 @@ public class DogShadeActuator extends AbstractDevice implements ShadeActuator
 		 return null;
 	}
 
-	public void storeScene(Integer sceneNumber)
+	public void on()
 	{
 		if(this.driver!=null)
 		{
-			((ShadeActuator) this.driver).storeScene(sceneNumber);
-		}
-	}
-
-	public void deleteScene(Integer sceneNumber)
-	{
-		if(this.driver!=null)
-		{
-			((ShadeActuator) this.driver).deleteScene(sceneNumber);
+			((ShadeActuator) this.driver).on();
 		}
 	}
 
@@ -100,27 +92,19 @@ public class DogShadeActuator extends AbstractDevice implements ShadeActuator
 		}
 	}
 
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((ShadeActuator) this.driver).on();
-		}
-	}
-
-	public void deleteGroup(Integer groupID)
-	{
-		if(this.driver!=null)
-		{
-			((ShadeActuator) this.driver).deleteGroup(groupID);
-		}
-	}
-
 	public void storeGroup(Integer groupID)
 	{
 		if(this.driver!=null)
 		{
 			((ShadeActuator) this.driver).storeGroup(groupID);
+		}
+	}
+
+	public void deleteScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((ShadeActuator) this.driver).deleteScene(sceneNumber);
 		}
 	}
 
@@ -132,55 +116,43 @@ public class DogShadeActuator extends AbstractDevice implements ShadeActuator
 		}
 	}
 
+	public void stepDown()
+	{
+		if(this.driver!=null)
+		{
+			((ShadeActuator) this.driver).stepDown();
+		}
+	}
+
+	public void storeScene(Integer sceneNumber)
+	{
+		if(this.driver!=null)
+		{
+			((ShadeActuator) this.driver).storeScene(sceneNumber);
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
-		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: SimpleNoMovementNotification*/
-	public void notifyCeasedMovement(){
-		SimpleNoMovementNotification notificationEvent=new SimpleNoMovementNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: SimpleMovementNotification*/
-	public void notifyStartedMovement(){
-		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel){
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -192,9 +164,37 @@ public class DogShadeActuator extends AbstractDevice implements ShadeActuator
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: SimpleNoMovementNotification*/
+	public void notifyCeasedMovement(){
+		SimpleNoMovementNotification notificationEvent=new SimpleNoMovementNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SimpleMovementNotification*/
+	public void notifyStartedMovement(){
+		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber){
+		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

@@ -31,20 +31,20 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface PowerMeteringPowerOutlet extends MainsPowerOutlet, SinglePhaseActivePowerMeter
+public interface PowerMeteringPowerOutlet extends SinglePhaseActivePowerMeter, MainsPowerOutlet
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public DeviceStatus getState();
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
-	public void on();
 	public void deleteGroup(Integer groupID);
 	public Measure<?,?>  getActivePower();
+	public DeviceStatus getState();
+	public void on();
 	public void storeGroup(Integer groupID);
+	public void deleteScene(Integer sceneNumber);
 	public void off();
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
@@ -53,15 +53,15 @@ public interface PowerMeteringPowerOutlet extends MainsPowerOutlet, SinglePhaseA
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();
 }

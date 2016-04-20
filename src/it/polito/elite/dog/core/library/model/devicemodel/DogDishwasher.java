@@ -51,6 +51,48 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 	}
 
 
+	public void start()
+	{
+		if(this.driver!=null)
+		{
+			((Dishwasher) this.driver).start();
+		}
+	}
+
+	public Measure<?,?>  getStartTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((Dishwasher) this.driver).getStartTime();
+		}
+		 return null;
+	}
+
+	public DeviceStatus getState()
+	{
+		if(this.driver!=null)
+		{
+			return ((Dishwasher) this.driver).getState();
+		}
+		 return null;
+	}
+
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((Dishwasher) this.driver).standBy();
+		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((Dishwasher) this.driver).on();
+		}
+	}
+
 	public Measure<?,?>  getRemainingTime()
 	{
 		if(this.driver!=null)
@@ -68,53 +110,11 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		}
 	}
 
-	public DeviceStatus getState()
-	{
-		if(this.driver!=null)
-		{
-			return ((Dishwasher) this.driver).getState();
-		}
-		 return null;
-	}
-
 	public Measure<?,?>  getEndTime()
 	{
 		if(this.driver!=null)
 		{
 			return ((Dishwasher) this.driver).getEndTime();
-		}
-		 return null;
-	}
-
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((Dishwasher) this.driver).on();
-		}
-	}
-
-	public void start()
-	{
-		if(this.driver!=null)
-		{
-			((Dishwasher) this.driver).start();
-		}
-	}
-
-	public void pause()
-	{
-		if(this.driver!=null)
-		{
-			((Dishwasher) this.driver).pause();
-		}
-	}
-
-	public Object[] getEventsAndAlerts()
-	{
-		if(this.driver!=null)
-		{
-			return ((Dishwasher) this.driver).getEventsAndAlerts();
 		}
 		 return null;
 	}
@@ -127,11 +127,20 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		}
 	}
 
-	public void standBy()
+	public Object[] getEventsAndAlerts()
 	{
 		if(this.driver!=null)
 		{
-			((Dishwasher) this.driver).standBy();
+			return ((Dishwasher) this.driver).getEventsAndAlerts();
+		}
+		 return null;
+	}
+
+	public void pause()
+	{
+		if(this.driver!=null)
+		{
+			((Dishwasher) this.driver).pause();
 		}
 	}
 
@@ -143,43 +152,20 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		}
 	}
 
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((Dishwasher) this.driver).getStartTime();
-		}
-		 return null;
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: StartApplianceNotification*/
-	public void notifyStart(){
-		StartApplianceNotification notificationEvent=new StartApplianceNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events){
-		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event){
 		EventNotification notificationEvent=new EventNotification(event );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -191,16 +177,9 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
-		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+	/*Notification: PauseApplianceNotification*/
+	public void notifyPause(){
+		PauseApplianceNotification notificationEvent=new PauseApplianceNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -212,20 +191,6 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: OnNotification*/
 	public void notifyOn(){
 		OnNotification notificationEvent=new OnNotification();
@@ -233,16 +198,51 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PauseApplianceNotification*/
-	public void notifyPause(){
-		PauseApplianceNotification notificationEvent=new PauseApplianceNotification();
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events){
+		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
+		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartApplianceNotification*/
+	public void notifyStart(){
+		StartApplianceNotification notificationEvent=new StartApplianceNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

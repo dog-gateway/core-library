@@ -35,11 +35,11 @@ public interface ZigBeeGateway extends ZigBeeComponent
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void installAppliance(String applianceId);
-	public void openNetwork();
-	public DeviceStatus getState();
-	public void deleteAppliance(String applianceId);
 	public void closeNetwork();
+	public DeviceStatus getState();
+	public void installAppliance(String applianceId);
+	public void deleteAppliance(String applianceId);
+	public void openNetwork();
 
 
 	/*Generated Notifications*/

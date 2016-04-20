@@ -37,16 +37,16 @@ public interface ThreePhaseEnergyMeter extends SingleTariffEnergyMeter
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getReactiveEnergyValue(String phaseID);
 	public DeviceStatus getState();
 	public Measure<?,?>  getActiveEnergyValue(String phaseID);
+	public Measure<?,?>  getReactiveEnergyValue(String phaseID);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: ThreePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value);
 	/*Notification: ThreePhaseActiveEnergyMeasurementNotification*/
 	public void notifyNewActiveEnergyValue(String phaseID, Measure<?,?>  value);
+	/*Notification: ThreePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value);
 	public void updateStatus();
 }

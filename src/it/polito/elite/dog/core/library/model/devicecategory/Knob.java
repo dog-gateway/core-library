@@ -37,10 +37,10 @@ public interface Knob extends Control
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stepDown();
 	public void stepUp();
 	public DeviceStatus getState();
 	public void set(Object value);
+	public void stepDown();
 
 
 	/*Generated Notifications*/

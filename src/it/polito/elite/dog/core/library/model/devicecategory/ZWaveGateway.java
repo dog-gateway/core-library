@@ -35,17 +35,17 @@ public interface ZWaveGateway extends ZWaveComponent
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
+	public void disassociate();
 	public DeviceStatus getState();
 	public void associate();
-	public void disassociate();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: IdleNotification*/
-	public void notifyIdle();
 	/*Notification: AssociatingDeviceNotification*/
 	public void notifyAssociating();
+	/*Notification: IdleNotification*/
+	public void notifyIdle();
 	/*Notification: DisassociatingDeviceNotification*/
 	public void notifyDisassociating();
 	public void updateStatus();

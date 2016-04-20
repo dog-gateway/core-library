@@ -40,20 +40,20 @@ public interface Thermostat extends Control
 	public DeviceStatus getState();
 	public Measure<?,?>  getSetpointTemperature();
 	public void cool();
+	public void heat();
 	public void stopHeatingOrCooling();
 	public void setTemperatureAt(Measure<?,?>  temperature);
-	public void heat();
 
 
 	/*Generated Notifications*/
 
-	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
+	/*Notification: ChangedDesiredTemperatureNotification*/
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
 	public void updateStatus();
 }

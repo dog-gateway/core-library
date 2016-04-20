@@ -79,36 +79,11 @@ public class DogThermostaticRadiatorValve extends AbstractDevice implements Ther
 		 return null;
 	}
 
-	public Object[] getDaySchedule(Integer weekDay)
-	{
-		if(this.driver!=null)
-		{
-			return ((ThermostaticRadiatorValve) this.driver).getDaySchedule(weekDay);
-		}
-		 return null;
-	}
-
 	public void cool()
 	{
 		if(this.driver!=null)
 		{
 			((ThermostaticRadiatorValve) this.driver).cool();
-		}
-	}
-
-	public void stopHeatingOrCooling()
-	{
-		if(this.driver!=null)
-		{
-			((ThermostaticRadiatorValve) this.driver).stopHeatingOrCooling();
-		}
-	}
-
-	public void setTemperatureAt(Measure<?,?>  temperature)
-	{
-		if(this.driver!=null)
-		{
-			((ThermostaticRadiatorValve) this.driver).setTemperatureAt(temperature);
 		}
 	}
 
@@ -120,6 +95,14 @@ public class DogThermostaticRadiatorValve extends AbstractDevice implements Ther
 		}
 	}
 
+	public void stopHeatingOrCooling()
+	{
+		if(this.driver!=null)
+		{
+			((ThermostaticRadiatorValve) this.driver).stopHeatingOrCooling();
+		}
+	}
+
 	public void setClimateSchedule(DailyClimateSchedule[] dailySchedules)
 	{
 		if(this.driver!=null)
@@ -128,13 +111,30 @@ public class DogThermostaticRadiatorValve extends AbstractDevice implements Ther
 		}
 	}
 
+	public Object[] getDaySchedule(Integer weekDay)
+	{
+		if(this.driver!=null)
+		{
+			return ((ThermostaticRadiatorValve) this.driver).getDaySchedule(weekDay);
+		}
+		 return null;
+	}
+
+	public void setTemperatureAt(Measure<?,?>  temperature)
+	{
+		if(this.driver!=null)
+		{
+			((ThermostaticRadiatorValve) this.driver).setTemperatureAt(temperature);
+		}
+	}
+
 
 
 	/*Generated Notifications*/
 
-	/*Notification: DailyClimateScheduleNotification*/
-	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule){
-		DailyClimateScheduleNotification notificationEvent=new DailyClimateScheduleNotification(daySchedule );
+	/*Notification: CoolNotification*/
+	public void notifyCool(){
+		CoolNotification notificationEvent=new CoolNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -146,9 +146,16 @@ public class DogThermostaticRadiatorValve extends AbstractDevice implements Ther
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: CoolNotification*/
-	public void notifyCool(){
-		CoolNotification notificationEvent=new CoolNotification();
+	/*Notification: DailyClimateScheduleNotification*/
+	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule){
+		DailyClimateScheduleNotification notificationEvent=new DailyClimateScheduleNotification(daySchedule );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling(){
+		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -163,13 +170,6 @@ public class DogThermostaticRadiatorValve extends AbstractDevice implements Ther
 	/*Notification: WeeklyClimateScheduleNotification*/
 	public void notifyChangedWeeklyClimateSchedule(DailyClimateSchedule[] dailySchedules){
 		WeeklyClimateScheduleNotification notificationEvent=new WeeklyClimateScheduleNotification(dailySchedules );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
-		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

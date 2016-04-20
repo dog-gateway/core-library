@@ -51,11 +51,11 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 	}
 
 
-	public Measure<?,?>  getRemainingTime()
+	public Measure<?,?>  getStartTime()
 	{
 		if(this.driver!=null)
 		{
-			return ((WhiteGoods) this.driver).getRemainingTime();
+			return ((WhiteGoods) this.driver).getStartTime();
 		}
 		 return null;
 	}
@@ -69,13 +69,12 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		 return null;
 	}
 
-	public Measure<?,?>  getEndTime()
+	public void standBy()
 	{
 		if(this.driver!=null)
 		{
-			return ((WhiteGoods) this.driver).getEndTime();
+			((WhiteGoods) this.driver).standBy();
 		}
-		 return null;
 	}
 
 	public void on()
@@ -86,11 +85,20 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		}
 	}
 
-	public Object[] getEventsAndAlerts()
+	public Measure<?,?>  getRemainingTime()
 	{
 		if(this.driver!=null)
 		{
-			return ((WhiteGoods) this.driver).getEventsAndAlerts();
+			return ((WhiteGoods) this.driver).getRemainingTime();
+		}
+		 return null;
+	}
+
+	public Measure<?,?>  getEndTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((WhiteGoods) this.driver).getEndTime();
 		}
 		 return null;
 	}
@@ -103,12 +111,13 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		}
 	}
 
-	public void standBy()
+	public Object[] getEventsAndAlerts()
 	{
 		if(this.driver!=null)
 		{
-			((WhiteGoods) this.driver).standBy();
+			return ((WhiteGoods) this.driver).getEventsAndAlerts();
 		}
+		 return null;
 	}
 
 	public void off()
@@ -117,15 +126,6 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		{
 			((WhiteGoods) this.driver).off();
 		}
-	}
-
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((WhiteGoods) this.driver).getStartTime();
-		}
-		 return null;
 	}
 
 
@@ -139,16 +139,16 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+	/*Notification: EventNotification*/
+	public void notifyNewEvent(Object event){
+		EventNotification notificationEvent=new EventNotification(event );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: EventNotification*/
-	public void notifyNewEvent(Object event){
-		EventNotification notificationEvent=new EventNotification(event );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -160,9 +160,23 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
+		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -181,23 +195,9 @@ public class DogWhiteGoods extends AbstractDevice implements WhiteGoods
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
-		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

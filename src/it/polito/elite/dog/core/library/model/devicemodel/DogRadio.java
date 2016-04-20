@@ -59,14 +59,6 @@ public class DogRadio extends AbstractDevice implements Radio
 		}
 	}
 
-	public void increaseVolume()
-	{
-		if(this.driver!=null)
-		{
-			((Radio) this.driver).increaseVolume();
-		}
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -76,19 +68,19 @@ public class DogRadio extends AbstractDevice implements Radio
 		 return null;
 	}
 
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((Radio) this.driver).standBy();
+		}
+	}
+
 	public void decreaseVolume()
 	{
 		if(this.driver!=null)
 		{
 			((Radio) this.driver).decreaseVolume();
-		}
-	}
-
-	public void set(Object value)
-	{
-		if(this.driver!=null)
-		{
-			((Radio) this.driver).set(value);
 		}
 	}
 
@@ -100,19 +92,11 @@ public class DogRadio extends AbstractDevice implements Radio
 		}
 	}
 
-	public void setChannel(Integer channel)
+	public void increaseVolume()
 	{
 		if(this.driver!=null)
 		{
-			((Radio) this.driver).setChannel(channel);
-		}
-	}
-
-	public void down()
-	{
-		if(this.driver!=null)
-		{
-			((Radio) this.driver).down();
+			((Radio) this.driver).increaseVolume();
 		}
 	}
 
@@ -124,11 +108,27 @@ public class DogRadio extends AbstractDevice implements Radio
 		}
 	}
 
-	public void standBy()
+	public void set(Object value)
 	{
 		if(this.driver!=null)
 		{
-			((Radio) this.driver).standBy();
+			((Radio) this.driver).set(value);
+		}
+	}
+
+	public void down()
+	{
+		if(this.driver!=null)
+		{
+			((Radio) this.driver).down();
+		}
+	}
+
+	public void setChannel(Integer channel)
+	{
+		if(this.driver!=null)
+		{
+			((Radio) this.driver).setChannel(channel);
 		}
 	}
 
@@ -144,37 +144,9 @@ public class DogRadio extends AbstractDevice implements Radio
 
 	/*Generated Notifications*/
 
-	/*Notification: TuningStepDownNotification*/
-	public void notifyChannelStepUp(){
-		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: TuningStepUpNotification*/
-	public void notifyChannelStepDown(){
-		TuningStepUpNotification notificationEvent=new TuningStepUpNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId){
+		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -186,9 +158,37 @@ public class DogRadio extends AbstractDevice implements Radio
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId){
-		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel){
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: TuningStepUpNotification*/
+	public void notifyChannelStepDown(){
+		TuningStepUpNotification notificationEvent=new TuningStepUpNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: TuningStepDownNotification*/
+	public void notifyChannelStepUp(){
+		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

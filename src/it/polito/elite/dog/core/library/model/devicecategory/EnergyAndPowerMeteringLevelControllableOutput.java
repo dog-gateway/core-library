@@ -31,45 +31,45 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface EnergyAndPowerMeteringLevelControllableOutput extends SinglePhaseActiveEnergyMeter, LevelControllableOutput, SinglePhaseActivePowerMeter
+public interface EnergyAndPowerMeteringLevelControllableOutput extends LevelControllableOutput, SinglePhaseActivePowerMeter, SinglePhaseActiveEnergyMeter
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public void stepDown();
-	public void stepUp();
-	public DeviceStatus getState();
-	public void storeScene(Integer sceneNumber);
-	public void deleteScene(Integer sceneNumber);
-	public void set(Object value);
-	public void on();
-	public Measure<?,?>  getActiveEnergyValue();
 	public void deleteGroup(Integer groupID);
+	public void stepUp();
+	public Measure<?,?>  getActiveEnergyValue();
 	public Measure<?,?>  getActivePower();
+	public DeviceStatus getState();
+	public void on();
+	public void set(Object value);
 	public void storeGroup(Integer groupID);
+	public void deleteScene(Integer sceneNumber);
 	public void off();
+	public void stepDown();
+	public void storeScene(Integer sceneNumber);
 
 
 	/*Generated Notifications*/
 
 	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
-	/*Notification: OffNotification*/
-	public void notifyOff();
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: OffNotification*/
+	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: DeleteSceneNotification*/
+	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();
 }

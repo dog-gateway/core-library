@@ -31,46 +31,46 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface ThreePhaseElectricityMeter extends SinglePhaseEnergyMeter, ThreePhaseApparentPowerMeter, ThreePhaseVoltageMeter, ThreePhaseReactivePowerMeter, FrequencyMeter, PowerFactorMeter, ThreePhaseActivePowerMeter, ThreePhaseCurrentMeter
+public interface ThreePhaseElectricityMeter extends ThreePhaseReactivePowerMeter, ThreePhaseVoltageMeter, ThreePhaseCurrentMeter, FrequencyMeter, PowerFactorMeter, ThreePhaseApparentPowerMeter, ThreePhaseActivePowerMeter, SinglePhaseEnergyMeter
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
 	public static int MATCH_MANUFACTURER=0;
 
-	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1);
-	public Measure<?,?>  getReactiveEnergyValue();
 	public Measure<?,?>  getReactivePower(String phaseID);
-	public Measure<?,?>  getFrequency();
-	public DeviceStatus getState();
-	public Measure<?,?>  getPowerFactor();
 	public Measure<?,?>  getActiveEnergyValue();
-	public Measure<?,?>  getLNVoltageValue(String phaseID);
-	public Measure<?,?>  getElectricCurrentValue(String phaseID);
-	public Measure<?,?>  getApparentPower(String phaseID);
+	public DeviceStatus getState();
 	public Measure<?,?>  getActivePower(String phaseID);
+	public Measure<?,?>  getFrequency();
+	public Measure<?,?>  getReactiveEnergyValue();
+	public Measure<?,?>  getElectricCurrentValue(String phaseID);
+	public Measure<?,?>  getLNVoltageValue(String phaseID);
+	public Measure<?,?>  getPowerFactor();
+	public Measure<?,?>  getLLVoltageValue(String phaseID2, String phaseID1);
+	public Measure<?,?>  getApparentPower(String phaseID);
 
 
 	/*Generated Notifications*/
 
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
-	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
-	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value);
-	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
-	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
-	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value);
-	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
-	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value);
-	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value);
-	/*Notification: ThreePhaseActivePowerMeasurementNotification*/
-	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value);
 	/*Notification: PowerFactorMeasurementNotification*/
 	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
+	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
+	/*Notification: ThreePhaseActivePowerMeasurementNotification*/
+	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value);
+	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
+	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value);
+	/*Notification: FrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
+	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value);
+	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
+	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value);
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
 	/*Notification: ThreePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value);
+	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
+	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value);
 	public void updateStatus();
 }

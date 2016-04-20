@@ -22,14 +22,14 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.NotProgrammedStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.ProgramInterruptedStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.ProgrammedStateValue;
-import it.polito.elite.dog.core.library.model.statevalue.ProgrammedAndWaitingToStartStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.EndProgrammedStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.ProgrammedAndWaitingToStartStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.NotProgrammedStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.ProgrammedStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.ProgramInterruptedStateValue;
 
 
 

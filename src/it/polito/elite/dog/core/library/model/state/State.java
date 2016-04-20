@@ -22,14 +22,14 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
-import java.util.Arrays;
-
-import java.io.Serializable;
-
-
 import java.util.Hashtable;
 
+import java.util.Arrays;
+
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
+import java.io.Serializable;
 
 
 

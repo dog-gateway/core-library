@@ -44,9 +44,9 @@ public interface WaterConsumptionMeter extends Meter
 
 	/*Generated Notifications*/
 
-	/*Notification: ColdWaterM3MeasurementNotification*/
-	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater);
 	/*Notification: HotWaterM3MeasurementNotification*/
 	public void notifyNewHotWaterAmountInM3(Measure<?,?>  m3OfHotWater);
+	/*Notification: ColdWaterM3MeasurementNotification*/
+	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater);
 	public void updateStatus();
 }

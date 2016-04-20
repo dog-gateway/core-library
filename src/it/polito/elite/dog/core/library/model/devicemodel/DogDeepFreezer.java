@@ -51,11 +51,19 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 	}
 
 
-	public Measure<?,?>  getRemainingTime()
+	public void startSuperFreezing()
 	{
 		if(this.driver!=null)
 		{
-			return ((DeepFreezer) this.driver).getRemainingTime();
+			((DeepFreezer) this.driver).startSuperFreezing();
+		}
+	}
+
+	public Measure<?,?>  getStartTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((DeepFreezer) this.driver).getStartTime();
 		}
 		 return null;
 	}
@@ -69,12 +77,29 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 		 return null;
 	}
 
-	public void stopSuperFreezing()
+	public void standBy()
 	{
 		if(this.driver!=null)
 		{
-			((DeepFreezer) this.driver).stopSuperFreezing();
+			((DeepFreezer) this.driver).standBy();
 		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((DeepFreezer) this.driver).on();
+		}
+	}
+
+	public Measure<?,?>  getRemainingTime()
+	{
+		if(this.driver!=null)
+		{
+			return ((DeepFreezer) this.driver).getRemainingTime();
+		}
+		 return null;
 	}
 
 	public Measure<?,?>  getEndTime()
@@ -86,11 +111,19 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 		 return null;
 	}
 
-	public void on()
+	public void stopSuperFreezing()
 	{
 		if(this.driver!=null)
 		{
-			((DeepFreezer) this.driver).on();
+			((DeepFreezer) this.driver).stopSuperFreezing();
+		}
+	}
+
+	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime)
+	{
+		if(this.driver!=null)
+		{
+			((DeepFreezer) this.driver).setStartTime(endTime, remainingTime, startTime);
 		}
 	}
 
@@ -103,30 +136,6 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 		 return null;
 	}
 
-	public void setStartTime(Measure<?,?>  endTime, Measure<?,?>  remainingTime, Measure<?,?>  startTime)
-	{
-		if(this.driver!=null)
-		{
-			((DeepFreezer) this.driver).setStartTime(endTime, remainingTime, startTime);
-		}
-	}
-
-	public void startSuperFreezing()
-	{
-		if(this.driver!=null)
-		{
-			((DeepFreezer) this.driver).startSuperFreezing();
-		}
-	}
-
-	public void standBy()
-	{
-		if(this.driver!=null)
-		{
-			((DeepFreezer) this.driver).standBy();
-		}
-	}
-
 	public void off()
 	{
 		if(this.driver!=null)
@@ -135,29 +144,20 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 		}
 	}
 
-	public Measure<?,?>  getStartTime()
-	{
-		if(this.driver!=null)
-		{
-			return ((DeepFreezer) this.driver).getStartTime();
-		}
-		 return null;
-	}
-
 
 
 	/*Generated Notifications*/
 
-	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events){
-		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
+	/*Notification: StartedSuperFreezingNotification*/
+	public void notifyStartedSuperFreezing(){
+		StartedSuperFreezingNotification notificationEvent=new StartedSuperFreezingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts){
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+	/*Notification: MultipleEventNotification*/
+	public void notifyNewEventSet(Object[] events){
+		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -169,37 +169,16 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert){
 		AlertNotification notificationEvent=new AlertNotification(alert );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartTimeChangedNotification*/
-	public void notifyChangedStartTime(Measure<?,?>  startTime){
-		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: EndTimeChangedNotification*/
-	public void notifyChangedEndTime(Measure<?,?>  endTime){
-		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: StartedSuperFreezingNotification*/
-	public void notifyStartedSuperFreezing(){
-		StartedSuperFreezingNotification notificationEvent=new StartedSuperFreezingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -218,9 +197,16 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlertSet(Object[] alerts){
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -228,6 +214,20 @@ public class DogDeepFreezer extends AbstractDevice implements DeepFreezer
 	/*Notification: StoppedSuperFreezingNotification*/
 	public void notifyStoppedSuperFreezing(){
 		StoppedSuperFreezingNotification notificationEvent=new StoppedSuperFreezingNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: EndTimeChangedNotification*/
+	public void notifyChangedEndTime(Measure<?,?>  endTime){
+		EndTimeChangedNotification notificationEvent=new EndTimeChangedNotification(endTime );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StartTimeChangedNotification*/
+	public void notifyChangedStartTime(Measure<?,?>  startTime){
+		StartTimeChangedNotification notificationEvent=new StartTimeChangedNotification(startTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

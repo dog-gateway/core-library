@@ -40,9 +40,9 @@ public interface OnOffLightSwitch extends OnOffSwitch
 
 	/*Generated Notifications*/
 
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	public void updateStatus();
 }

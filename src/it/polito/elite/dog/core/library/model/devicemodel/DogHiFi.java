@@ -51,38 +51,6 @@ public class DogHiFi extends AbstractDevice implements HiFi
 	}
 
 
-	public void setVolume(Integer volume)
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).setVolume(volume);
-		}
-	}
-
-	public void next()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).next();
-		}
-	}
-
-	public void prev()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).prev();
-		}
-	}
-
-	public void rew()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).rew();
-		}
-	}
-
 	public DeviceStatus getState()
 	{
 		if(this.driver!=null)
@@ -92,83 +60,11 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		 return null;
 	}
 
-	public void decreaseVolume()
+	public void rew()
 	{
 		if(this.driver!=null)
 		{
-			((HiFi) this.driver).decreaseVolume();
-		}
-	}
-
-	public void timedOn(Measure<?,?>  timeToOff)
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).timedOn(timeToOff);
-		}
-	}
-
-	public void on()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).on();
-		}
-	}
-
-	public void setChannel(Integer channel)
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).setChannel(channel);
-		}
-	}
-
-	public void goToTrack(Integer trackNumber)
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).goToTrack(trackNumber);
-		}
-	}
-
-	public void off()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).off();
-		}
-	}
-
-	public void increaseVolume()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).increaseVolume();
-		}
-	}
-
-	public void stop()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).stop();
-		}
-	}
-
-	public void fwd()
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).fwd();
-		}
-	}
-
-	public void set(Object value)
-	{
-		if(this.driver!=null)
-		{
-			((HiFi) this.driver).set(value);
+			((HiFi) this.driver).rew();
 		}
 	}
 
@@ -180,11 +76,35 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		}
 	}
 
-	public void down()
+	public void prev()
 	{
 		if(this.driver!=null)
 		{
-			((HiFi) this.driver).down();
+			((HiFi) this.driver).prev();
+		}
+	}
+
+	public void next()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).next();
+		}
+	}
+
+	public void increaseVolume()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).increaseVolume();
+		}
+	}
+
+	public void set(Object value)
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).set(value);
 		}
 	}
 
@@ -193,6 +113,54 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		if(this.driver!=null)
 		{
 			((HiFi) this.driver).pause();
+		}
+	}
+
+	public void timedOn(Measure<?,?>  timeToOff)
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).timedOn(timeToOff);
+		}
+	}
+
+	public void setVolume(Integer volume)
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).setVolume(volume);
+		}
+	}
+
+	public void standBy()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).standBy();
+		}
+	}
+
+	public void decreaseVolume()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).decreaseVolume();
+		}
+	}
+
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).on();
+		}
+	}
+
+	public void stop()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).stop();
 		}
 	}
 
@@ -212,11 +180,43 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		}
 	}
 
-	public void standBy()
+	public void fwd()
 	{
 		if(this.driver!=null)
 		{
-			((HiFi) this.driver).standBy();
+			((HiFi) this.driver).fwd();
+		}
+	}
+
+	public void down()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).down();
+		}
+	}
+
+	public void goToTrack(Integer trackNumber)
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).goToTrack(trackNumber);
+		}
+	}
+
+	public void setChannel(Integer channel)
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).setChannel(channel);
+		}
+	}
+
+	public void off()
+	{
+		if(this.driver!=null)
+		{
+			((HiFi) this.driver).off();
 		}
 	}
 
@@ -224,30 +224,9 @@ public class DogHiFi extends AbstractDevice implements HiFi
 
 	/*Generated Notifications*/
 
-	/*Notification: PlayNotification*/
-	public void notifyPlay(){
-		PlayNotification notificationEvent=new PlayNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: TrackControlNotification*/
-	public void notifyChangedTrack(String trackId){
-		TrackControlNotification notificationEvent=new TrackControlNotification(trackId );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -259,30 +238,9 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: TuningStepDownNotification*/
-	public void notifyChannelStepUp(){
-		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: PausePlaybackNotification*/
-	public void notifyPause(){
-		PausePlaybackNotification notificationEvent=new PausePlaybackNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: ForwardNotification*/
-	public void notifyFwd(){
-		ForwardNotification notificationEvent=new ForwardNotification();
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel){
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -294,9 +252,16 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: StopPlaybackNotification*/
+	public void notifyStop(){
+		StopPlaybackNotification notificationEvent=new StopPlaybackNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -308,6 +273,20 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: TuningStepDownNotification*/
+	public void notifyChannelStepUp(){
+		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: PausePlaybackNotification*/
+	public void notifyPause(){
+		PausePlaybackNotification notificationEvent=new PausePlaybackNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: ChannelControlNotification*/
 	public void notifyChangedChannel(String channelId){
 		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
@@ -315,9 +294,30 @@ public class DogHiFi extends AbstractDevice implements HiFi
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StopPlaybackNotification*/
-	public void notifyStop(){
-		StopPlaybackNotification notificationEvent=new StopPlaybackNotification();
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ForwardNotification*/
+	public void notifyFwd(){
+		ForwardNotification notificationEvent=new ForwardNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: TrackControlNotification*/
+	public void notifyChangedTrack(String trackId){
+		TrackControlNotification notificationEvent=new TrackControlNotification(trackId );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: PlayNotification*/
+	public void notifyPlay(){
+		PlayNotification notificationEvent=new PlayNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
