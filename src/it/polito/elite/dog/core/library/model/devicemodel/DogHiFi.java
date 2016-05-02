@@ -224,16 +224,16 @@ public class DogHiFi extends AbstractDevice implements HiFi
 
 	/*Generated Notifications*/
 
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: SourceSelectionNotification*/
+	public void notifyChangedSource(String sourceId){
+		SourceSelectionNotification notificationEvent=new SourceSelectionNotification(sourceId );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SourceSelectionNotification*/
-	public void notifyChangedSource(String sourceId){
-		SourceSelectionNotification notificationEvent=new SourceSelectionNotification(sourceId );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

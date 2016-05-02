@@ -53,10 +53,10 @@ public interface ShadeActuator extends Actuator
 
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: SimpleNoMovementNotification*/

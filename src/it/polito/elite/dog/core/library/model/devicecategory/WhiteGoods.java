@@ -58,10 +58,10 @@ public interface WhiteGoods extends Appliances
 	public void notifyStandby();
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: RemainingTimeChangedNotification*/
 	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
+	/*Notification: OffNotification*/
+	public void notifyOff();
 	/*Notification: MultipleAlertNotification*/
 	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: OnNotification*/

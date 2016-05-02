@@ -54,14 +54,14 @@ public interface MeteringPowerOutlet extends EnergyMeteringPowerOutlet, PowerFac
 
 	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: PowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/

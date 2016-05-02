@@ -155,13 +155,6 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
 		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
@@ -169,9 +162,9 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: PowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
+		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -179,6 +172,13 @@ public class DogMeteringPowerOutlet extends AbstractDevice implements MeteringPo
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber){
 		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
