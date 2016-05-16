@@ -45,6 +45,6 @@ public class MultipleTemperatureStateValue extends ContinuousValue
 	public MultipleTemperatureStateValue()
 	{
 		super();
-		this.setFeature("probeID","");
+		this.setFeature("sensorID","");
 	}
 }

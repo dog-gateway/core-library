@@ -52,10 +52,10 @@ public interface ShadeController extends Control
 	public void notifyOff();
 	/*Notification: OnNotification*/
 	public void notifyOn();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: IdentifyNotification*/
 	public void notifyIdentifyMe();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();

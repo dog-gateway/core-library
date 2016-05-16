@@ -45,6 +45,6 @@ public class MultiplePressureStateValue extends ContinuousValue
 	public MultiplePressureStateValue()
 	{
 		super();
-		this.setFeature("probeID","");
+		this.setFeature("sensorID","");
 	}
 }

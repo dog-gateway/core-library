@@ -46,10 +46,10 @@ public interface PumpController extends Control, HVACSystem
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: LevelStepDownNotification*/
 	public void notifyStepDown();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
 	/*Notification: FlowRateMeasurementNotification*/
