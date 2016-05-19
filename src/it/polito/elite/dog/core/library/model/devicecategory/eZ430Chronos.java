@@ -29,6 +29,8 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 
 
 import it.polito.elite.dog.core.library.model.DeviceStatus;
+import javax.measure.Measure;
+
 public interface eZ430Chronos extends Wearable
 {
 	public static int MATCH_TYPE=100;
@@ -44,7 +46,7 @@ public interface eZ430Chronos extends Wearable
 	/*Generated Notifications*/
 
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Double accZ, Double accX, Double accY);
+	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX);
 	/*Notification: ReleasedMNotification*/
 	public void notifyReleased(String buttonID);
 	/*Notification: PressedMNotification*/

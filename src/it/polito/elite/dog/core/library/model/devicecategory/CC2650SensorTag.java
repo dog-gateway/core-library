@@ -47,21 +47,21 @@ public interface CC2650SensorTag extends Wearable
 	/*Generated Notifications*/
 
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Double accZ, Double accX, Double accY);
+	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX);
 	/*Notification: ReleasedMNotification*/
 	public void notifyReleased(String buttonID);
 	/*Notification: TridimensionalMagnetometerNotification*/
-	public void notifyNew3DMagnetometerValue(Double magY, Double magZ, Double magX);
+	public void notifyNew3DMagnetometerValue(Measure<?,?>  magY, Measure<?,?>  magZ, Measure<?,?>  magX);
 	/*Notification: HumidityMeasurementNotification*/
 	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity);
 	/*Notification: PressureMeasurementNotification*/
 	public void notifyNewPressureValue(Measure<?,?>  pressureValue);
-	/*Notification: TridimensionalGyroscopeNotification*/
-	public void notifyNew3DGyroscopeValue(Double gyroX, Double gyroY, Double gyroZ);
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	/*Notification: PressedMNotification*/
 	public void notifyPressed(String buttonID);
+	/*Notification: TridimensionalGyroscopeNotification*/
+	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY);
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	/*Notification: LuminosityMeasurementNotification*/
 	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue);
 	public void updateStatus();

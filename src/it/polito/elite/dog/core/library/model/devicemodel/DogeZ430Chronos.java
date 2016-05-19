@@ -34,6 +34,8 @@ import it.polito.elite.dog.core.library.model.DeviceDescriptor;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.device.Device;
 import it.polito.elite.dog.core.library.model.notification.*;
+import javax.measure.Measure;
+
 public class DogeZ430Chronos extends AbstractDevice implements eZ430Chronos
 {
 
@@ -87,8 +89,8 @@ public class DogeZ430Chronos extends AbstractDevice implements eZ430Chronos
 	/*Generated Notifications*/
 
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Double accZ, Double accX, Double accY){
-		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accZ , accX , accY );
+	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX){
+		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accY , accZ , accX );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

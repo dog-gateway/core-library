@@ -53,10 +53,10 @@ public interface CompositeThermostat extends Thermostat, HVACSystem
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedControlNotification*/
-	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: SpeedControlNotification*/
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
 	/*Notification: SpeedStepDownNotification*/

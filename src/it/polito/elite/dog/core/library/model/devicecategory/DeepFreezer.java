@@ -56,10 +56,10 @@ public interface DeepFreezer extends WhiteGoods
 	public void notifyStartedSuperFreezing();
 	/*Notification: MultipleEventNotification*/
 	public void notifyNewEventSet(Object[] events);
-	/*Notification: EventNotification*/
-	public void notifyNewEvent(Object event);
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
+	/*Notification: EventNotification*/
+	public void notifyNewEvent(Object event);
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
 	/*Notification: RemainingTimeChangedNotification*/

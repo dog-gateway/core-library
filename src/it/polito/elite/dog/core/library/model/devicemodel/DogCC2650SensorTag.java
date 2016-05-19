@@ -101,8 +101,8 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 	/*Generated Notifications*/
 
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Double accZ, Double accX, Double accY){
-		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accZ , accX , accY );
+	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX){
+		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accY , accZ , accX );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -115,7 +115,7 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 		notifyEventAdmin(notificationEvent);
 	}
 	/*Notification: TridimensionalMagnetometerNotification*/
-	public void notifyNew3DMagnetometerValue(Double magY, Double magZ, Double magX){
+	public void notifyNew3DMagnetometerValue(Measure<?,?>  magY, Measure<?,?>  magZ, Measure<?,?>  magX){
 		TridimensionalMagnetometerNotification notificationEvent=new TridimensionalMagnetometerNotification(magY , magZ , magX );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
@@ -135,9 +135,16 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID){
+		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: TridimensionalGyroscopeNotification*/
-	public void notifyNew3DGyroscopeValue(Double gyroX, Double gyroY, Double gyroZ){
-		TridimensionalGyroscopeNotification notificationEvent=new TridimensionalGyroscopeNotification(gyroX , gyroY , gyroZ );
+	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY){
+		TridimensionalGyroscopeNotification notificationEvent=new TridimensionalGyroscopeNotification(gyroZ , gyroX , gyroY );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -145,13 +152,6 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 	/*Notification: TemperatureMeasurementMNotification*/
 	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
 		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
-		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

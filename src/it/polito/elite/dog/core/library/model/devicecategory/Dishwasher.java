@@ -53,10 +53,10 @@ public interface Dishwasher extends WhiteGoods
 
 	/*Generated Notifications*/
 
-	/*Notification: EventNotification*/
-	public void notifyNewEvent(Object event);
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
+	/*Notification: EventNotification*/
+	public void notifyNewEvent(Object event);
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
 	/*Notification: PauseApplianceNotification*/
