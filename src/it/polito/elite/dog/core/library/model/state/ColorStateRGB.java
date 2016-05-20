@@ -22,6 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 import it.polito.elite.dog.core.library.model.statevalue.GreenStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.BlueStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.RedStateValue;
@@ -77,6 +80,14 @@ public class ColorStateRGB extends ColorState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public ColorStateRGB(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

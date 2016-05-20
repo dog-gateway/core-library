@@ -23,6 +23,9 @@ package it.polito.elite.dog.core.library.model.state;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.ActiveEnergyStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 
 
 
@@ -67,6 +70,14 @@ public class ThreePhaseActiveEnergyState extends EnergyMeasurementState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public ThreePhaseActiveEnergyState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

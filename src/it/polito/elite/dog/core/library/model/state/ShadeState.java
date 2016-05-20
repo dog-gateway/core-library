@@ -23,6 +23,9 @@ package it.polito.elite.dog.core.library.model.state;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.ShadeStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 
 
 
@@ -67,6 +70,14 @@ public class ShadeState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public ShadeState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

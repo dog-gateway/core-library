@@ -23,6 +23,9 @@ package it.polito.elite.dog.core.library.model.state;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.AccelerationStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 
 
 
@@ -67,6 +70,14 @@ public class TridimensionalAccelerationState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public TridimensionalAccelerationState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

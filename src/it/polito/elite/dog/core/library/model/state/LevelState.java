@@ -22,6 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 import it.polito.elite.dog.core.library.model.statevalue.LevelStateValue;
 
 
@@ -67,6 +70,14 @@ public class LevelState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public LevelState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

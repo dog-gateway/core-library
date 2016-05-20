@@ -22,6 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 import it.polito.elite.dog.core.library.model.statevalue.FlowRateStateValue;
 
 
@@ -67,6 +70,14 @@ public class FlowRateState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public FlowRateState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

@@ -22,6 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 import it.polito.elite.dog.core.library.model.statevalue.ActivePowerStateValue;
 
 
@@ -67,6 +70,14 @@ public class SinglePhaseActivePowerMeasurementState extends ActivePowerMeasureme
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public SinglePhaseActivePowerMeasurementState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

@@ -22,6 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 import it.polito.elite.dog.core.library.model.statevalue.MultipleTemperatureStateValue;
 
 
@@ -45,10 +48,10 @@ public class MultipleTemperatureState extends ContinuousState
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public MultipleTemperatureState(MultipleTemperatureStateValue multipletemperaturestatevalue)
+	public MultipleTemperatureState(MultipleTemperatureStateValue multipletemperaturestatevalue,MultipleTemperatureStateValue multipletemperaturestatevalue1)
 	{
 		//call the super class constructor
-		super(multipletemperaturestatevalue);
+		super(multipletemperaturestatevalue,multipletemperaturestatevalue1);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -67,6 +70,14 @@ public class MultipleTemperatureState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public MultipleTemperatureState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

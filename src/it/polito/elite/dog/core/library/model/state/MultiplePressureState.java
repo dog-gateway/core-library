@@ -23,6 +23,9 @@ package it.polito.elite.dog.core.library.model.state;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.MultiplePressureStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 
 
 
@@ -45,10 +48,10 @@ public class MultiplePressureState extends ContinuousState
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public MultiplePressureState(MultiplePressureStateValue multiplepressurestatevalue)
+	public MultiplePressureState(MultiplePressureStateValue multiplepressurestatevalue,MultiplePressureStateValue multiplepressurestatevalue1)
 	{
 		//call the super class constructor
-		super(multiplepressurestatevalue);
+		super(multiplepressurestatevalue,multiplepressurestatevalue1);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -67,6 +70,14 @@ public class MultiplePressureState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public MultiplePressureState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**

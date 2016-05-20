@@ -22,6 +22,9 @@
 package it.polito.elite.dog.core.library.model.state;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.StateValue;
+
+
 import it.polito.elite.dog.core.library.model.statevalue.PressureStateValue;
 
 
@@ -67,6 +70,14 @@ public class PressureState extends ContinuousState
 			this.currentStateValue[0]=sValue;
 
 		}
+	}
+
+	/**
+	 * Class constructor.
+	 */
+	public PressureState(StateValue... currentStateValue)
+	{
+		super(currentStateValue);
 	}
 
 	/**
