@@ -69,6 +69,14 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 		 return null;
 	}
 
+	public void on()
+	{
+		if(this.driver!=null)
+		{
+			((CC2650SensorTag) this.driver).on();
+		}
+	}
+
 	public Measure<?,?>  getLuminance()
 	{
 		if(this.driver!=null)
@@ -85,6 +93,14 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 			return ((CC2650SensorTag) this.driver).getRelativeHumidity();
 		}
 		 return null;
+	}
+
+	public void off()
+	{
+		if(this.driver!=null)
+		{
+			((CC2650SensorTag) this.driver).off();
+		}
 	}
 
 	public Measure<?,?>  getTemperatureFrom(String sensorURI)
@@ -135,13 +151,6 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
-		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: TridimensionalGyroscopeNotification*/
 	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY){
 		TridimensionalGyroscopeNotification notificationEvent=new TridimensionalGyroscopeNotification(gyroZ , gyroX , gyroY );
@@ -152,6 +161,13 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 	/*Notification: TemperatureMeasurementMNotification*/
 	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
 		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID){
+		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
