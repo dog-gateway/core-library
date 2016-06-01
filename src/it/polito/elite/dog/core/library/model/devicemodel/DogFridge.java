@@ -264,16 +264,16 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoppedSuperCoolingNotification*/
-	public void notifyStoppedSuperCooling(){
-		StoppedSuperCoolingNotification notificationEvent=new StoppedSuperCoolingNotification();
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling(){
+		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
-		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+	/*Notification: StoppedSuperCoolingNotification*/
+	public void notifyStoppedSuperCooling(){
+		StoppedSuperCoolingNotification notificationEvent=new StoppedSuperCoolingNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

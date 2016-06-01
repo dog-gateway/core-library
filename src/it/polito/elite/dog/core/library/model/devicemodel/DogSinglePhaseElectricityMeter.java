@@ -145,13 +145,6 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 
 	/*Generated Notifications*/
 
-	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue){
-		SinglePhaseApparentPowerMeasurementNotification notificationEvent=new SinglePhaseApparentPowerMeasurementNotification(powerValue );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue){
 		SinglePhaseActivePowerMeasurementNotification notificationEvent=new SinglePhaseActivePowerMeasurementNotification(powerValue );
@@ -159,9 +152,9 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
+	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue){
+		SinglePhaseApparentPowerMeasurementNotification notificationEvent=new SinglePhaseApparentPowerMeasurementNotification(powerValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -169,6 +162,13 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 	/*Notification: PowerFactorMeasurementNotification*/
 	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
 		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

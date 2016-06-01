@@ -51,14 +51,14 @@ public interface SinglePhaseElectricityMeter extends SinglePhaseCurrentMeter, Fr
 
 	/*Generated Notifications*/
 
-	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue);
 	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
-	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
+	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue);
 	/*Notification: PowerFactorMeasurementNotification*/
 	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
+	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
 	/*Notification: SinglePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(Measure<?,?>  value);
 	/*Notification: FrequencyMeasurementNotification*/

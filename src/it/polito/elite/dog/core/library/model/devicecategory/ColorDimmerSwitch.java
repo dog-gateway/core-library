@@ -48,9 +48,9 @@ public interface ColorDimmerSwitch extends DimmerSwitch
 	public void notifyStepUp();
 	/*Notification: OffNotification*/
 	public void notifyOff();
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: LevelStepDownNotification*/
 	public void notifyStepDown();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	public void updateStatus();
 }

@@ -56,10 +56,10 @@ public interface Dvd extends Entertainment
 
 	/*Generated Notifications*/
 
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: ForwardNotification*/

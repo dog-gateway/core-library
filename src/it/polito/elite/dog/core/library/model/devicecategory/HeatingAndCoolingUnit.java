@@ -68,27 +68,27 @@ public interface HeatingAndCoolingUnit extends Control, HVACSystem
 	public void notifySpeedDown();
 	/*Notification: ChangedDesiredTemperatureNotification*/
 	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
-	/*Notification: LevelStepDownNotification*/
-	public void notifyStepDown();
 	/*Notification: OnNotification*/
 	public void notifyOn();
+	/*Notification: LevelStepDownNotification*/
+	public void notifyStepDown();
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
 	/*Notification: LevelStepUpNotification*/
 	public void notifyStepUp();
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: SpeedStepUpNotification*/
 	public void notifySpeedUp();
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: HeatNotification*/
 	public void notifyHeat();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	public void updateStatus();
 }
