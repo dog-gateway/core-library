@@ -154,16 +154,16 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 
 	/*Generated Notifications*/
 
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
+	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
+	/*Notification: PowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
+		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -189,13 +189,6 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseApparentPowerMeasurementNotification notificationEvent=new ThreePhaseApparentPowerMeasurementNotification(phaseID , value );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
 	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value){
 		ThreePhaseReactivePowerMeasurementNotification notificationEvent=new ThreePhaseReactivePowerMeasurementNotification(phaseID , value );
@@ -203,9 +196,9 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseCurrentMeasurementNotification*/
-	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseCurrentMeasurementNotification notificationEvent=new ThreePhaseCurrentMeasurementNotification(phaseID , value );
+	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseApparentPowerMeasurementNotification notificationEvent=new ThreePhaseApparentPowerMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -213,6 +206,13 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
 	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
 		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ThreePhaseCurrentMeasurementNotification*/
+	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseCurrentMeasurementNotification notificationEvent=new ThreePhaseCurrentMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

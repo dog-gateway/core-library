@@ -48,9 +48,9 @@ public interface DimmerSwitch extends LevelControlSwitch
 	public void notifyStepUp();
 	/*Notification: OffNotification*/
 	public void notifyOff();
-	/*Notification: LevelStepDownNotification*/
-	public void notifyStepDown();
 	/*Notification: OnNotification*/
 	public void notifyOn();
+	/*Notification: LevelStepDownNotification*/
+	public void notifyStepDown();
 	public void updateStatus();
 }

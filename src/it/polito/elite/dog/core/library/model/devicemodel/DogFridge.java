@@ -229,16 +229,16 @@ public class DogFridge extends AbstractDevice implements Fridge
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
-		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
+		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

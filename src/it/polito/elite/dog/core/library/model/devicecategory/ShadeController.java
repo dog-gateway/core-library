@@ -44,18 +44,18 @@ public interface ShadeController extends Control
 
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: OnNotification*/
 	public void notifyOn();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: IdentifyNotification*/
 	public void notifyIdentifyMe();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();

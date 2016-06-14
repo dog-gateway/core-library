@@ -199,16 +199,16 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SpeedControlNotification*/
-	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
-		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+	/*Notification: SpeedControlNotification*/
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
+		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -227,16 +227,16 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: LevelStepDownNotification*/
+	public void notifyStepDown(){
+		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LevelStepDownNotification*/
-	public void notifyStepDown(){
-		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

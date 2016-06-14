@@ -69,10 +69,10 @@ public interface WashingMachine extends WhiteGoods
 	public void notifyNewEventSet(Object[] events);
 	/*Notification: StoppedWashingNotification*/
 	public void notifyStoppedWashOrRinseCycle();
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: MultipleAlertNotification*/
 	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: StartedHeatingCycleNotification*/

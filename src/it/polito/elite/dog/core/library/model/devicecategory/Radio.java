@@ -52,12 +52,12 @@ public interface Radio extends Entertainment
 
 	/*Generated Notifications*/
 
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId);
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId);
 	/*Notification: TuningStepUpNotification*/
 	public void notifyChannelStepDown();
 	/*Notification: OffNotification*/

@@ -151,16 +151,16 @@ public class DogTv extends AbstractDevice implements Tv
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId){
+		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId){
-		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

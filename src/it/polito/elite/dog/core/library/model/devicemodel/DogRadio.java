@@ -144,13 +144,6 @@ public class DogRadio extends AbstractDevice implements Radio
 
 	/*Generated Notifications*/
 
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId){
-		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel){
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
@@ -161,6 +154,13 @@ public class DogRadio extends AbstractDevice implements Radio
 	/*Notification: StandByNotification*/
 	public void notifyStandby(){
 		StandByNotification notificationEvent=new StandByNotification();
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId){
+		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

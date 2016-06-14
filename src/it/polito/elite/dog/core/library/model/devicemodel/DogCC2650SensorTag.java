@@ -158,16 +158,16 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
-		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
+		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
-		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID){
+		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

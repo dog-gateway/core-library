@@ -46,10 +46,10 @@ public interface OnOffLight extends SimpleLamp
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: OnNotification*/

@@ -42,10 +42,10 @@ public interface PresenceAndMovementSensor extends MovementSensor, PresenceSenso
 
 	/*Notification: SimpleNoMovementNotification*/
 	public void notifyCeasedMovement();
-	/*Notification: IsPresentNotification*/
-	public void notifyIsPresent();
 	/*Notification: SimpleMovementNotification*/
 	public void notifyStartedMovement();
+	/*Notification: IsPresentNotification*/
+	public void notifyIsPresent();
 	/*Notification: NotPresentNotification*/
 	public void notifyNotPresent();
 	public void updateStatus();

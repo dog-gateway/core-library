@@ -62,10 +62,10 @@ public interface DeepFreezer extends WhiteGoods
 	public void notifyNewEvent(Object event);
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: MultipleAlertNotification*/
 	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: OnNotification*/

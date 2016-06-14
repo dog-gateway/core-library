@@ -71,10 +71,10 @@ public interface MicrowaveOven extends Oven
 	public void notifyNotEmittingMicrowaves();
 	/*Notification: MultipleEventNotification*/
 	public void notifyNewEventSet(Object[] events);
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: MultipleAlertNotification*/
 	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: StartApplianceNotification*/
