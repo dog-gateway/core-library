@@ -31,7 +31,7 @@ package it.polito.elite.dog.core.library.model.statevalue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class MultiTariffReactiveEnergyStateValue extends ContinuousValue
+public class MultiTariffReactiveEnergyStateValue extends EnergyStateValue
 {
 	/**
 	 * The unique class version for serialization

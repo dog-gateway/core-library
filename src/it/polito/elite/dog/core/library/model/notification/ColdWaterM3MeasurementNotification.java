@@ -29,7 +29,7 @@ package it.polito.elite.dog.core.library.model.notification;
 
 import javax.measure.Measure;
 
-public class ColdWaterM3MeasurementNotification implements ParametricNotification
+public class ColdWaterM3MeasurementNotification implements SubstanceVolumeMeasurementNotification
 {
 	public static String notificationName = "newColdWaterAmountInM3";
 

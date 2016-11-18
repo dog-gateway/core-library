@@ -25,6 +25,7 @@ package it.polito.elite.dog.core.library.model.state;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.EnergyStateValue;
 
 
 
@@ -43,6 +44,33 @@ public class EnergyMeasurementState extends ContinuousState
 	private static final long serialVersionUID = 1L;
 
 
+
+	/**
+	 * Class constructor for states inheriting from ContinuousState.
+	 */
+	public EnergyMeasurementState(EnergyStateValue energystatevalue)
+	{
+		//call the super class constructor
+		super(energystatevalue);
+	}
+	/**
+	 * Creates a state object in the Dog2.0 old way (before May 2012).
+	 * 
+	 * @param valueOfTheCurrentStateValue
+	 */
+	@Deprecated
+	public EnergyMeasurementState(Object valueOfTheCurrentStateValue)
+	{
+		this.valueOfTheCurrentStateValue = valueOfTheCurrentStateValue;
+
+		if(!(valueOfTheCurrentStateValue instanceof String))
+		{
+			EnergyStateValue sValue = new EnergyStateValue();
+			sValue.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[0]=sValue;
+
+		}
+	}
 
 	/**
 	 * Class constructor.

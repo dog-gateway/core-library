@@ -80,10 +80,10 @@ public interface Fridge extends WhiteGoods
 	public void notifyStartedSuperCooling();
 	/*Notification: EndTimeChangedNotification*/
 	public void notifyChangedEndTime(Measure<?,?>  endTime);
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling();
 	/*Notification: StoppedSuperCoolingNotification*/
 	public void notifyStoppedSuperCooling();
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling();
 	/*Notification: StartTimeChangedNotification*/
 	public void notifyChangedStartTime(Measure<?,?>  startTime);
 	/*Notification: HeatNotification*/

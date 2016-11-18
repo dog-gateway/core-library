@@ -25,6 +25,7 @@ package it.polito.elite.dog.core.library.model.state;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.EnergyStateValue;
 import it.polito.elite.dog.core.library.model.statevalue.MultiTariffReactiveEnergyStateValue;
 
 
@@ -35,7 +36,7 @@ import it.polito.elite.dog.core.library.model.statevalue.MultiTariffReactiveEner
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class MultiTariffSinglePhaseReactiveEnergyState extends EnergyMeasurementState
+public class MultiTariffSinglePhaseReactiveEnergyState extends MultipleEnergyMeasurementState
 {
 	/**
 	 * The unique class version for serialization
@@ -48,10 +49,10 @@ public class MultiTariffSinglePhaseReactiveEnergyState extends EnergyMeasurement
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public MultiTariffSinglePhaseReactiveEnergyState(MultiTariffReactiveEnergyStateValue multitariffreactiveenergystatevalue,MultiTariffReactiveEnergyStateValue multitariffreactiveenergystatevalue1)
+	public MultiTariffSinglePhaseReactiveEnergyState(EnergyStateValue energystatevalue,EnergyStateValue energystatevalue1, MultiTariffReactiveEnergyStateValue multitariffreactiveenergystatevalue,MultiTariffReactiveEnergyStateValue multitariffreactiveenergystatevalue1)
 	{
 		//call the super class constructor
-		super(multitariffreactiveenergystatevalue,multitariffreactiveenergystatevalue1);
+		super(energystatevalue,energystatevalue1, multitariffreactiveenergystatevalue,multitariffreactiveenergystatevalue1);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -65,6 +66,10 @@ public class MultiTariffSinglePhaseReactiveEnergyState extends EnergyMeasurement
 
 		if(!(valueOfTheCurrentStateValue instanceof String))
 		{
+			EnergyStateValue sValue1 = new EnergyStateValue();
+			sValue1.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[1]=sValue1;
+
 			MultiTariffReactiveEnergyStateValue sValue = new MultiTariffReactiveEnergyStateValue();
 			sValue.setValue(valueOfTheCurrentStateValue);
 			this.currentStateValue[0]=sValue;

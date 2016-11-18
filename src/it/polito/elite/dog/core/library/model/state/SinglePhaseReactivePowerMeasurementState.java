@@ -26,6 +26,7 @@ import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.ReactivePowerStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.PowerStateValue;
 
 
 
@@ -48,10 +49,10 @@ public class SinglePhaseReactivePowerMeasurementState extends ReactivePowerMeasu
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public SinglePhaseReactivePowerMeasurementState(ReactivePowerStateValue reactivepowerstatevalue)
+	public SinglePhaseReactivePowerMeasurementState(ReactivePowerStateValue reactivepowerstatevalue, PowerStateValue powerstatevalue)
 	{
 		//call the super class constructor
-		super(reactivepowerstatevalue);
+		super(reactivepowerstatevalue, powerstatevalue);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -65,7 +66,11 @@ public class SinglePhaseReactivePowerMeasurementState extends ReactivePowerMeasu
 
 		if(!(valueOfTheCurrentStateValue instanceof String))
 		{
-			ReactivePowerStateValue sValue = new ReactivePowerStateValue();
+			ReactivePowerStateValue sValue1 = new ReactivePowerStateValue();
+			sValue1.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[1]=sValue1;
+
+			PowerStateValue sValue = new PowerStateValue();
 			sValue.setValue(valueOfTheCurrentStateValue);
 			this.currentStateValue[0]=sValue;
 

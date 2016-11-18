@@ -35,7 +35,7 @@ import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class WaterMeasurementState extends ContinuousState
+public class WaterMeasurementState extends SubstanceVolumeMeasurementState
 {
 	/**
 	 * The unique class version for serialization

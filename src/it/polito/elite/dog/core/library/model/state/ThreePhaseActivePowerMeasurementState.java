@@ -26,6 +26,7 @@ import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
 import it.polito.elite.dog.core.library.model.statevalue.ActivePowerStateValue;
+import it.polito.elite.dog.core.library.model.statevalue.PowerStateValue;
 
 
 
@@ -48,10 +49,10 @@ public class ThreePhaseActivePowerMeasurementState extends ActivePowerMeasuremen
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public ThreePhaseActivePowerMeasurementState(ActivePowerStateValue activepowerstatevalue,ActivePowerStateValue activepowerstatevalue1,ActivePowerStateValue activepowerstatevalue2)
+	public ThreePhaseActivePowerMeasurementState(ActivePowerStateValue activepowerstatevalue,ActivePowerStateValue activepowerstatevalue1,ActivePowerStateValue activepowerstatevalue2, PowerStateValue powerstatevalue)
 	{
 		//call the super class constructor
-		super(activepowerstatevalue,activepowerstatevalue1,activepowerstatevalue2);
+		super(activepowerstatevalue,activepowerstatevalue1,activepowerstatevalue2, powerstatevalue);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -65,7 +66,11 @@ public class ThreePhaseActivePowerMeasurementState extends ActivePowerMeasuremen
 
 		if(!(valueOfTheCurrentStateValue instanceof String))
 		{
-			ActivePowerStateValue sValue = new ActivePowerStateValue();
+			ActivePowerStateValue sValue1 = new ActivePowerStateValue();
+			sValue1.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[1]=sValue1;
+
+			PowerStateValue sValue = new PowerStateValue();
 			sValue.setValue(valueOfTheCurrentStateValue);
 			this.currentStateValue[0]=sValue;
 

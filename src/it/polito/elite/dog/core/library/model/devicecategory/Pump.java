@@ -54,14 +54,14 @@ public interface Pump extends HVACSystem, Actuator
 
 	/*Generated Notifications*/
 
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: FlowRateMeasurementNotification*/
 	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue);
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: OnNotification*/

@@ -26,6 +26,7 @@ import it.polito.elite.dog.core.library.model.statevalue.MultiTariffActiveEnergy
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.EnergyStateValue;
 
 
 
@@ -35,7 +36,7 @@ import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class MultiTariffThreePhaseActiveEnergyState extends EnergyMeasurementState
+public class MultiTariffThreePhaseActiveEnergyState extends MultipleEnergyMeasurementState
 {
 	/**
 	 * The unique class version for serialization
@@ -48,10 +49,10 @@ public class MultiTariffThreePhaseActiveEnergyState extends EnergyMeasurementSta
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public MultiTariffThreePhaseActiveEnergyState(MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue1,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue2,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue3,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue4,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue5)
+	public MultiTariffThreePhaseActiveEnergyState(EnergyStateValue energystatevalue,EnergyStateValue energystatevalue1, MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue1,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue2,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue3,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue4,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue5)
 	{
 		//call the super class constructor
-		super(multitariffactiveenergystatevalue,multitariffactiveenergystatevalue1,multitariffactiveenergystatevalue2,multitariffactiveenergystatevalue3,multitariffactiveenergystatevalue4,multitariffactiveenergystatevalue5);
+		super(energystatevalue,energystatevalue1, multitariffactiveenergystatevalue,multitariffactiveenergystatevalue1,multitariffactiveenergystatevalue2,multitariffactiveenergystatevalue3,multitariffactiveenergystatevalue4,multitariffactiveenergystatevalue5);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -65,6 +66,10 @@ public class MultiTariffThreePhaseActiveEnergyState extends EnergyMeasurementSta
 
 		if(!(valueOfTheCurrentStateValue instanceof String))
 		{
+			EnergyStateValue sValue1 = new EnergyStateValue();
+			sValue1.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[1]=sValue1;
+
 			MultiTariffActiveEnergyStateValue sValue = new MultiTariffActiveEnergyStateValue();
 			sValue.setValue(valueOfTheCurrentStateValue);
 			this.currentStateValue[0]=sValue;

@@ -26,6 +26,7 @@ import it.polito.elite.dog.core.library.model.statevalue.MultiTariffActiveEnergy
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.EnergyStateValue;
 
 
 
@@ -35,7 +36,7 @@ import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class MultiTariffSinglePhaseActiveEnergyState extends EnergyMeasurementState
+public class MultiTariffSinglePhaseActiveEnergyState extends MultipleEnergyMeasurementState
 {
 	/**
 	 * The unique class version for serialization
@@ -48,10 +49,10 @@ public class MultiTariffSinglePhaseActiveEnergyState extends EnergyMeasurementSt
 	/**
 	 * Class constructor for states inheriting from ContinuousState.
 	 */
-	public MultiTariffSinglePhaseActiveEnergyState(MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue1)
+	public MultiTariffSinglePhaseActiveEnergyState(EnergyStateValue energystatevalue,EnergyStateValue energystatevalue1, MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue,MultiTariffActiveEnergyStateValue multitariffactiveenergystatevalue1)
 	{
 		//call the super class constructor
-		super(multitariffactiveenergystatevalue,multitariffactiveenergystatevalue1);
+		super(energystatevalue,energystatevalue1, multitariffactiveenergystatevalue,multitariffactiveenergystatevalue1);
 	}
 	/**
 	 * Creates a state object in the Dog2.0 old way (before May 2012).
@@ -65,6 +66,10 @@ public class MultiTariffSinglePhaseActiveEnergyState extends EnergyMeasurementSt
 
 		if(!(valueOfTheCurrentStateValue instanceof String))
 		{
+			EnergyStateValue sValue1 = new EnergyStateValue();
+			sValue1.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[1]=sValue1;
+
 			MultiTariffActiveEnergyStateValue sValue = new MultiTariffActiveEnergyStateValue();
 			sValue.setValue(valueOfTheCurrentStateValue);
 			this.currentStateValue[0]=sValue;

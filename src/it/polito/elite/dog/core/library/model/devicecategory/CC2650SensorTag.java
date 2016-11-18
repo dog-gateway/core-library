@@ -60,10 +60,10 @@ public interface CC2650SensorTag extends Wearable
 	public void notifyNewPressureValue(Measure<?,?>  pressureValue);
 	/*Notification: TridimensionalGyroscopeNotification*/
 	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY);
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	/*Notification: PressedMNotification*/
 	public void notifyPressed(String buttonID);
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	/*Notification: LuminosityMeasurementNotification*/
 	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue);
 	public void updateStatus();

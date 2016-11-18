@@ -31,7 +31,7 @@ package it.polito.elite.dog.core.library.model.statevalue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class ApparentPowerStateValue extends ContinuousValue
+public class ApparentPowerStateValue extends PowerStateValue
 {
 	/**
 	 * The unique class version for serialization

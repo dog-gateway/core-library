@@ -62,12 +62,12 @@ public interface HiFi extends Entertainment
 
 	/*Generated Notifications*/
 
-	/*Notification: SourceSelectionNotification*/
-	public void notifyChangedSource(String sourceId);
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
+	/*Notification: SourceSelectionNotification*/
+	public void notifyChangedSource(String sourceId);
 	/*Notification: TuningStepUpNotification*/
 	public void notifyChannelStepDown();
 	/*Notification: StopPlaybackNotification*/

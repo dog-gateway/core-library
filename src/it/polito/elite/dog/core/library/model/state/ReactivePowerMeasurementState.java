@@ -25,6 +25,7 @@ package it.polito.elite.dog.core.library.model.state;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
+import it.polito.elite.dog.core.library.model.statevalue.PowerStateValue;
 
 
 
@@ -34,7 +35,7 @@ import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class ReactivePowerMeasurementState extends ElectricPowerMeasurementState
+public class ReactivePowerMeasurementState extends PowerMeasurementState
 {
 	/**
 	 * The unique class version for serialization
@@ -43,6 +44,33 @@ public class ReactivePowerMeasurementState extends ElectricPowerMeasurementState
 	private static final long serialVersionUID = 1L;
 
 
+
+	/**
+	 * Class constructor for states inheriting from ContinuousState.
+	 */
+	public ReactivePowerMeasurementState(PowerStateValue powerstatevalue)
+	{
+		//call the super class constructor
+		super(powerstatevalue);
+	}
+	/**
+	 * Creates a state object in the Dog2.0 old way (before May 2012).
+	 * 
+	 * @param valueOfTheCurrentStateValue
+	 */
+	@Deprecated
+	public ReactivePowerMeasurementState(Object valueOfTheCurrentStateValue)
+	{
+		this.valueOfTheCurrentStateValue = valueOfTheCurrentStateValue;
+
+		if(!(valueOfTheCurrentStateValue instanceof String))
+		{
+			PowerStateValue sValue = new PowerStateValue();
+			sValue.setValue(valueOfTheCurrentStateValue);
+			this.currentStateValue[0]=sValue;
+
+		}
+	}
 
 	/**
 	 * Class constructor.

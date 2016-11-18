@@ -189,13 +189,6 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
-	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseReactivePowerMeasurementNotification notificationEvent=new ThreePhaseReactivePowerMeasurementNotification(phaseID , value );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
 	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value){
 		ThreePhaseApparentPowerMeasurementNotification notificationEvent=new ThreePhaseApparentPowerMeasurementNotification(phaseID , value );
@@ -203,9 +196,9 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
+	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value){
+		ThreePhaseReactivePowerMeasurementNotification notificationEvent=new ThreePhaseReactivePowerMeasurementNotification(phaseID , value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -213,6 +206,13 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 	/*Notification: ThreePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value){
 		ThreePhaseCurrentMeasurementNotification notificationEvent=new ThreePhaseCurrentMeasurementNotification(phaseID , value );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

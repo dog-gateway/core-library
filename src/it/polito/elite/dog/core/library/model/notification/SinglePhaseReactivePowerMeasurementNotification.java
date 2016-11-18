@@ -29,7 +29,7 @@ package it.polito.elite.dog.core.library.model.notification;
 
 import javax.measure.Measure;
 
-public class SinglePhaseReactivePowerMeasurementNotification implements ParametricNotification
+public class SinglePhaseReactivePowerMeasurementNotification implements PowerMeasurementNotification
 {
 	public static String notificationName = "newReactivePowerValue";
 

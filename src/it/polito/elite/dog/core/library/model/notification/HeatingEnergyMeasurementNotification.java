@@ -29,7 +29,7 @@ package it.polito.elite.dog.core.library.model.notification;
 
 import javax.measure.Measure;
 
-public class HeatingEnergyMeasurementNotification implements ParametricNotification
+public class HeatingEnergyMeasurementNotification implements EnergyMeasurementNotification
 {
 	public static String notificationName = "newHeatingEnergyValue";
 
