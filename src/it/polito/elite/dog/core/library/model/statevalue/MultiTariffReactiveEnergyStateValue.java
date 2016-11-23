@@ -47,5 +47,6 @@ public class MultiTariffReactiveEnergyStateValue extends EnergyStateValue
 		super();
 		this.setFeature("phaseID","");
 		this.setFeature("tariffID","");
+		this.setFeature("sensorID","");
 	}
 }

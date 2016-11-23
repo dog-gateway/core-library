@@ -46,5 +46,6 @@ public class ReactiveEnergyStateValue extends EnergyStateValue
 	{
 		super();
 		this.setFeature("phaseID","");
+		this.setFeature("sensorID","");
 	}
 }

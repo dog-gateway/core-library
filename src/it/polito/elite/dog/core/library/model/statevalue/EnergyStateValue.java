@@ -45,5 +45,6 @@ public class EnergyStateValue extends ContinuousValue
 	public EnergyStateValue()
 	{
 		super();
+		this.setFeature("sensorID","");
 	}
 }

@@ -46,5 +46,6 @@ public class ActiveEnergyStateValue extends EnergyStateValue
 	{
 		super();
 		this.setFeature("phaseID","");
+		this.setFeature("sensorID","");
 	}
 }
