@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface HeatingAndCoolingUnit extends Control, HVACSystem
+public interface HeatingAndCoolingUnit extends Control, Actuator
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
@@ -76,19 +76,19 @@ public interface HeatingAndCoolingUnit extends Control, HVACSystem
 	public void notifyDeletedScene(Integer sceneNumber);
 	/*Notification: LevelStepUpNotification*/
 	public void notifyStepUp();
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: SpeedStepUpNotification*/
 	public void notifySpeedUp();
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: HeatNotification*/
 	public void notifyHeat();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	public void updateStatus();
 }

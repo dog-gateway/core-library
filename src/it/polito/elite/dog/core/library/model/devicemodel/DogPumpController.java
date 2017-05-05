@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,16 +78,16 @@ public class DogPumpController extends AbstractDevice implements PumpController
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: LevelStepDownNotification*/
+	public void notifyStepDown(){
+		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LevelStepDownNotification*/
-	public void notifyStepDown(){
-		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -99,16 +99,16 @@ public class DogPumpController extends AbstractDevice implements PumpController
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: FlowRateMeasurementNotification*/
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue){
-		FlowRateMeasurementNotification notificationEvent=new FlowRateMeasurementNotification(flowRateValue );
+	/*Notification: LevelStepUpNotification*/
+	public void notifyStepUp(){
+		LevelStepUpNotification notificationEvent=new LevelStepUpNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LevelStepUpNotification*/
-	public void notifyStepUp(){
-		LevelStepUpNotification notificationEvent=new LevelStepUpNotification();
+	/*Notification: FlowRateMeasurementNotification*/
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue){
+		FlowRateMeasurementNotification notificationEvent=new FlowRateMeasurementNotification(flowRateValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -141,16 +141,16 @@ public class DogPumpController extends AbstractDevice implements PumpController
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: IdentifyNotification*/
+	public void notifyIdentifyMe(){
+		IdentifyNotification notificationEvent=new IdentifyNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: IdentifyNotification*/
-	public void notifyIdentifyMe(){
-		IdentifyNotification notificationEvent=new IdentifyNotification();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

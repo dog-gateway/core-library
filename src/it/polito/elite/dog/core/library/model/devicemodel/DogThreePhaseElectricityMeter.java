@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -154,6 +154,13 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 
 	/*Generated Notifications*/
 
+	/*Notification: SimpleFrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
+		SimpleFrequencyMeasurementNotification notificationEvent=new SimpleFrequencyMeasurementNotification(frequency );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
 		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
@@ -178,13 +185,6 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
 	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value){
 		ThreePhaseLNVoltageMeasurementNotification notificationEvent=new ThreePhaseLNVoltageMeasurementNotification(phaseID , value );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
-		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

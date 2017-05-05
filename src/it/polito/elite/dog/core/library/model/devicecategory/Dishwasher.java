@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,10 +53,10 @@ public interface Dishwasher extends WhiteGoods
 
 	/*Generated Notifications*/
 
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event);
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
 	/*Notification: PauseApplianceNotification*/
@@ -67,10 +67,10 @@ public interface Dishwasher extends WhiteGoods
 	public void notifyOn();
 	/*Notification: MultipleEventNotification*/
 	public void notifyNewEventSet(Object[] events);
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: RemainingTimeChangedNotification*/
 	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
+	/*Notification: OffNotification*/
+	public void notifyOff();
 	/*Notification: MultipleAlertNotification*/
 	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: StartApplianceNotification*/

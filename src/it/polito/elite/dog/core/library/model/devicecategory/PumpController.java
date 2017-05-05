@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface PumpController extends Control, HVACSystem
+public interface PumpController extends Control
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
@@ -46,16 +46,16 @@ public interface PumpController extends Control, HVACSystem
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: LevelStepDownNotification*/
 	public void notifyStepDown();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
-	/*Notification: FlowRateMeasurementNotification*/
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue);
 	/*Notification: LevelStepUpNotification*/
 	public void notifyStepUp();
+	/*Notification: FlowRateMeasurementNotification*/
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
@@ -64,9 +64,9 @@ public interface PumpController extends Control, HVACSystem
 	public void notifyNewPressureValue(Measure<?,?>  pressureValue);
 	/*Notification: TemperatureMeasurementNotification*/
 	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: IdentifyNotification*/
 	public void notifyIdentifyMe();
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	public void updateStatus();
 }

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,9 +144,9 @@ public class DogRadio extends AbstractDevice implements Radio
 
 	/*Generated Notifications*/
 
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId){
-		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel){
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -158,9 +158,9 @@ public class DogRadio extends AbstractDevice implements Radio
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId){
+		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

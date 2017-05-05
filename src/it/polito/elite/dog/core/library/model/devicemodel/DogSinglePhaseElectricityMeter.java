@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -145,9 +145,9 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 
 	/*Generated Notifications*/
 
-	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue){
-		SinglePhaseApparentPowerMeasurementNotification notificationEvent=new SinglePhaseApparentPowerMeasurementNotification(powerValue );
+	/*Notification: SimpleFrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
+		SimpleFrequencyMeasurementNotification notificationEvent=new SimpleFrequencyMeasurementNotification(frequency );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -155,6 +155,13 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue){
 		SinglePhaseActivePowerMeasurementNotification notificationEvent=new SinglePhaseActivePowerMeasurementNotification(powerValue );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue){
+		SinglePhaseApparentPowerMeasurementNotification notificationEvent=new SinglePhaseApparentPowerMeasurementNotification(powerValue );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -176,13 +183,6 @@ public class DogSinglePhaseElectricityMeter extends AbstractDevice implements Si
 	/*Notification: SinglePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(Measure<?,?>  value){
 		SinglePhaseCurrentMeasurementNotification notificationEvent=new SinglePhaseCurrentMeasurementNotification(value );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
-		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

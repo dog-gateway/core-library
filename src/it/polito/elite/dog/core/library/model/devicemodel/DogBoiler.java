@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,16 +155,16 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
+	/*Notification: EventNotification*/
+	public void notifyNewEvent(Object event){
+		EventNotification notificationEvent=new EventNotification(event );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: EventNotification*/
-	public void notifyNewEvent(Object event){
-		EventNotification notificationEvent=new EventNotification(event );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
@@ -176,16 +176,16 @@ public class DogBoiler extends AbstractDevice implements Boiler
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OffNotification*/
-	public void notifyOff(){
-		OffNotification notificationEvent=new OffNotification();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
+		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime){
-		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
+	/*Notification: OffNotification*/
+	public void notifyOff(){
+		OffNotification notificationEvent=new OffNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

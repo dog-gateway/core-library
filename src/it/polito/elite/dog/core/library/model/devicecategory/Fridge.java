@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,10 +56,10 @@ public interface Fridge extends WhiteGoods
 
 	/*Generated Notifications*/
 
-	/*Notification: StandByNotification*/
-	public void notifyStandby();
 	/*Notification: EventNotification*/
 	public void notifyNewEvent(Object event);
+	/*Notification: StandByNotification*/
+	public void notifyStandby();
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
 	/*Notification: ChangedDesiredTemperatureNotification*/
@@ -70,20 +70,20 @@ public interface Fridge extends WhiteGoods
 	public void notifyNewEventSet(Object[] events);
 	/*Notification: CoolNotification*/
 	public void notifyCool();
-	/*Notification: OffNotification*/
-	public void notifyOff();
 	/*Notification: RemainingTimeChangedNotification*/
 	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
+	/*Notification: OffNotification*/
+	public void notifyOff();
 	/*Notification: MultipleAlertNotification*/
 	public void notifyNewAlertSet(Object[] alerts);
 	/*Notification: StartedSuperCoolingNotification*/
 	public void notifyStartedSuperCooling();
 	/*Notification: EndTimeChangedNotification*/
 	public void notifyChangedEndTime(Measure<?,?>  endTime);
-	/*Notification: StoppedSuperCoolingNotification*/
-	public void notifyStoppedSuperCooling();
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
+	/*Notification: StoppedSuperCoolingNotification*/
+	public void notifyStoppedSuperCooling();
 	/*Notification: StartTimeChangedNotification*/
 	public void notifyChangedStartTime(Measure<?,?>  startTime);
 	/*Notification: HeatNotification*/

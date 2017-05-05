@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,9 +73,9 @@ public class DogFrequencyMeter extends AbstractDevice implements FrequencyMeter
 
 	/*Generated Notifications*/
 
-	/*Notification: FrequencyMeasurementNotification*/
+	/*Notification: SimpleFrequencyMeasurementNotification*/
 	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
-		FrequencyMeasurementNotification notificationEvent=new FrequencyMeasurementNotification(frequency );
+		SimpleFrequencyMeasurementNotification notificationEvent=new SimpleFrequencyMeasurementNotification(frequency );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

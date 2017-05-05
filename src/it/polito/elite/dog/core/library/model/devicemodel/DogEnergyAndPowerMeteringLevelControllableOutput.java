@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -189,16 +189,16 @@ public class DogEnergyAndPowerMeteringLevelControllableOutput extends AbstractDe
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
-		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+	/*Notification: OnNotification*/
+	public void notifyOn(){
+		OnNotification notificationEvent=new OnNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: OnNotification*/
-	public void notifyOn(){
-		OnNotification notificationEvent=new OnNotification();
+	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

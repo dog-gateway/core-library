@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ package it.polito.elite.dog.core.library.model.devicecategory;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import javax.measure.Measure;
 
-public interface MultipleTemperatureSensor extends HVACSystem, TemperatureSensor
+public interface MultipleTemperatureSensor extends TemperatureSensor
 {
 	public static int MATCH_TYPE=100;
 	public static int MATCH_SUB_TYPE=50;
@@ -47,9 +47,9 @@ public interface MultipleTemperatureSensor extends HVACSystem, TemperatureSensor
 
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	/*Notification: JoinGroupNotification*/
 	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	public void updateStatus();
 }

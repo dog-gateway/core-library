@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,16 +96,16 @@ public class DogMultipleTemperatureSensor extends AbstractDevice implements Mult
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
-		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber){
+		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
-		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+	/*Notification: TemperatureMeasurementMNotification*/
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
+		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

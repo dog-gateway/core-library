@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,8 @@ public interface ThreePhaseElectricityMeter extends ThreePhaseReactivePowerMeter
 
 	/*Generated Notifications*/
 
+	/*Notification: SimpleFrequencyMeasurementNotification*/
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
 	/*Notification: PowerFactorMeasurementNotification*/
@@ -60,8 +62,6 @@ public interface ThreePhaseElectricityMeter extends ThreePhaseReactivePowerMeter
 	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value);
 	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
 	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value);
-	/*Notification: FrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
 	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
 	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value);
 	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/

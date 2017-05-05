@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -143,16 +143,16 @@ public class DogLevelControllableOutput extends AbstractDevice implements LevelC
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber){
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber){
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);

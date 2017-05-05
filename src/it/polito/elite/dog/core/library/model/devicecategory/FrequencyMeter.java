@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ public interface FrequencyMeter extends ElectricityMeter
 
 	/*Generated Notifications*/
 
-	/*Notification: FrequencyMeasurementNotification*/
+	/*Notification: SimpleFrequencyMeasurementNotification*/
 	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
 	public void updateStatus();
 }

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2016 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -224,13 +224,6 @@ public class DogHiFi extends AbstractDevice implements HiFi
 
 	/*Generated Notifications*/
 
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel){
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
@@ -241,6 +234,13 @@ public class DogHiFi extends AbstractDevice implements HiFi
 	/*Notification: SourceSelectionNotification*/
 	public void notifyChangedSource(String sourceId){
 		SourceSelectionNotification notificationEvent=new SourceSelectionNotification(sourceId );
+		notificationEvent.setDeviceUri(this.deviceId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(){
+		StandByNotification notificationEvent=new StandByNotification();
 		notificationEvent.setDeviceUri(this.deviceId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
