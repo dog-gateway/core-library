@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
 import java.util.Map;
@@ -170,18 +171,27 @@ public abstract class AbstractDevice extends ControllableDevice implements
 		this.updateProperties();
 
 		// Search the command device interface
-		for (Class<?> currentInterface : this.getClass().getInterfaces())
-		{
-			// The specific command interface extends Controllable
-			if (Controllable.class.isAssignableFrom(currentInterface))
-			{
-				// Register the device service with the command device interface
-				// (and no properties in order to avoid the DeviceManager
-				// intervention)
-				this.serviceRegCommand = this.context.registerService(
-						currentInterface.getName(), this, null);
-			}
-		}
+        ArrayList<String> assignableServices = new ArrayList<String>();
+        for (Class<?> currentInterface : this.getClass().getInterfaces())
+        {
+            // The specific command interface extends Controllable
+            if (Controllable.class.isAssignableFrom(currentInterface))
+            {
+                assignableServices.add(currentInterface.getName());
+            }
+        }
+
+        if (assignableServices.size() > 0)
+        {
+            // Register the device service with the command device interface
+            // (and no properties in order to avoid the DeviceManager
+            // intervention)
+            this.serviceRegCommand = this.context
+                    .registerService(
+                            assignableServices.toArray(
+                                    new String[assignableServices.size()]),
+                            this, null);
+        }
 
 		// Create the property hashtable
 		Hashtable<String, String> properties = new Hashtable<String, String>();

@@ -49,8 +49,8 @@ public interface DeviceCostants extends Constants
 	
 	/* Constants that represent properties needed by the HouseModel */
 	// Simple House Model
-	public static final String DEVICES = "DEVICES";
-	public static final String SVGPLAN = "SVGPLAN";
+	public static final String DEVICES = "devices";
+	public static final String SVGPLAN = "svgplan";
 	// Semantic House Model
 	public static final String INTELLIGENCE = "intelligence";
 	public static final String ONTOLOGY = "ontology";
