@@ -277,12 +277,14 @@ public abstract class AbstractDevice extends ControllableDevice implements
 			if (this.serviceRegCommand != null)
 			{
 				this.serviceRegCommand.unregister();
+				this.serviceRegCommand = null;
 			}
 
 			// unregister the Monitorable service
 			if (this.serviceRegMonitorable != null)
 			{
 				this.serviceRegMonitorable.unregister();
+				this.serviceRegMonitorable = null;
 			}
 
 			this.driver = null;
@@ -299,26 +301,32 @@ public abstract class AbstractDevice extends ControllableDevice implements
 
 	public void removeDevice()
 	{
-		this.logger.log(LogService.LOG_INFO, "UNREGISTERING device "
-				+ this.deviceId);
+      this.logger.log(LogService.LOG_INFO, "UNREGISTERING device "
+                  + this.deviceId);
+      try
+      {
+          // unregister the command device service
+          if (this.serviceRegCommand != null)
+          {
+              this.serviceRegCommand.unregister();
+          }
 
-		// unregister the command device service
-		if (this.serviceRegCommand != null)
-		{
-			this.serviceRegCommand.unregister();
-		}
+          // unregister the Monitorable service
+          if (this.serviceRegMonitorable != null)
+          {
+              this.serviceRegMonitorable.unregister();
+          }
 
-		// unregister the Monitorable service
-		if (this.serviceRegMonitorable != null)
-		{
-			this.serviceRegMonitorable.unregister();
+          // unregister the device service (DeviceManager)
+          if (this.serviceRegDevice != null)
+          {
+              this.serviceRegDevice.unregister();
+          }
 		}
-
-		// unregister the device service (DeviceManager)
-		if (this.serviceRegDevice != null)
-		{
-			this.serviceRegDevice.unregister();
-		}
+        catch (IllegalStateException ise)
+        {
+            this.logger.log(LogService.LOG_WARNING, "The device was already unregistered");
+        }
 	}
 
 	/**
