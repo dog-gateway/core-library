@@ -17,14 +17,15 @@
  */
 package it.polito.elite.dog.core.library.util;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import it.polito.elite.dog.core.library.model.DeviceCostants;
 
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.device.Constants;
-import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
@@ -39,8 +40,6 @@ public class Executor
 {
 	// static reference
 	private static Executor theInstance;
-	// the logger
-	private LogHelper theLogger;
 
 	/**
 	 * Default (empty) constructor
@@ -74,76 +73,62 @@ public class Executor
 	 *            the name of the command (e.g., on)
 	 * @param params
 	 *            optional parameters for the command (e.g., 50.0)
+	 * @throws InvalidSyntaxException
+	 * @throws ClassNotFoundException
+	 * @throws SecurityException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
 	 */
-	public void execute(BundleContext context, String toDevice,
+	public Object execute(BundleContext context, String toDevice,
 			String commandName, Object[] params)
+			throws InvalidSyntaxException, ClassNotFoundException,
+			NoSuchMethodException, SecurityException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException
 	{
+		// the call result
+		Object result = null;
+
 		// create filter
 		String deviceFilter = String.format("(&(%s=*)(%s=%s))",
 				Constants.DEVICE_CATEGORY, DeviceCostants.DEVICEURI, toDevice);
 		// get the device
 		ServiceTracker<?, ?> tracker;
-		try
+
+		tracker = new ServiceTracker<Object, Object>(context,
+				context.createFilter(deviceFilter), null);
+		tracker.open();
+		ServiceReference<?> srDevice = tracker.getServiceReference();
+
+		if (srDevice != null)
 		{
-			tracker = new ServiceTracker<Object, Object>(context,
-					context.createFilter(deviceFilter), null);
-			tracker.open();
-			ServiceReference<?> srDevice = tracker.getServiceReference();
-
-			if (srDevice != null)
+			String active = (String) srDevice
+					.getProperty(DeviceCostants.ACTIVE);
+			String deviceClass = (String) srDevice
+					.getProperty(Constants.DEVICE_CATEGORY);
+			// check if the device is active
+			if (active != null && !active.isEmpty() && active.equals("true"))
 			{
-				String active = (String) srDevice
-						.getProperty(DeviceCostants.ACTIVE);
-				String deviceClass = (String) srDevice
-						.getProperty(Constants.DEVICE_CATEGORY);
-				// check if the device is active
-				if (active != null && !active.isEmpty()
-						&& active.equals("true"))
-				{
-					// get the device object
-					Object deviceObj = tracker.getService();
+				// get the device object
+				Object deviceObj = tracker.getService();
 
-					// get the class
-					Class<?> cls = Class.forName(deviceClass);
+				// get the class
+				Class<?> cls = Class.forName(deviceClass);
 
-					// get the method corresponding to the desired command...
-					Method meth = null;
-					try
-					{
-						meth = cls.getDeclaredMethod(commandName,
-								this.objectToClassArray(params));
-					}
-					catch (NoSuchMethodException e)
-					{
-						try
-						{
-							meth = cls.getDeclaredMethod(commandName,
-									this.objectToSuperClassArray(params));
-						}
-						catch (NoSuchMethodException e1)
-						{
+				// get the method corresponding to the desired command...
+				Method meth = null;
 
-							meth = cls.getMethod(commandName,
-									this.objectToClassArray(params.length));
-						}
-					}
+				meth = cls.getDeclaredMethod(commandName,
+						this.objectToClassArray(params));
 
-					// execute the command
-					if (meth != null)
-						meth.invoke(deviceObj, params);
-				}
+				// execute the command
+				if (meth != null)
+					result = meth.invoke(deviceObj, params);
 			}
 		}
-		catch (Exception e)
-		{
-			// get the logger (only here, before is useless)
-			theLogger = new LogHelper(context);
-			// log the exception
-			theLogger.log(LogService.LOG_ERROR,
-					"Exception during the execution of the command "
-							+ commandName + " on " + toDevice + ": ", e);
-		}
 
+		return result;
 	}
 
 	/**
@@ -165,54 +150,6 @@ public class Executor
 			for (int i = 0; i < parameters.length; i++)
 			{
 				partypes[i] = parameters[i].getClass();
-			}
-		}
-		return partypes;
-	}
-
-	/**
-	 * This static function converts an array of object instances in an array of
-	 * the superclasses of the instances <br/>
-	 * e.g. from "Hello World", 100.0, -100 to Object, Object, Object
-	 * 
-	 * @param parameters
-	 *            array of instances
-	 * @return array with the superclasses of instances
-	 */
-	private Class<?>[] objectToSuperClassArray(Object[] parameters)
-	{
-		Class<?> partypes[] = null;
-		if (parameters != null)
-		{
-			partypes = new Class[parameters.length];
-
-			for (int i = 0; i < parameters.length; i++)
-			{
-				partypes[i] = parameters[i].getClass().getSuperclass();
-			}
-		}
-		return partypes;
-	}
-
-	/**
-	 * This static function converts an array of object instances in an array of
-	 * the class of the instances <br/>
-	 * e.g. from "Hello World", 100.0, -100 to String, Double, Integer
-	 * 
-	 * @param parameters
-	 *            array of instances
-	 * @return array with the classes of instances
-	 */
-	private Class<?>[] objectToClassArray(int parametersNumber)
-	{
-		Class<?> partypes[] = null;
-		if (parametersNumber > 0)
-		{
-			partypes = new Class[parametersNumber];
-
-			for (int i = 0; i < parametersNumber; i++)
-			{
-				partypes[i] = Object.class;
 			}
 		}
 		return partypes;
