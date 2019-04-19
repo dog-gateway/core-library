@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,18 +88,42 @@ public class DogEnOceanGateway extends AbstractDevice implements EnOceanGateway
 	/*Generated Notifications*/
 
 	/*Notification: TeachInEndedNotification*/
-	public void notifyDeactivatedTeachIn(){
+	public void notifyDeactivatedTeachIn(String notificationId)
+	{
 		TeachInEndedNotification notificationEvent=new TeachInEndedNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(EnOceanGateway.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyDeactivatedTeachIn()
+{
+		// call the more general method with a null notification id.
+		this.notifyDeactivatedTeachIn(null);
+	}
 	/*Notification: TeachInActiveNotification*/
-	public void notifyActivatedTeachIn(){
+	public void notifyActivatedTeachIn(String notificationId)
+	{
 		TeachInActiveNotification notificationEvent=new TeachInActiveNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(EnOceanGateway.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyActivatedTeachIn()
+{
+		// call the more general method with a null notification id.
+		this.notifyActivatedTeachIn(null);
 	}
 	@Override
 	public void updateStatus()

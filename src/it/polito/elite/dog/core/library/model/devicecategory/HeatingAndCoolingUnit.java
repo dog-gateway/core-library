@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,18 +60,18 @@ public interface HeatingAndCoolingUnit extends Control, Actuator
 
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: SpeedControlNotification*/
-	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
 	/*Notification: StoreSceneNotification*/
 	public void notifyStoredScene(Integer sceneNumber);
+	/*Notification: SpeedControlNotification*/
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
 	/*Notification: SpeedStepDownNotification*/
 	public void notifySpeedDown();
 	/*Notification: ChangedDesiredTemperatureNotification*/
 	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue);
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: LevelStepDownNotification*/
 	public void notifyStepDown();
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
 	/*Notification: LevelStepUpNotification*/

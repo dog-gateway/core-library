@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,39 +87,99 @@ public class DogShutterActuator extends AbstractDevice implements ShutterActuato
 	/*Generated Notifications*/
 
 	/*Notification: MovingDownNotification*/
-	public void notifyMovingDown(){
+	public void notifyMovingDown(String notificationId)
+	{
 		MovingDownNotification notificationEvent=new MovingDownNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyMovingDown()
+{
+		// call the more general method with a null notification id.
+		this.notifyMovingDown(null);
 	}
 	/*Notification: RestUpNotification*/
-	public void notifyRestingUp(){
+	public void notifyRestingUp(String notificationId)
+	{
 		RestUpNotification notificationEvent=new RestUpNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyRestingUp()
+{
+		// call the more general method with a null notification id.
+		this.notifyRestingUp(null);
 	}
 	/*Notification: RestDownNotification*/
-	public void notifyRestingDown(){
+	public void notifyRestingDown(String notificationId)
+	{
 		RestDownNotification notificationEvent=new RestDownNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyRestingDown()
+{
+		// call the more general method with a null notification id.
+		this.notifyRestingDown(null);
 	}
 	/*Notification: MovingUpNotification*/
-	public void notifyMovingUp(){
+	public void notifyMovingUp(String notificationId)
+	{
 		MovingUpNotification notificationEvent=new MovingUpNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyMovingUp()
+{
+		// call the more general method with a null notification id.
+		this.notifyMovingUp(null);
+	}
 	/*Notification: RestNotification*/
-	public void notifyResting(){
+	public void notifyResting(String notificationId)
+	{
 		RestNotification notificationEvent=new RestNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyResting()
+{
+		// call the more general method with a null notification id.
+		this.notifyResting(null);
 	}
 	@Override
 	public void updateStatus()

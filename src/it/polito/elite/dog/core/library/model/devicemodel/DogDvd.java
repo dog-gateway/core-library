@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -177,74 +177,194 @@ public class DogDvd extends AbstractDevice implements Dvd
 	/*Generated Notifications*/
 
 	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
+	public void notifyChangedLevel(Measure<?,?>  newLevel, String notificationId)
+	{
 		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedLevel(Measure<?,?>  newLevel)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedLevel(newLevel , null);
 	}
 	/*Notification: StandByNotification*/
-	public void notifyStandby(){
+	public void notifyStandby(String notificationId)
+	{
 		StandByNotification notificationEvent=new StandByNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStandby()
+{
+		// call the more general method with a null notification id.
+		this.notifyStandby(null);
 	}
 	/*Notification: OffNotification*/
-	public void notifyOff(){
+	public void notifyOff(String notificationId)
+	{
 		OffNotification notificationEvent=new OffNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOff()
+{
+		// call the more general method with a null notification id.
+		this.notifyOff(null);
 	}
 	/*Notification: ForwardNotification*/
-	public void notifyFwd(){
+	public void notifyFwd(String notificationId)
+	{
 		ForwardNotification notificationEvent=new ForwardNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyFwd()
+{
+		// call the more general method with a null notification id.
+		this.notifyFwd(null);
 	}
 	/*Notification: TrackControlNotification*/
-	public void notifyChangedTrack(String trackId){
+	public void notifyChangedTrack(String trackId, String notificationId)
+	{
 		TrackControlNotification notificationEvent=new TrackControlNotification(trackId );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedTrack(String trackId)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedTrack(trackId , null);
 	}
 	/*Notification: StopPlaybackNotification*/
-	public void notifyStop(){
+	public void notifyStop(String notificationId)
+	{
 		StopPlaybackNotification notificationEvent=new StopPlaybackNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStop()
+{
+		// call the more general method with a null notification id.
+		this.notifyStop(null);
 	}
 	/*Notification: OnNotification*/
-	public void notifyOn(){
+	public void notifyOn(String notificationId)
+	{
 		OnNotification notificationEvent=new OnNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOn()
+{
+		// call the more general method with a null notification id.
+		this.notifyOn(null);
 	}
 	/*Notification: RewindNotification*/
-	public void notifyRew(){
+	public void notifyRew(String notificationId)
+	{
 		RewindNotification notificationEvent=new RewindNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyRew()
+{
+		// call the more general method with a null notification id.
+		this.notifyRew(null);
 	}
 	/*Notification: PlayNotification*/
-	public void notifyPlay(){
+	public void notifyPlay(String notificationId)
+	{
 		PlayNotification notificationEvent=new PlayNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyPlay()
+{
+		// call the more general method with a null notification id.
+		this.notifyPlay(null);
+	}
 	/*Notification: PausePlaybackNotification*/
-	public void notifyPause(){
+	public void notifyPause(String notificationId)
+	{
 		PausePlaybackNotification notificationEvent=new PausePlaybackNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dvd.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyPause()
+{
+		// call the more general method with a null notification id.
+		this.notifyPause(null);
 	}
 	@Override
 	public void updateStatus()

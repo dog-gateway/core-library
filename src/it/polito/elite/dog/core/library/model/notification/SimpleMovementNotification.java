@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,24 +33,82 @@ public class SimpleMovementNotification implements MovementNotification
 
 	public static String notificationTopic="it/polito/elite/dog/core/library/model/notification/SimpleMovementNotification";
 
+	public String notificationId;
+
 	private String deviceUri;
 
+	private String deviceClassName;
+
+	/**
+	* Get the URI of the device who generated the notification
+	* @return The device URI as a String
+	*/
 	public String getDeviceUri()
 	{
 		return this.deviceUri;
 	}
+
+	/**
+	* Set the URI of the device who generated the notification
+	* @param deviceUri The device URI as a String
+	*/
 	public void setDeviceUri(String deviceUri)
 	{
 		 this.deviceUri=deviceUri;
 	}
+
+	/**
+	* Get the simple name of the class of the device who generated the notification
+	* @return The device class as a String
+	*/
+	public String getDeviceClassName()
+	{
+		return this.deviceClassName;
+	}
+
+	/**
+	* Set the simple name of the class of the device who generated the notification
+	* @param deviceClassName The device class name as a String
+	*/
+	public void setDeviceClassName(String deviceClassName)
+	{
+		 this.deviceClassName=deviceClassName;
+	}
+
+	/**
+	* Get the topic of this notification
+	* @return The notification topic as a String
+	*/
 	public String getNotificationTopic()
 	{
 		 return SimpleMovementNotification.notificationTopic; 
 	}
 
+	/**
+	* Get the unique Id of this notification
+	* @return The notification id as a String
+	*/
+	public String getNotificationId()
+	{
+		return this.notificationId;
+	}
+
+	/**
+	* Set the unique Id of this notification
+	* @param notificationId The notification id as a String
+	*/
+	public void setNotificationId(String notificationId)
+	{
+		this.notificationId=notificationId;
+	}
+
+
 	public SimpleMovementNotification()
 	{
 
 	}
-
+	public Object getNotificationValue()
+	{
+		return null;
+	}
 }

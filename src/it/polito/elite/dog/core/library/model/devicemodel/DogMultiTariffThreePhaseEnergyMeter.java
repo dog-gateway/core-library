@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,18 +83,42 @@ public class DogMultiTariffThreePhaseEnergyMeter extends AbstractDevice implemen
 	/*Generated Notifications*/
 
 	/*Notification: MultiTariffThreePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(String phaseID, String tariffID, Measure<?,?>  value){
+	public void notifyNewReactiveEnergyValue(String phaseID, String tariffID, Measure<?,?>  value, String notificationId)
+	{
 		MultiTariffThreePhaseReactiveEnergyMeasurementNotification notificationEvent=new MultiTariffThreePhaseReactiveEnergyMeasurementNotification(phaseID , tariffID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MultiTariffThreePhaseEnergyMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyNewReactiveEnergyValue(String phaseID, String tariffID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewReactiveEnergyValue(phaseID , tariffID , value , null);
+	}
 	/*Notification: MultiTariffThreePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(String phaseID, String tariffID, Measure<?,?>  value){
+	public void notifyNewActiveEnergyValue(String phaseID, String tariffID, Measure<?,?>  value, String notificationId)
+	{
 		MultiTariffThreePhaseActiveEnergyMeasurementNotification notificationEvent=new MultiTariffThreePhaseActiveEnergyMeasurementNotification(phaseID , tariffID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MultiTariffThreePhaseEnergyMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewActiveEnergyValue(String phaseID, String tariffID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewActiveEnergyValue(phaseID , tariffID , value , null);
 	}
 	@Override
 	public void updateStatus()

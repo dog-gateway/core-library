@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,18 +63,42 @@ public class DogRockerSwitch extends AbstractDevice implements RockerSwitch
 	/*Generated Notifications*/
 
 	/*Notification: ReleasedMNotification*/
-	public void notifyReleased(String buttonID){
+	public void notifyReleased(String buttonID, String notificationId)
+	{
 		ReleasedMNotification notificationEvent=new ReleasedMNotification(buttonID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(RockerSwitch.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyReleased(String buttonID)
+{
+		// call the more general method with a null notification id.
+		this.notifyReleased(buttonID , null);
+	}
 	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
+	public void notifyPressed(String buttonID, String notificationId)
+	{
 		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(RockerSwitch.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyPressed(String buttonID)
+{
+		// call the more general method with a null notification id.
+		this.notifyPressed(buttonID , null);
 	}
 	@Override
 	public void updateStatus()

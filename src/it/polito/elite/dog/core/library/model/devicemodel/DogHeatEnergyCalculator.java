@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,39 +110,99 @@ public class DogHeatEnergyCalculator extends AbstractDevice implements HeatEnerg
 	/*Generated Notifications*/
 
 	/*Notification: FlowRateMeasurementNotification*/
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue){
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue, String notificationId)
+	{
 		FlowRateMeasurementNotification notificationEvent=new FlowRateMeasurementNotification(flowRateValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatEnergyCalculator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedFlowRateValue(flowRateValue , null);
 	}
 	/*Notification: MultipleEnergyMeasurementNotification*/
-	public void notifyNewEnergyValue(String sensorID, Measure<?,?>  value){
+	public void notifyNewEnergyValue(String sensorID, Measure<?,?>  value, String notificationId)
+	{
 		MultipleEnergyMeasurementNotification notificationEvent=new MultipleEnergyMeasurementNotification(sensorID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatEnergyCalculator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewEnergyValue(String sensorID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewEnergyValue(sensorID , value , null);
 	}
 	/*Notification: WaterVolumeMeasurementMNotification*/
-	public void notifyNewWaterVolumeAmount(String sensorID, Measure<?,?>  waterVolume){
+	public void notifyNewWaterVolumeAmount(String sensorID, Measure<?,?>  waterVolume, String notificationId)
+	{
 		WaterVolumeMeasurementMNotification notificationEvent=new WaterVolumeMeasurementMNotification(sensorID , waterVolume );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatEnergyCalculator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewWaterVolumeAmount(String sensorID, Measure<?,?>  waterVolume)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewWaterVolumeAmount(sensorID , waterVolume , null);
 	}
 	/*Notification: SinglePowerMeasurementNotification*/
-	public void notifyNewPowerValue(Measure<?,?>  value){
+	public void notifyNewPowerValue(Measure<?,?>  value, String notificationId)
+	{
 		SinglePowerMeasurementNotification notificationEvent=new SinglePowerMeasurementNotification(value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatEnergyCalculator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyNewPowerValue(Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPowerValue(value , null);
+	}
 	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID, String notificationId)
+	{
 		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatEnergyCalculator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedTemperatureAt(temperatureValue , sensorID , null);
 	}
 	@Override
 	public void updateStatus()

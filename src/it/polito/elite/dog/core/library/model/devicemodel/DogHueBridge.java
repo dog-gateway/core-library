@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,18 +79,42 @@ public class DogHueBridge extends AbstractDevice implements HueBridge
 	/*Generated Notifications*/
 
 	/*Notification: PushLinkAuthenticationIdleNotification*/
-	public void notifyDeactivatedPushLinkAuth(){
+	public void notifyDeactivatedPushLinkAuth(String notificationId)
+	{
 		PushLinkAuthenticationIdleNotification notificationEvent=new PushLinkAuthenticationIdleNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HueBridge.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyDeactivatedPushLinkAuth()
+{
+		// call the more general method with a null notification id.
+		this.notifyDeactivatedPushLinkAuth(null);
+	}
 	/*Notification: PushLinkAuthenticationActiveNotification*/
-	public void notifyActivatedPushLinkAuth(){
+	public void notifyActivatedPushLinkAuth(String notificationId)
+	{
 		PushLinkAuthenticationActiveNotification notificationEvent=new PushLinkAuthenticationActiveNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HueBridge.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyActivatedPushLinkAuth()
+{
+		// call the more general method with a null notification id.
+		this.notifyActivatedPushLinkAuth(null);
 	}
 	@Override
 	public void updateStatus()

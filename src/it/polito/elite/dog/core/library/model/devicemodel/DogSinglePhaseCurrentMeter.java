@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +74,23 @@ public class DogSinglePhaseCurrentMeter extends AbstractDevice implements Single
 	/*Generated Notifications*/
 
 	/*Notification: SinglePhaseCurrentMeasurementNotification*/
-	public void notifyNewCurrentValue(Measure<?,?>  value){
+	public void notifyNewCurrentValue(Measure<?,?>  value, String notificationId)
+	{
 		SinglePhaseCurrentMeasurementNotification notificationEvent=new SinglePhaseCurrentMeasurementNotification(value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(SinglePhaseCurrentMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewCurrentValue(Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewCurrentValue(value , null);
 	}
 	@Override
 	public void updateStatus()

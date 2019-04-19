@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +74,23 @@ public class DogLocalizationTag extends AbstractDevice implements LocalizationTa
 	/*Generated Notifications*/
 
 	/*Notification: XYZLocationNotification*/
-	public void notifyNew3DLocationValue(Measure<?,?>  z, Measure<?,?>  x, Measure<?,?>  y){
+	public void notifyNew3DLocationValue(Measure<?,?>  z, Measure<?,?>  x, Measure<?,?>  y, String notificationId)
+	{
 		XYZLocationNotification notificationEvent=new XYZLocationNotification(z , x , y );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(LocalizationTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNew3DLocationValue(Measure<?,?>  z, Measure<?,?>  x, Measure<?,?>  y)
+{
+		// call the more general method with a null notification id.
+		this.notifyNew3DLocationValue(z , x , y , null);
 	}
 	@Override
 	public void updateStatus()

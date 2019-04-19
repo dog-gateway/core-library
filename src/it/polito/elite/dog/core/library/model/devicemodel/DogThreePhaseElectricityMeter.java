@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,74 +155,194 @@ public class DogThreePhaseElectricityMeter extends AbstractDevice implements Thr
 	/*Generated Notifications*/
 
 	/*Notification: SimpleFrequencyMeasurementNotification*/
-	public void notifyNewFrequencyValue(Measure<?,?>  frequency){
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency, String notificationId)
+	{
 		SimpleFrequencyMeasurementNotification notificationEvent=new SimpleFrequencyMeasurementNotification(frequency );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewFrequencyValue(Measure<?,?>  frequency)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewFrequencyValue(frequency , null);
 	}
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(Measure<?,?>  value){
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value, String notificationId)
+	{
 		SinglePhaseReactiveEnergyMeasurementNotification notificationEvent=new SinglePhaseReactiveEnergyMeasurementNotification(value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
+
+	public void notifyNewReactiveEnergyValue(Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewReactiveEnergyValue(value , null);
 	}
 	/*Notification: ThreePhaseActivePowerMeasurementNotification*/
-	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseActivePowerMeasurementNotification notificationEvent=new ThreePhaseActivePowerMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewActivePowerValue(phaseID , value , null);
 	}
 	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
-	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseLNVoltageMeasurementNotification notificationEvent=new ThreePhaseLNVoltageMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseApparentPowerMeasurementNotification notificationEvent=new ThreePhaseApparentPowerMeasurementNotification(phaseID , value );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
+
+	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPhaseNeutralVoltageValue(phaseID , value , null);
 	}
 	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
-	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseReactivePowerMeasurementNotification notificationEvent=new ThreePhaseReactivePowerMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseCurrentMeasurementNotification*/
-	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseCurrentMeasurementNotification notificationEvent=new ThreePhaseCurrentMeasurementNotification(phaseID , value );
+
+	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewReactivePowerValue(phaseID , value , null);
+	}
+	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
+		ThreePhaseApparentPowerMeasurementNotification notificationEvent=new ThreePhaseApparentPowerMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewApparentPowerValue(phaseID , value , null);
 	}
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value, String notificationId)
+	{
 		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
-	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value){
-		ThreePhaseLLVoltageMeasurementNotification notificationEvent=new ThreePhaseLLVoltageMeasurementNotification(phaseID , value );
+
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewActiveEnergyValue(value , null);
+	}
+	/*Notification: ThreePhaseCurrentMeasurementNotification*/
+	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
+		ThreePhaseCurrentMeasurementNotification notificationEvent=new ThreePhaseCurrentMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewCurrentValue(phaseID , value , null);
+	}
+	/*Notification: SinglePhasePowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor, String notificationId)
+	{
+		SinglePhasePowerFactorMeasurementNotification notificationEvent=new SinglePhasePowerFactorMeasurementNotification(powerFactor );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPowerFactorValue(powerFactor , null);
+	}
+	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
+	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
+		ThreePhaseLLVoltageMeasurementNotification notificationEvent=new ThreePhaseLLVoltageMeasurementNotification(phaseID , value );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseElectricityMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPhasePhaseVoltageValue(phaseID , value , null);
 	}
 	@Override
 	public void updateStatus()

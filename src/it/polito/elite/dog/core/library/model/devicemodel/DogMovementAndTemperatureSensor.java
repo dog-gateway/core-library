@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,39 +90,99 @@ public class DogMovementAndTemperatureSensor extends AbstractDevice implements M
 	/*Generated Notifications*/
 
 	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
+	public void notifyLeftGroup(Integer groupNumber, String notificationId)
+	{
 		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MovementAndTemperatureSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyLeftGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyLeftGroup(groupNumber , null);
 	}
 	/*Notification: SimpleNoMovementNotification*/
-	public void notifyCeasedMovement(){
+	public void notifyCeasedMovement(String notificationId)
+	{
 		SimpleNoMovementNotification notificationEvent=new SimpleNoMovementNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MovementAndTemperatureSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyCeasedMovement()
+{
+		// call the more general method with a null notification id.
+		this.notifyCeasedMovement(null);
 	}
 	/*Notification: SimpleMovementNotification*/
-	public void notifyStartedMovement(){
+	public void notifyStartedMovement(String notificationId)
+	{
 		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MovementAndTemperatureSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStartedMovement()
+{
+		// call the more general method with a null notification id.
+		this.notifyStartedMovement(null);
 	}
 	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue, String notificationId)
+	{
 		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MovementAndTemperatureSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewTemperatureValue(temperatureValue , null);
+	}
 	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
+	public void notifyJoinedGroup(Integer groupNumber, String notificationId)
+	{
 		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MovementAndTemperatureSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyJoinedGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyJoinedGroup(groupNumber , null);
 	}
 	@Override
 	public void updateStatus()

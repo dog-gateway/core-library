@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,20 +53,20 @@ public interface SinglePhaseElectricityMeter extends SinglePhaseCurrentMeter, Fr
 
 	/*Notification: SimpleFrequencyMeasurementNotification*/
 	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
-	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
-	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
 	/*Notification: SinglePhaseApparentPowerMeasurementNotification*/
 	public void notifyNewApparentPowerValue(Measure<?,?>  powerValue);
+	/*Notification: SinglePhaseActivePowerMeasurementNotification*/
+	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
 	/*Notification: SinglePhaseCurrentMeasurementNotification*/
 	public void notifyNewCurrentValue(Measure<?,?>  value);
 	/*Notification: SinglePhaseVoltageMeasurementNotification*/
 	public void notifyNewPhaseNeutralVoltageValue(Measure<?,?>  lnVoltage);
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
 	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: SinglePhasePowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
 	/*Notification: SinglePhaseReactivePowerMeasurementNotification*/
 	public void notifyNewReactivePowerValue(Measure<?,?>  powerValue);
 	public void updateStatus();

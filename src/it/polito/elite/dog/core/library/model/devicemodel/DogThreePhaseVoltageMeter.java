@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,18 +83,42 @@ public class DogThreePhaseVoltageMeter extends AbstractDevice implements ThreePh
 	/*Generated Notifications*/
 
 	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
-	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseLNVoltageMeasurementNotification notificationEvent=new ThreePhaseLNVoltageMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseVoltageMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPhaseNeutralVoltageValue(phaseID , value , null);
+	}
 	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
-	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseLLVoltageMeasurementNotification notificationEvent=new ThreePhaseLLVoltageMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseVoltageMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPhasePhaseVoltageValue(phaseID , value , null);
 	}
 	@Override
 	public void updateStatus()

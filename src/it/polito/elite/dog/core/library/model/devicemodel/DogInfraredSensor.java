@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,18 +63,42 @@ public class DogInfraredSensor extends AbstractDevice implements InfraredSensor
 	/*Generated Notifications*/
 
 	/*Notification: DetectedNotification*/
-	public void notifyDetected(){
+	public void notifyDetected(String notificationId)
+	{
 		DetectedNotification notificationEvent=new DetectedNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(InfraredSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyDetected()
+{
+		// call the more general method with a null notification id.
+		this.notifyDetected(null);
+	}
 	/*Notification: NotDetectedNotification*/
-	public void notifyNotDetected(){
+	public void notifyNotDetected(String notificationId)
+	{
 		NotDetectedNotification notificationEvent=new NotDetectedNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(InfraredSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNotDetected()
+{
+		// call the more general method with a null notification id.
+		this.notifyNotDetected(null);
 	}
 	@Override
 	public void updateStatus()

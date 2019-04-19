@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,18 +83,42 @@ public class DogThreePhaseEnergyMeter extends AbstractDevice implements ThreePha
 	/*Generated Notifications*/
 
 	/*Notification: ThreePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewActiveEnergyValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseActiveEnergyMeasurementNotification notificationEvent=new ThreePhaseActiveEnergyMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseEnergyMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyNewActiveEnergyValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewActiveEnergyValue(phaseID , value , null);
+	}
 	/*Notification: ThreePhaseReactiveEnergyMeasurementNotification*/
-	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value){
+	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value, String notificationId)
+	{
 		ThreePhaseReactiveEnergyMeasurementNotification notificationEvent=new ThreePhaseReactiveEnergyMeasurementNotification(phaseID , value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThreePhaseEnergyMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewReactiveEnergyValue(String phaseID, Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewReactiveEnergyValue(phaseID , value , null);
 	}
 	@Override
 	public void updateStatus()

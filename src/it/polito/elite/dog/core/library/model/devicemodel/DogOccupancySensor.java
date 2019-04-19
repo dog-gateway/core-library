@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,18 +88,42 @@ public class DogOccupancySensor extends AbstractDevice implements OccupancySenso
 	/*Generated Notifications*/
 
 	/*Notification: IsPresentNotification*/
-	public void notifyIsPresent(){
+	public void notifyIsPresent(String notificationId)
+	{
 		IsPresentNotification notificationEvent=new IsPresentNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(OccupancySensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyIsPresent()
+{
+		// call the more general method with a null notification id.
+		this.notifyIsPresent(null);
+	}
 	/*Notification: NotPresentNotification*/
-	public void notifyNotPresent(){
+	public void notifyNotPresent(String notificationId)
+	{
 		NotPresentNotification notificationEvent=new NotPresentNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(OccupancySensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNotPresent()
+{
+		// call the more general method with a null notification id.
+		this.notifyNotPresent(null);
 	}
 	@Override
 	public void updateStatus()

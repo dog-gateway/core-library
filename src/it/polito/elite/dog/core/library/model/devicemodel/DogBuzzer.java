@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,18 +79,42 @@ public class DogBuzzer extends AbstractDevice implements Buzzer
 	/*Generated Notifications*/
 
 	/*Notification: OffNotification*/
-	public void notifyOff(){
+	public void notifyOff(String notificationId)
+	{
 		OffNotification notificationEvent=new OffNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Buzzer.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyOff()
+{
+		// call the more general method with a null notification id.
+		this.notifyOff(null);
+	}
 	/*Notification: OnNotification*/
-	public void notifyOn(){
+	public void notifyOn(String notificationId)
+	{
 		OnNotification notificationEvent=new OnNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Buzzer.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOn()
+{
+		// call the more general method with a null notification id.
+		this.notifyOn(null);
 	}
 	@Override
 	public void updateStatus()

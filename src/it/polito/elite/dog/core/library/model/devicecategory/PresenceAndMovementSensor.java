@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,10 +42,10 @@ public interface PresenceAndMovementSensor extends MovementSensor, PresenceSenso
 
 	/*Notification: SimpleNoMovementNotification*/
 	public void notifyCeasedMovement();
-	/*Notification: SimpleMovementNotification*/
-	public void notifyStartedMovement();
 	/*Notification: IsPresentNotification*/
 	public void notifyIsPresent();
+	/*Notification: SimpleMovementNotification*/
+	public void notifyStartedMovement();
 	/*Notification: NotPresentNotification*/
 	public void notifyNotPresent();
 	public void updateStatus();

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,25 +79,61 @@ public class DogZWaveGateway extends AbstractDevice implements ZWaveGateway
 	/*Generated Notifications*/
 
 	/*Notification: AssociatingDeviceNotification*/
-	public void notifyAssociating(){
+	public void notifyAssociating(String notificationId)
+	{
 		AssociatingDeviceNotification notificationEvent=new AssociatingDeviceNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ZWaveGateway.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyAssociating()
+{
+		// call the more general method with a null notification id.
+		this.notifyAssociating(null);
 	}
 	/*Notification: IdleNotification*/
-	public void notifyIdle(){
+	public void notifyIdle(String notificationId)
+	{
 		IdleNotification notificationEvent=new IdleNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ZWaveGateway.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyIdle()
+{
+		// call the more general method with a null notification id.
+		this.notifyIdle(null);
+	}
 	/*Notification: DisassociatingDeviceNotification*/
-	public void notifyDisassociating(){
+	public void notifyDisassociating(String notificationId)
+	{
 		DisassociatingDeviceNotification notificationEvent=new DisassociatingDeviceNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ZWaveGateway.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyDisassociating()
+{
+		// call the more general method with a null notification id.
+		this.notifyDisassociating(null);
 	}
 	@Override
 	public void updateStatus()

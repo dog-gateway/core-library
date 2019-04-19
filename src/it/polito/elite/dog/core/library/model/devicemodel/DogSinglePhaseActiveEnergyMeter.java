@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +74,23 @@ public class DogSinglePhaseActiveEnergyMeter extends AbstractDevice implements S
 	/*Generated Notifications*/
 
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
-	public void notifyNewActiveEnergyValue(Measure<?,?>  value){
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value, String notificationId)
+	{
 		SinglePhaseActiveEnergyMeasurementNotification notificationEvent=new SinglePhaseActiveEnergyMeasurementNotification(value );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(SinglePhaseActiveEnergyMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewActiveEnergyValue(Measure<?,?>  value)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewActiveEnergyValue(value , null);
 	}
 	@Override
 	public void updateStatus()

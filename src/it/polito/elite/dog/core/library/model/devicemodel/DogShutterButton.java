@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,18 +63,42 @@ public class DogShutterButton extends AbstractDevice implements ShutterButton
 	/*Generated Notifications*/
 
 	/*Notification: PressedUpNotification*/
-	public void notifyPressedUp(){
+	public void notifyPressedUp(String notificationId)
+	{
 		PressedUpNotification notificationEvent=new PressedUpNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterButton.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyPressedUp()
+{
+		// call the more general method with a null notification id.
+		this.notifyPressedUp(null);
+	}
 	/*Notification: PressedDownNotification*/
-	public void notifyPressedDown(){
+	public void notifyPressedDown(String notificationId)
+	{
 		PressedDownNotification notificationEvent=new PressedDownNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ShutterButton.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyPressedDown()
+{
+		// call the more general method with a null notification id.
+		this.notifyPressedDown(null);
 	}
 	@Override
 	public void updateStatus()

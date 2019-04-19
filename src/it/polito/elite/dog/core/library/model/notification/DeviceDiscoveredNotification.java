@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,23 +34,81 @@ public class DeviceDiscoveredNotification implements ParametricNotification, Blu
 
 	public static String notificationTopic="it/polito/elite/dog/core/library/model/notification/DeviceDiscoveredNotification";
 
+	public String notificationId;
+
 	private String deviceUri;
 
+	private String deviceClassName;
+
+	/**
+	* Get the URI of the device who generated the notification
+	* @return The device URI as a String
+	*/
 	public String getDeviceUri()
 	{
 		return this.deviceUri;
 	}
+
+	/**
+	* Set the URI of the device who generated the notification
+	* @param deviceUri The device URI as a String
+	*/
 	public void setDeviceUri(String deviceUri)
 	{
 		 this.deviceUri=deviceUri;
 	}
+
+	/**
+	* Get the simple name of the class of the device who generated the notification
+	* @return The device class as a String
+	*/
+	public String getDeviceClassName()
+	{
+		return this.deviceClassName;
+	}
+
+	/**
+	* Set the simple name of the class of the device who generated the notification
+	* @param deviceClassName The device class name as a String
+	*/
+	public void setDeviceClassName(String deviceClassName)
+	{
+		 this.deviceClassName=deviceClassName;
+	}
+
+	/**
+	* Get the topic of this notification
+	* @return The notification topic as a String
+	*/
 	public String getNotificationTopic()
 	{
 		 return DeviceDiscoveredNotification.notificationTopic; 
 	}
+
+	/**
+	* Get the unique Id of this notification
+	* @return The notification id as a String
+	*/
+	public String getNotificationId()
+	{
+		return this.notificationId;
+	}
+
+	/**
+	* Set the unique Id of this notification
+	* @param notificationId The notification id as a String
+	*/
+	public void setNotificationId(String notificationId)
+	{
+		this.notificationId=notificationId;
+	}
+
 	private String discoveredDeviceName;
+
 	private int discoveredDeviceRSSI;
+
 	private String discoveredDeviceMac;
+
 
 	public DeviceDiscoveredNotification(String discoveredDeviceName, int discoveredDeviceRSSI, String discoveredDeviceMac)
 	{
@@ -62,14 +120,20 @@ public class DeviceDiscoveredNotification implements ParametricNotification, Blu
 	@NotificationParam("discoveredDeviceName")
 	public String getDiscoveredDeviceName(){
 		return this.discoveredDeviceName;
-}
+	}
+
 	@NotificationParam("discoveredDeviceRSSI")
 	public int getDiscoveredDeviceRSSI(){
 		return this.discoveredDeviceRSSI;
-}
+	}
+
 	@NotificationParam("discoveredDeviceMac")
 	public String getDiscoveredDeviceMac(){
 		return this.discoveredDeviceMac;
-}
+	}
 
+	public Object getNotificationValue()
+	{
+		return null;
+	}
 }

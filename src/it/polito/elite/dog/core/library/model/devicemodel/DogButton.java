@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,18 +63,42 @@ public class DogButton extends AbstractDevice implements Button
 	/*Generated Notifications*/
 
 	/*Notification: ReleasedNotification*/
-	public void notifyReleased(){
+	public void notifyReleased(String notificationId)
+	{
 		ReleasedNotification notificationEvent=new ReleasedNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Button.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyReleased()
+{
+		// call the more general method with a null notification id.
+		this.notifyReleased(null);
+	}
 	/*Notification: PressedNotification*/
-	public void notifyPressed(){
+	public void notifyPressed(String notificationId)
+	{
 		PressedNotification notificationEvent=new PressedNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Button.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyPressed()
+{
+		// call the more general method with a null notification id.
+		this.notifyPressed(null);
 	}
 	@Override
 	public void updateStatus()

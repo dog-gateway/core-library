@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,10 +80,10 @@ public interface Fridge extends WhiteGoods
 	public void notifyStartedSuperCooling();
 	/*Notification: EndTimeChangedNotification*/
 	public void notifyChangedEndTime(Measure<?,?>  endTime);
-	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling();
 	/*Notification: StoppedSuperCoolingNotification*/
 	public void notifyStoppedSuperCooling();
+	/*Notification: StopHeatingCoolingNotification*/
+	public void notifyStoppedHeatingOrCooling();
 	/*Notification: StartTimeChangedNotification*/
 	public void notifyChangedStartTime(Measure<?,?>  startTime);
 	/*Notification: HeatNotification*/

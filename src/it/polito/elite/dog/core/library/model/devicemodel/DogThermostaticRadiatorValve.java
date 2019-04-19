@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,46 +133,118 @@ public class DogThermostaticRadiatorValve extends AbstractDevice implements Ther
 	/*Generated Notifications*/
 
 	/*Notification: CoolNotification*/
-	public void notifyCool(){
+	public void notifyCool(String notificationId)
+	{
 		CoolNotification notificationEvent=new CoolNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThermostaticRadiatorValve.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyCool()
+{
+		// call the more general method with a null notification id.
+		this.notifyCool(null);
 	}
 	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue, String notificationId)
+	{
 		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThermostaticRadiatorValve.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedDesiredTemperatureSetting(newTemperatureValue , null);
 	}
 	/*Notification: DailyClimateScheduleNotification*/
-	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule){
+	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule, String notificationId)
+	{
 		DailyClimateScheduleNotification notificationEvent=new DailyClimateScheduleNotification(daySchedule );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThermostaticRadiatorValve.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedDailyClimateSchedule(DailyClimateSchedule daySchedule)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedDailyClimateSchedule(daySchedule , null);
 	}
 	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
+	public void notifyStoppedHeatingOrCooling(String notificationId)
+	{
 		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThermostaticRadiatorValve.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStoppedHeatingOrCooling()
+{
+		// call the more general method with a null notification id.
+		this.notifyStoppedHeatingOrCooling(null);
 	}
 	/*Notification: HeatNotification*/
-	public void notifyHeat(){
+	public void notifyHeat(String notificationId)
+	{
 		HeatNotification notificationEvent=new HeatNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThermostaticRadiatorValve.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyHeat()
+{
+		// call the more general method with a null notification id.
+		this.notifyHeat(null);
+	}
 	/*Notification: WeeklyClimateScheduleNotification*/
-	public void notifyChangedWeeklyClimateSchedule(DailyClimateSchedule[] dailySchedules){
+	public void notifyChangedWeeklyClimateSchedule(DailyClimateSchedule[] dailySchedules, String notificationId)
+	{
 		WeeklyClimateScheduleNotification notificationEvent=new WeeklyClimateScheduleNotification(dailySchedules );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(ThermostaticRadiatorValve.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedWeeklyClimateSchedule(DailyClimateSchedule[] dailySchedules)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedWeeklyClimateSchedule(dailySchedules , null);
 	}
 	@Override
 	public void updateStatus()

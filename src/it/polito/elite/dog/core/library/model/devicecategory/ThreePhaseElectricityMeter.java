@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,20 +56,20 @@ public interface ThreePhaseElectricityMeter extends ThreePhaseReactivePowerMeter
 	public void notifyNewFrequencyValue(Measure<?,?>  frequency);
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
 	/*Notification: ThreePhaseActivePowerMeasurementNotification*/
 	public void notifyNewActivePowerValue(String phaseID, Measure<?,?>  value);
 	/*Notification: ThreePhaseLNVoltageMeasurementNotification*/
 	public void notifyNewPhaseNeutralVoltageValue(String phaseID, Measure<?,?>  value);
-	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
-	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value);
 	/*Notification: ThreePhaseReactivePowerMeasurementNotification*/
 	public void notifyNewReactivePowerValue(String phaseID, Measure<?,?>  value);
-	/*Notification: ThreePhaseCurrentMeasurementNotification*/
-	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value);
+	/*Notification: ThreePhaseApparentPowerMeasurementNotification*/
+	public void notifyNewApparentPowerValue(String phaseID, Measure<?,?>  value);
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
 	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: ThreePhaseCurrentMeasurementNotification*/
+	public void notifyNewCurrentValue(String phaseID, Measure<?,?>  value);
+	/*Notification: SinglePhasePowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor);
 	/*Notification: ThreePhaseLLVoltageMeasurementNotification*/
 	public void notifyNewPhasePhaseVoltageValue(String phaseID, Measure<?,?>  value);
 	public void updateStatus();

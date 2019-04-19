@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,10 +63,10 @@ public interface EnergyAndPowerMeteringLevelControllableOutput extends LevelCont
 	public void notifyLeftGroup(Integer groupNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
-	/*Notification: OnNotification*/
-	public void notifyOn();
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/
 	public void notifyNewActiveEnergyValue(Measure<?,?>  value);
+	/*Notification: OnNotification*/
+	public void notifyOn();
 	/*Notification: JoinGroupNotification*/
 	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: DeleteSceneNotification*/

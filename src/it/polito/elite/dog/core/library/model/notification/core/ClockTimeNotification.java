@@ -27,71 +27,104 @@ import it.polito.elite.dog.core.library.model.notification.ParametricNotificatio
  */
 public class ClockTimeNotification implements ParametricNotification
 {
-	// the notification name
-	public static String notificationName = "clockTick";
+    // the notification name
+    public static String notificationName = "clockTick";
 
-	// the notification topic
-	public static String notificationTopic = "it/polito/elite/dog/core/library/model/notification/core/ClockTimeNotification";
+    // the notification topic
+    public static String notificationTopic = "it/polito/elite/dog/core/library/model/notification/core/ClockTimeNotification";
 
-	// the uri of the device sending the notification
-	private String deviceUri;
+    // the uri of the device sending the notification
+    private String deviceUri;
 
-	// the time instant represented by this clock notification
-	private Calendar clockTick;
+    // the class of the device sending the notification
+    private String deviceClassName;
 
-	/**
-	 * Creates a clock time notification encapsulating the time in which the
-	 * notification was created.
-	 */
-	public ClockTimeNotification()
-	{
-		// gets a calendar object representing the instance in which the object
-		// was created, using the default time zone and locale of the jvm of the
-		// host machine running Dog
-		this.clockTick = Calendar.getInstance();
-	}
+    // the time instant represented by this clock notification
+    private Calendar clockTick;
 
-	/**
-	 * Creates a clock tick notification encapsulating a given time instant
-	 * represented as a {@link Calendar} instance.
-	 * 
-	 * @param clockTick
-	 */
-	public ClockTimeNotification(Calendar clockTick)
-	{
-		this.clockTick = clockTick;
-	}
+    public String notificationId;
 
-	/**
-	 * Get the clock tick hosted by this notification
-	 * 
-	 * @return
-	 */
-	public Calendar getClockTick()
-	{
-		return this.clockTick;
-	}
+    /**
+     * Creates a clock time notification encapsulating the time in which the
+     * notification was created.
+     */
+    public ClockTimeNotification()
+    {
+        // gets a calendar object representing the instance in which the object
+        // was created, using the default time zone and locale of the jvm of the
+        // host machine running Dog
+        this.clockTick = Calendar.getInstance();
+    }
 
-	@Override
-	public String getDeviceUri()
-	{
-		// in principle should always be the inner clock bundle, however in a
-		// near future it may be leveraged by other devices...
-		return deviceUri;
-	}
+    /**
+     * Creates a clock tick notification encapsulating a given time instant
+     * represented as a {@link Calendar} instance.
+     * 
+     * @param clockTick
+     */
+    public ClockTimeNotification(Calendar clockTick)
+    {
+        this.clockTick = clockTick;
+    }
 
-	@Override
-	public void setDeviceUri(String deviceUri)
-	{
-		// set the URI of the device generating this notification
-		this.deviceUri = deviceUri;
-	}
+    /**
+     * Get the clock tick hosted by this notification
+     * 
+     * @return
+     */
+    public Calendar getClockTick()
+    {
+        return this.clockTick;
+    }
 
-	@Override
-	public String getNotificationTopic()
-	{
-		// TODO Auto-generated method stub
-		return ClockTimeNotification.notificationTopic;
-	}
+    @Override
+    public String getDeviceUri()
+    {
+        // in principle should always be the inner clock bundle, however in a
+        // near future it may be leveraged by other devices...
+        return deviceUri;
+    }
 
+    @Override
+    public void setDeviceUri(String deviceUri)
+    {
+        // set the URI of the device generating this notification
+        this.deviceUri = deviceUri;
+    }
+
+    @Override
+    public String getNotificationTopic()
+    {
+        // TODO Auto-generated method stub
+        return ClockTimeNotification.notificationTopic;
+    }
+
+    public String getNotificationId()
+    {
+        return this.notificationId;
+    }
+
+    public void setNotificationId(String notificationId)
+    {
+        this.notificationId = notificationId;
+    }
+
+    @Override
+    public String getDeviceClassName()
+    {
+        // TODO Auto-generated method stub
+        return this.deviceClassName;
+    }
+
+    @Override
+    public void setDeviceClassName(String deviceClassName)
+    {
+        this.deviceClassName = deviceClassName;
+    }
+
+    @Override
+    public Object getNotificationValue()
+    {
+        return this.clockTick;
+    }
 }

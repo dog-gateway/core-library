@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,18 +83,42 @@ public class DogWaterConsumptionMeter extends AbstractDevice implements WaterCon
 	/*Generated Notifications*/
 
 	/*Notification: HotWaterM3MeasurementNotification*/
-	public void notifyNewHotWaterAmountInM3(Measure<?,?>  m3OfHotWater){
+	public void notifyNewHotWaterAmountInM3(Measure<?,?>  m3OfHotWater, String notificationId)
+	{
 		HotWaterM3MeasurementNotification notificationEvent=new HotWaterM3MeasurementNotification(m3OfHotWater );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(WaterConsumptionMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyNewHotWaterAmountInM3(Measure<?,?>  m3OfHotWater)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewHotWaterAmountInM3(m3OfHotWater , null);
+	}
 	/*Notification: ColdWaterM3MeasurementNotification*/
-	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater){
+	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater, String notificationId)
+	{
 		ColdWaterM3MeasurementNotification notificationEvent=new ColdWaterM3MeasurementNotification(m3OfColdWater );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(WaterConsumptionMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewColdWaterAmountInM3(Measure<?,?>  m3OfColdWater)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewColdWaterAmountInM3(m3OfColdWater , null);
 	}
 	@Override
 	public void updateStatus()

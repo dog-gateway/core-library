@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,12 +73,24 @@ public class DogPowerFactorMeter extends AbstractDevice implements PowerFactorMe
 
 	/*Generated Notifications*/
 
-	/*Notification: PowerFactorMeasurementNotification*/
-	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor){
-		PowerFactorMeasurementNotification notificationEvent=new PowerFactorMeasurementNotification(powerFactor );
+	/*Notification: SinglePhasePowerFactorMeasurementNotification*/
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor, String notificationId)
+	{
+		SinglePhasePowerFactorMeasurementNotification notificationEvent=new SinglePhasePowerFactorMeasurementNotification(powerFactor );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(PowerFactorMeter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewPowerFactorValue(Measure<?,?>  powerFactor)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPowerFactorValue(powerFactor , null);
 	}
 	@Override
 	public void updateStatus()

@@ -45,6 +45,7 @@ public class MonitorNotification implements Notification {
 	private HashSet<DeviceStatus> deviceStatusSet;
 	// The notification listeners
 	private String listener;
+	public String notificationId;
 	
 	/**
 	 * A notification for Scheduler StateMonitorJob
@@ -101,4 +102,26 @@ public class MonitorNotification implements Notification {
 		
 	}
 
+	public String getNotificationId()
+    {
+        return this.notificationId;
+    }
+    public void setNotificationId(String notificationId)
+    {
+        this.notificationId=notificationId;
+    }
+
+    @Override
+    public String getDeviceClassName()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setDeviceClassName(String deviceClassName)
+    {
+        // TODO Auto-generated method stub
+        
+    }
 }

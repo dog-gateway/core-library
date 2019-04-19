@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,25 +79,61 @@ public class DogBluetoothAdapter extends AbstractDevice implements BluetoothAdap
 	/*Generated Notifications*/
 
 	/*Notification: DiscoveryActiveNotification*/
-	public void notifyActivatedDiscovery(){
+	public void notifyActivatedDiscovery(String notificationId)
+	{
 		DiscoveryActiveNotification notificationEvent=new DiscoveryActiveNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(BluetoothAdapter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyActivatedDiscovery()
+{
+		// call the more general method with a null notification id.
+		this.notifyActivatedDiscovery(null);
 	}
 	/*Notification: DiscoveryIdleNotification*/
-	public void notifyDeactivatedDiscovery(){
+	public void notifyDeactivatedDiscovery(String notificationId)
+	{
 		DiscoveryIdleNotification notificationEvent=new DiscoveryIdleNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(BluetoothAdapter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyDeactivatedDiscovery()
+{
+		// call the more general method with a null notification id.
+		this.notifyDeactivatedDiscovery(null);
+	}
 	/*Notification: DeviceDiscoveredNotification*/
-	public void notifyDiscoveredDevice(String discoveredDeviceName, int discoveredDeviceRSSI, String discoveredDeviceMac){
+	public void notifyDiscoveredDevice(String discoveredDeviceName, int discoveredDeviceRSSI, String discoveredDeviceMac, String notificationId)
+	{
 		DeviceDiscoveredNotification notificationEvent=new DeviceDiscoveredNotification(discoveredDeviceName , discoveredDeviceRSSI , discoveredDeviceMac );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(BluetoothAdapter.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyDiscoveredDevice(String discoveredDeviceName, int discoveredDeviceRSSI, String discoveredDeviceMac)
+{
+		// call the more general method with a null notification id.
+		this.notifyDiscoveredDevice(discoveredDeviceName , discoveredDeviceRSSI , discoveredDeviceMac , null);
 	}
 	@Override
 	public void updateStatus()

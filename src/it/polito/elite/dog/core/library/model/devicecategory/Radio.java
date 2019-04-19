@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,12 +52,12 @@ public interface Radio extends Entertainment
 
 	/*Generated Notifications*/
 
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
 	/*Notification: ChannelControlNotification*/
 	public void notifyChangedChannel(String channelId);
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel);
 	/*Notification: TuningStepUpNotification*/
 	public void notifyChannelStepDown();
 	/*Notification: OffNotification*/

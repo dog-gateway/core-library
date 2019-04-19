@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,32 +79,80 @@ public class DogWindowActuator extends AbstractDevice implements WindowActuator
 	/*Generated Notifications*/
 
 	/*Notification: OpenNotification*/
-	public void notifyOpen(){
+	public void notifyOpen(String notificationId)
+	{
 		OpenNotification notificationEvent=new OpenNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(WindowActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOpen()
+{
+		// call the more general method with a null notification id.
+		this.notifyOpen(null);
 	}
 	/*Notification: SimpleNoMovementNotification*/
-	public void notifyCeasedMovement(){
+	public void notifyCeasedMovement(String notificationId)
+	{
 		SimpleNoMovementNotification notificationEvent=new SimpleNoMovementNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(WindowActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyCeasedMovement()
+{
+		// call the more general method with a null notification id.
+		this.notifyCeasedMovement(null);
 	}
 	/*Notification: SimpleMovementNotification*/
-	public void notifyStartedMovement(){
+	public void notifyStartedMovement(String notificationId)
+	{
 		SimpleMovementNotification notificationEvent=new SimpleMovementNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(WindowActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyStartedMovement()
+{
+		// call the more general method with a null notification id.
+		this.notifyStartedMovement(null);
+	}
 	/*Notification: CloseNotification*/
-	public void notifyClose(){
+	public void notifyClose(String notificationId)
+	{
 		CloseNotification notificationEvent=new CloseNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(WindowActuator.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyClose()
+{
+		// call the more general method with a null notification id.
+		this.notifyClose(null);
 	}
 	@Override
 	public void updateStatus()

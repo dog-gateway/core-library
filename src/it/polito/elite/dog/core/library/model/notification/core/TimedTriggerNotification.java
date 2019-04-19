@@ -21,60 +21,92 @@ import it.polito.elite.dog.core.library.model.notification.ParametricNotificatio
 
 public class TimedTriggerNotification implements ParametricNotification
 {
-	/**
-	 * The unique notification topic
-	 */
-	public static String notificationTopic = "it/polito/elite/domotics/model/notification/TimedTriggerNotification";
-	
-	/**
-	 * The unique notification name
-	 */
-	public static String notificationName = "monitor";
-	
-	private String triggerId;
+    /**
+     * The unique notification topic
+     */
+    public static String notificationTopic = "it/polito/elite/domotics/model/notification/TimedTriggerNotification";
 
-	private String deviceUri = "DogScheduler";
-	
-	/**
-	 * @return the triggerId
-	 */
-	public String getTriggerId()
-	{
-		return triggerId;
-	}
+    /**
+     * The unique notification name
+     */
+    public static String notificationName = "monitor";
 
-	/**
-	 * @param triggerId the triggerId to set
-	 */
-	public void setTriggerId(String triggerId)
-	{
-		this.triggerId = triggerId;
-	}
+    private String triggerId;
 
-	public TimedTriggerNotification()
-	{
-		super();
-	}
-	
-	@Override
-	public String getDeviceUri()
-	{
-		return deviceUri;
-	}
+    private String deviceUri = "DogScheduler";
 
-	@Override
-	public void setDeviceUri(String deviceUri)
-	{
-		this.deviceUri = deviceUri;
-		
-	}
+    private String deviceClassName;
 
-	@Override
-	public String getNotificationTopic()
-	{
-		return TimedTriggerNotification.notificationTopic;
-	}
-	
-	
-	
+    public String notificationId;
+
+    /**
+     * @return the triggerId
+     */
+    public String getTriggerId()
+    {
+        return triggerId;
+    }
+
+    /**
+     * @param triggerId
+     *            the triggerId to set
+     */
+    public void setTriggerId(String triggerId)
+    {
+        this.triggerId = triggerId;
+    }
+
+    public TimedTriggerNotification()
+    {
+        super();
+    }
+
+    @Override
+    public String getDeviceUri()
+    {
+        return deviceUri;
+    }
+
+    @Override
+    public void setDeviceUri(String deviceUri)
+    {
+        this.deviceUri = deviceUri;
+
+    }
+
+    @Override
+    public String getNotificationTopic()
+    {
+        return TimedTriggerNotification.notificationTopic;
+    }
+
+    public String getNotificationId()
+    {
+        return this.notificationId;
+    }
+
+    public void setNotificationId(String notificationId)
+    {
+        this.notificationId = notificationId;
+    }
+
+    @Override
+    public String getDeviceClassName()
+    {
+        // TODO Auto-generated method stub
+        return this.deviceClassName;
+    }
+
+    @Override
+    public void setDeviceClassName(String deviceClassName)
+    {
+        this.deviceClassName = deviceClassName;
+    }
+
+    @Override
+    public Object getNotificationValue()
+    {
+        return this.triggerId;
+    }
+
 }

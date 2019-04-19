@@ -41,6 +41,8 @@ public interface DeviceCostants extends Constants
 	public static final String DEVICESTATE = "DEVICESTATE";
 	public static final String TYPE = "TYPE";
 	public static final String DEVICELOCATION = "DEVICELOCATION";
+	/* Constants for notifications */
+	public static final String NOTIFICATION_ID = "NOTIFICATIONID";
 	// gateway-specific property used to trigger modified services
 	// to re-start attachment of idle devices every time a new gateway joins its
 	// driver.

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -117,67 +117,175 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 	/*Generated Notifications*/
 
 	/*Notification: TridimensionalAccelerationNotification*/
-	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX){
+	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX, String notificationId)
+	{
 		TridimensionalAccelerationNotification notificationEvent=new TridimensionalAccelerationNotification(accY , accZ , accX );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNew3DAccelerationValue(Measure<?,?>  accY, Measure<?,?>  accZ, Measure<?,?>  accX)
+{
+		// call the more general method with a null notification id.
+		this.notifyNew3DAccelerationValue(accY , accZ , accX , null);
 	}
 	/*Notification: ReleasedMNotification*/
-	public void notifyReleased(String buttonID){
+	public void notifyReleased(String buttonID, String notificationId)
+	{
 		ReleasedMNotification notificationEvent=new ReleasedMNotification(buttonID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyReleased(String buttonID)
+{
+		// call the more general method with a null notification id.
+		this.notifyReleased(buttonID , null);
 	}
 	/*Notification: TridimensionalMagnetometerNotification*/
-	public void notifyNew3DMagnetometerValue(Measure<?,?>  magY, Measure<?,?>  magZ, Measure<?,?>  magX){
+	public void notifyNew3DMagnetometerValue(Measure<?,?>  magY, Measure<?,?>  magZ, Measure<?,?>  magX, String notificationId)
+	{
 		TridimensionalMagnetometerNotification notificationEvent=new TridimensionalMagnetometerNotification(magY , magZ , magX );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNew3DMagnetometerValue(Measure<?,?>  magY, Measure<?,?>  magZ, Measure<?,?>  magX)
+{
+		// call the more general method with a null notification id.
+		this.notifyNew3DMagnetometerValue(magY , magZ , magX , null);
 	}
 	/*Notification: HumidityMeasurementNotification*/
-	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity){
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity, String notificationId)
+	{
 		HumidityMeasurementNotification notificationEvent=new HumidityMeasurementNotification(relativeHumidity );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedRelativeHumidity(relativeHumidity , null);
 	}
 	/*Notification: PressureMeasurementNotification*/
-	public void notifyNewPressureValue(Measure<?,?>  pressureValue){
+	public void notifyNewPressureValue(Measure<?,?>  pressureValue, String notificationId)
+	{
 		PressureMeasurementNotification notificationEvent=new PressureMeasurementNotification(pressureValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: TridimensionalGyroscopeNotification*/
-	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY){
-		TridimensionalGyroscopeNotification notificationEvent=new TridimensionalGyroscopeNotification(gyroZ , gyroX , gyroY );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
+
+	public void notifyNewPressureValue(Measure<?,?>  pressureValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPressureValue(pressureValue , null);
 	}
 	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID){
+	public void notifyPressed(String buttonID, String notificationId)
+	{
 		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyPressed(String buttonID)
+{
+		// call the more general method with a null notification id.
+		this.notifyPressed(buttonID , null);
+	}
+	/*Notification: TridimensionalGyroscopeNotification*/
+	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY, String notificationId)
+	{
+		TridimensionalGyroscopeNotification notificationEvent=new TridimensionalGyroscopeNotification(gyroZ , gyroX , gyroY );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY)
+{
+		// call the more general method with a null notification id.
+		this.notifyNew3DGyroscopeValue(gyroZ , gyroX , gyroY , null);
 	}
 	/*Notification: TemperatureMeasurementMNotification*/
-	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID){
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID, String notificationId)
+	{
 		TemperatureMeasurementMNotification notificationEvent=new TemperatureMeasurementMNotification(temperatureValue , sensorID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedTemperatureAt(temperatureValue , sensorID , null);
+	}
 	/*Notification: LuminosityMeasurementNotification*/
-	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue){
+	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue, String notificationId)
+	{
 		LuminosityMeasurementNotification notificationEvent=new LuminosityMeasurementNotification(luminosityValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewLuminosityValue(Measure<?,?>  luminosityValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewLuminosityValue(luminosityValue , null);
 	}
 	@Override
 	public void updateStatus()

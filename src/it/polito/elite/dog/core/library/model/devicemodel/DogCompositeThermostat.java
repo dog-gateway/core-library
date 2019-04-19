@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,75 +155,195 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 
 	/*Generated Notifications*/
 
-	/*Notification: SpeedControlNotification*/
-	public void notifyChangedSpeed(Measure<?,?>  newSpeed){
-		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber, String notificationId)
+	{
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+
+	public void notifyLeftGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyLeftGroup(groupNumber , null);
+	}
+	/*Notification: SpeedControlNotification*/
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed, String notificationId)
+	{
+		SpeedControlNotification notificationEvent=new SpeedControlNotification(newSpeed );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedSpeed(Measure<?,?>  newSpeed)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedSpeed(newSpeed , null);
 	}
 	/*Notification: CoolNotification*/
-	public void notifyCool(){
+	public void notifyCool(String notificationId)
+	{
 		CoolNotification notificationEvent=new CoolNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyCool()
+{
+		// call the more general method with a null notification id.
+		this.notifyCool(null);
 	}
 	/*Notification: SpeedStepDownNotification*/
-	public void notifySpeedDown(){
+	public void notifySpeedDown(String notificationId)
+	{
 		SpeedStepDownNotification notificationEvent=new SpeedStepDownNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifySpeedDown()
+{
+		// call the more general method with a null notification id.
+		this.notifySpeedDown(null);
 	}
 	/*Notification: ChangedDesiredTemperatureNotification*/
-	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue){
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue, String notificationId)
+	{
 		ChangedDesiredTemperatureNotification notificationEvent=new ChangedDesiredTemperatureNotification(newTemperatureValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedDesiredTemperatureSetting(Measure<?,?>  newTemperatureValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedDesiredTemperatureSetting(newTemperatureValue , null);
 	}
 	/*Notification: HumidityMeasurementNotification*/
-	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity){
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity, String notificationId)
+	{
 		HumidityMeasurementNotification notificationEvent=new HumidityMeasurementNotification(relativeHumidity );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedRelativeHumidity(relativeHumidity , null);
 	}
 	/*Notification: SpeedStepUpNotification*/
-	public void notifySpeedUp(){
+	public void notifySpeedUp(String notificationId)
+	{
 		SpeedStepUpNotification notificationEvent=new SpeedStepUpNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifySpeedUp()
+{
+		// call the more general method with a null notification id.
+		this.notifySpeedUp(null);
 	}
 	/*Notification: StopHeatingCoolingNotification*/
-	public void notifyStoppedHeatingOrCooling(){
+	public void notifyStoppedHeatingOrCooling(String notificationId)
+	{
 		StopHeatingCoolingNotification notificationEvent=new StopHeatingCoolingNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStoppedHeatingOrCooling()
+{
+		// call the more general method with a null notification id.
+		this.notifyStoppedHeatingOrCooling(null);
 	}
 	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
+	public void notifyJoinedGroup(Integer groupNumber, String notificationId)
+	{
 		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyJoinedGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyJoinedGroup(groupNumber , null);
+	}
 	/*Notification: HeatNotification*/
-	public void notifyHeat(){
+	public void notifyHeat(String notificationId)
+	{
 		HeatNotification notificationEvent=new HeatNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyHeat()
+{
+		// call the more general method with a null notification id.
+		this.notifyHeat(null);
 	}
 	@Override
 	public void updateStatus()

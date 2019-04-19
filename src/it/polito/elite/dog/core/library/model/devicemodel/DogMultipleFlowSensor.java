@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +74,23 @@ public class DogMultipleFlowSensor extends AbstractDevice implements MultipleFlo
 	/*Generated Notifications*/
 
 	/*Notification: FlowRateMeasurementMNotification*/
-	public void notifyChangedFlowRateAt(Measure<?,?>  flowRateValue, String sensorID){
+	public void notifyChangedFlowRateAt(Measure<?,?>  flowRateValue, String sensorID, String notificationId)
+	{
 		FlowRateMeasurementMNotification notificationEvent=new FlowRateMeasurementMNotification(flowRateValue , sensorID );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(MultipleFlowSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedFlowRateAt(Measure<?,?>  flowRateValue, String sensorID)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedFlowRateAt(flowRateValue , sensorID , null);
 	}
 	@Override
 	public void updateStatus()

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ package it.polito.elite.dog.core.library.model.state;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.PowerFactorStateValue;
 
 
 
@@ -44,33 +43,6 @@ public class PowerFactorMeasurementState extends ContinuousState
 	private static final long serialVersionUID = 1L;
 
 
-
-	/**
-	 * Class constructor for states inheriting from ContinuousState.
-	 */
-	public PowerFactorMeasurementState(PowerFactorStateValue powerfactorstatevalue)
-	{
-		//call the super class constructor
-		super(powerfactorstatevalue);
-	}
-	/**
-	 * Creates a state object in the Dog2.0 old way (before May 2012).
-	 * 
-	 * @param valueOfTheCurrentStateValue
-	 */
-	@Deprecated
-	public PowerFactorMeasurementState(Object valueOfTheCurrentStateValue)
-	{
-		this.valueOfTheCurrentStateValue = valueOfTheCurrentStateValue;
-
-		if(!(valueOfTheCurrentStateValue instanceof String))
-		{
-			PowerFactorStateValue sValue = new PowerFactorStateValue();
-			sValue.setValue(valueOfTheCurrentStateValue);
-			this.currentStateValue[0]=sValue;
-
-		}
-	}
 
 	/**
 	 * Class constructor.

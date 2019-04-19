@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +74,23 @@ public class DogCo2Sensor extends AbstractDevice implements Co2Sensor
 	/*Generated Notifications*/
 
 	/*Notification: Co2MeasurementNotification*/
-	public void notifyChangedCo2Concentration(Measure<?,?>  co2Concentration){
+	public void notifyChangedCo2Concentration(Measure<?,?>  co2Concentration, String notificationId)
+	{
 		Co2MeasurementNotification notificationEvent=new Co2MeasurementNotification(co2Concentration );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Co2Sensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedCo2Concentration(Measure<?,?>  co2Concentration)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedCo2Concentration(co2Concentration , null);
 	}
 	@Override
 	public void updateStatus()

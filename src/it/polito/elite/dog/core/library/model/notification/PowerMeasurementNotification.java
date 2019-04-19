@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,48 @@ package it.polito.elite.dog.core.library.model.notification;
 
 public interface PowerMeasurementNotification extends ParametricNotification
 {
+	/**
+	* Get the URI of the device who generated the notification
+	* @return The device URI as a String
+	*/
 	public String getDeviceUri();
+
+	/**
+	* Set the URI of the device who generated the notification
+	* @param deviceUri The device URI as a String
+	*/
 	public void setDeviceUri(String deviceUri);
+
+	/**
+	* Get the simple name of the class of the device who generated the notification
+	* @return The device class as a String
+	*/
+	public String getDeviceClassName();
+
+	/**
+	* Set the simple name of the class of the device who generated the notification
+	* @param deviceClassName The device class name as a String
+	*/
+	public void setDeviceClassName(String deviceClassName);
+
+	/**
+	* Get the topic of this notification
+	* @return The notification topic as a String
+	*/
 	public String getNotificationTopic();
+
+	/**
+	* Get the unique Id of this notification
+	* @return The notification id as a String
+	*/
+	public String getNotificationId();
+
+	/**
+	* Set the unique Id of this notification
+	* @param notificationId The notification id as a String
+	*/
+	public void setNotificationId(String notificationId);
+
+	public Object getNotificationValue();
 
 }

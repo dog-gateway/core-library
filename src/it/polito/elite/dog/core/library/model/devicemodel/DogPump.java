@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -163,75 +163,195 @@ public class DogPump extends AbstractDevice implements Pump
 
 	/*Generated Notifications*/
 
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
 	/*Notification: FlowRateMeasurementNotification*/
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue){
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue, String notificationId)
+	{
 		FlowRateMeasurementNotification notificationEvent=new FlowRateMeasurementNotification(flowRateValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber){
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedFlowRateValue(flowRateValue , null);
+	}
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel, String notificationId)
+	{
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedLevel(Measure<?,?>  newLevel)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedLevel(newLevel , null);
 	}
 	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber){
+	public void notifyStoredScene(Integer sceneNumber, String notificationId)
+	{
 		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStoredScene(Integer sceneNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyStoredScene(sceneNumber , null);
+	}
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber, String notificationId)
+	{
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyLeftGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyLeftGroup(groupNumber , null);
 	}
 	/*Notification: OffNotification*/
-	public void notifyOff(){
+	public void notifyOff(String notificationId)
+	{
 		OffNotification notificationEvent=new OffNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOff()
+{
+		// call the more general method with a null notification id.
+		this.notifyOff(null);
 	}
 	/*Notification: OnNotification*/
-	public void notifyOn(){
+	public void notifyOn(String notificationId)
+	{
 		OnNotification notificationEvent=new OnNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOn()
+{
+		// call the more general method with a null notification id.
+		this.notifyOn(null);
 	}
 	/*Notification: PressureMeasurementNotification*/
-	public void notifyNewPressureValue(Measure<?,?>  pressureValue){
+	public void notifyNewPressureValue(Measure<?,?>  pressureValue, String notificationId)
+	{
 		PressureMeasurementNotification notificationEvent=new PressureMeasurementNotification(pressureValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewPressureValue(Measure<?,?>  pressureValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewPressureValue(pressureValue , null);
 	}
 	/*Notification: TemperatureMeasurementNotification*/
-	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue){
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue, String notificationId)
+	{
 		TemperatureMeasurementNotification notificationEvent=new TemperatureMeasurementNotification(temperatureValue );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewTemperatureValue(temperatureValue , null);
 	}
 	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber){
+	public void notifyJoinedGroup(Integer groupNumber, String notificationId)
+	{
 		JoinGroupNotification notificationEvent=new JoinGroupNotification(groupNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyJoinedGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyJoinedGroup(groupNumber , null);
+	}
 	/*Notification: DeleteSceneNotification*/
-	public void notifyDeletedScene(Integer sceneNumber){
+	public void notifyDeletedScene(Integer sceneNumber, String notificationId)
+	{
 		DeleteSceneNotification notificationEvent=new DeleteSceneNotification(sceneNumber );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Pump.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyDeletedScene(Integer sceneNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyDeletedScene(sceneNumber , null);
 	}
 	@Override
 	public void updateStatus()

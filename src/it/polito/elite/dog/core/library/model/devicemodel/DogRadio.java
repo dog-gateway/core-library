@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2017 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,54 +144,138 @@ public class DogRadio extends AbstractDevice implements Radio
 
 	/*Generated Notifications*/
 
-	/*Notification: LevelControlNotification*/
-	public void notifyChangedLevel(Measure<?,?>  newLevel){
-		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+	/*Notification: StandByNotification*/
+	public void notifyStandby(String notificationId)
+	{
+		StandByNotification notificationEvent=new StandByNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
-	/*Notification: StandByNotification*/
-	public void notifyStandby(){
-		StandByNotification notificationEvent=new StandByNotification();
-		notificationEvent.setDeviceUri(this.deviceId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
+
+	public void notifyStandby()
+{
+		// call the more general method with a null notification id.
+		this.notifyStandby(null);
 	}
 	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId){
+	public void notifyChangedChannel(String channelId, String notificationId)
+	{
 		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedChannel(String channelId)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedChannel(channelId , null);
+	}
+	/*Notification: LevelControlNotification*/
+	public void notifyChangedLevel(Measure<?,?>  newLevel, String notificationId)
+	{
+		LevelControlNotification notificationEvent=new LevelControlNotification(newLevel );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedLevel(Measure<?,?>  newLevel)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedLevel(newLevel , null);
 	}
 	/*Notification: TuningStepUpNotification*/
-	public void notifyChannelStepDown(){
+	public void notifyChannelStepDown(String notificationId)
+	{
 		TuningStepUpNotification notificationEvent=new TuningStepUpNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChannelStepDown()
+{
+		// call the more general method with a null notification id.
+		this.notifyChannelStepDown(null);
 	}
 	/*Notification: OffNotification*/
-	public void notifyOff(){
+	public void notifyOff(String notificationId)
+	{
 		OffNotification notificationEvent=new OffNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyOff()
+{
+		// call the more general method with a null notification id.
+		this.notifyOff(null);
 	}
 	/*Notification: OnNotification*/
-	public void notifyOn(){
+	public void notifyOn(String notificationId)
+	{
 		OnNotification notificationEvent=new OnNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
 	}
+
+	public void notifyOn()
+{
+		// call the more general method with a null notification id.
+		this.notifyOn(null);
+	}
 	/*Notification: TuningStepDownNotification*/
-	public void notifyChannelStepUp(){
+	public void notifyChannelStepUp(String notificationId)
+	{
 		TuningStepDownNotification notificationEvent=new TuningStepDownNotification();
+		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
 		// Send the notification through the EventAdmin
 		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChannelStepUp()
+{
+		// call the more general method with a null notification id.
+		this.notifyChannelStepUp(null);
 	}
 	@Override
 	public void updateStatus()
