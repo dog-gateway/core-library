@@ -41,6 +41,10 @@ public interface DeviceCostants extends Constants
 	public static final String DEVICESTATE = "DEVICESTATE";
 	public static final String TYPE = "TYPE";
 	public static final String DEVICELOCATION = "DEVICELOCATION";
+	/* Constants for representing the device status */
+	public static final String STATUS = "STATUS";
+	public static final String STATUS_ONLINE = "STATUS_ONLINE";
+	public static final String STATUS_OFFLINE = "STATUS_OFFLINE";
 	/* Constants for notifications */
 	public static final String NOTIFICATION_ID = "NOTIFICATIONID";
 	// gateway-specific property used to trigger modified services
