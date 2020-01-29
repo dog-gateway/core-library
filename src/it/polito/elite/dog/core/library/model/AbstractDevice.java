@@ -20,6 +20,7 @@ package it.polito.elite.dog.core.library.model;
 import it.polito.elite.dog.core.library.model.devicecategory.Controllable;
 import it.polito.elite.dog.core.library.model.notification.Notification;
 import it.polito.elite.dog.core.library.util.EventFactory;
+import it.polito.elite.dog.core.library.util.EventUrgency;
 import it.polito.elite.dog.core.library.util.LogHelper;
 
 import java.io.IOException;
@@ -486,6 +487,28 @@ public abstract class AbstractDevice extends ControllableDevice
 			ea.postEvent(notificationEvent);
 		}
 	}
+	
+	/**
+     * Method for sending an event to the OSGi Event Admin
+     * 
+     * @param notification
+     *            the notification to deliver
+     */
+    public void notifyEventAdmin(Notification notification,
+            OffsetDateTime timestamp, EventUrgency urgency)
+    {
+        // Retrieve a reference of the EventAdmin service
+        EventAdmin ea = (EventAdmin) this.trackerEventAdmin.getService();
+        // Create the event through the DogEventFactory
+        Event notificationEvent = EventFactory.createEvent(notification,
+                timestamp, urgency, this.getClass().getSimpleName());
+
+        if (ea != null)
+        {
+            // Send the event to the EventAdmin
+            ea.postEvent(notificationEvent);
+        }
+    }
 
 	/**
 	 * Method for sending a notification to the OSGi Monitor Admin when the
