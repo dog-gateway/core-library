@@ -21,58 +21,149 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * @author bonino
+ * The set of parameters associated to a notification or a command.
+ * 
+ * @author <a href="mailto:dario.bonino@gmail.com">Dario Bonino</a>
  * 
  */
 public class CNParameters
 {
-	// the referred object name
-	private String name;
+    // the referred command or notification name
+    private String name;
 
-	// the additional parameters which may be optionally needed to better
-	// specify a command/notification
-	private Map<String, String> params;
+    // the referred command or notification unique id
+    private String id;
 
-	/**
-	 * @param name
-	 * @param params
-	 */
-	public CNParameters(String name, Map<String, String> params)
-	{
-		this.name = name;
-		this.params = params;
-	}
+    // the referred command or notification class, as part of the core library
+    private String clazz;
 
-	/**
-	 * Replaces the current parameter map with the given one.
-	 * 
-	 * @param elementParams
-	 *            the parameter Map to store.
-	 */
-	public void setParameters(Map<String, String> elementParams)
-	{
-		this.params = elementParams;
-	}
+    // the additional parameters which may be optionally needed to better
+    // specify a command/notification
+    private Map<String, String> params;
 
-	/**
-	 * Provides back a read-only copy of the parameter map used by this object.
-	 * 
-	 * @return the read only parameter map.
-	 */
-	public Map<String, String> getParameters()
-	{
-		return Collections.unmodifiableMap(this.params);
-	}
+    /**
+     * Create a set of parameters associated to a certain command / notification
+     * 
+     * @param name
+     *            The command or notification name.
+     * @param params
+     *            The command or notification parameters.
+     */
+    public CNParameters(String name, Map<String, String> params)
+    {
+        this.name = name;
+        this.params = params;
+    }
 
-	/**
-	 * Provides the command/notification name associated to the KnxIPDeviceInfo
-	 * instance.
-	 * 
-	 * @return
-	 */
-	public String getName()
-	{
-		return this.name;
-	}
+    /**
+     * Create a set of parameter associated to a certain command / notification
+     * 
+     * @param name
+     *            The command or notification name.
+     * @param id
+     *            The command or notification unique id.
+     * @param clazz
+     *            The command or notification class.
+     * @param params
+     *            The parameters, may include name, id and class as well.
+     */
+    public CNParameters(String name, String id, String clazz,
+            Map<String, String> params)
+    {
+        this.name = name;
+        this.id = id;
+        this.clazz = clazz;
+        this.params = params;
+    }
+
+    /**
+     * Replaces the current parameter map with the given one.
+     * 
+     * @param elementParams
+     *            the parameter Map to store.
+     */
+    public void setParameters(Map<String, String> elementParams)
+    {
+        this.params = elementParams;
+    }
+
+    /**
+     * Provides back a read-only copy of the parameter map used by this object.
+     * 
+     * @return the read only parameter map.
+     */
+    public Map<String, String> getParameters()
+    {
+        return Collections.unmodifiableMap(this.params);
+    }
+
+    /**
+     * Provides the unique id of the command/notification to which this instance
+     * refers.
+     * 
+     * @return the id as a {@link String}.
+     */
+    public String getId()
+    {
+        return id;
+    }
+
+    /**
+     * Sets the unique id of the command/notification to which this instance
+     * refers.
+     * 
+     * @param id
+     *            the unique id as a {@link String}
+     */
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * Provides the simple name of the corelibrary class of the notification to
+     * which this instance refers.
+     * 
+     * @return The simple name of the corelibrary class.
+     */
+    public String getClazz()
+    {
+        return clazz;
+    }
+
+    /**
+     * Sets the simple name of the corelibrary class of the notification to
+     * which this instance refers.
+     * 
+     * @param clazz
+     *            The simple name of the corelibrary class.
+     */
+    public void setClazz(String clazz)
+    {
+        this.clazz = clazz;
+    }
+
+    /**
+     * Provides the name of the command / notification described by an instance
+     * of this class.
+     * 
+     * @return The command / notification name.
+     */
+    public String getName()
+    {
+        return this.name;
+    }
+
+    /**
+     * Sets the name of the command / notification described by an instance of
+     * this class.
+     * 
+     * @param name
+     *            The command / notification name.
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
 }
