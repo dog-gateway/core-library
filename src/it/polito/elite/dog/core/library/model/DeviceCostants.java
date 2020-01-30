@@ -47,6 +47,7 @@ public interface DeviceCostants extends Constants
 	public static final String STATUS_OFFLINE = "STATUS_OFFLINE";
 	/* Constants for notifications */
 	public static final String NOTIFICATION_ID = "NOTIFICATIONID";
+	public static final String URGENCY="URGENCY"; //0-to-10 value
 	// gateway-specific property used to trigger modified services
 	// to re-start attachment of idle devices every time a new gateway joins its
 	// driver.

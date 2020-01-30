@@ -53,32 +53,8 @@ public class EventFactory
     public static Event createEvent(Notification notification,
             String bundleSymbolicName)
     {
-        HashMap<String, Object> eventProp = new HashMap<String, Object>();
-
-        // Add the event topic
-        eventProp.put(EventConstants.EVENT_TOPIC,
-                notification.getNotificationTopic());
-        // Insert the bundle name inside the event properties (OSGi Event Admin
-        // Service Specification 1.3)
-        eventProp.put(EventConstants.BUNDLE_SYMBOLICNAME, bundleSymbolicName);
-        // Add the whole Notification to the Event (OSGi Event Admin Service
-        // Specification 1.3)
-        eventProp.put(EventConstants.EVENT, notification);
-        eventProp.put(EventConstants.TIMESTAMP,
-                OffsetDateTime.now(ZoneOffset.UTC));
-
-        // check if a notification id was specified. If specified add it as
-        // custom property of the event.
-        if (notification.getNotificationId() != null
-                && !notification.getNotificationId().isEmpty())
-        {
-            eventProp.put(DeviceCostants.NOTIFICATION_ID,
-                    notification.getNotificationId());
-        }
-
-        Event modifiedEvent = new Event(notification.getNotificationTopic(),
-                eventProp);
-        return modifiedEvent;
+        return EventFactory.createEvent(notification,
+                OffsetDateTime.now(ZoneOffset.UTC), bundleSymbolicName);
     }
 
     /**
@@ -93,6 +69,23 @@ public class EventFactory
     public static Event createEvent(Notification notification,
             OffsetDateTime timestamp, String bundleSymbolicName)
     {
+        return EventFactory.createEvent(notification, timestamp,
+                EventUrgency.NORMAL, bundleSymbolicName);
+    }
+
+    /**
+     * Factory for creating a general event
+     * 
+     * @param notification
+     *            to convert
+     * @param bundleSymbolicName
+     *            name of the bundle that create the Event
+     * @return the event to send
+     */
+    public static Event createEvent(Notification notification,
+            OffsetDateTime timestamp, EventUrgency urgency,
+            String bundleSymbolicName)
+    {
         HashMap<String, Object> eventProp = new HashMap<String, Object>();
 
         // Add the event topic
@@ -105,6 +98,7 @@ public class EventFactory
         // Specification 1.3)
         eventProp.put(EventConstants.EVENT, notification);
         eventProp.put(EventConstants.TIMESTAMP, timestamp);
+        eventProp.put(DeviceCostants.URGENCY, urgency);
 
         // check if a notification id was specified. If specified add it as
         // custom property of the event.
