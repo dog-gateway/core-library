@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *  
- * Copyright 2014 Dario Bonino 
+ * Copyright 2014-2020 Dario Bonino 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,40 @@
 package it.polito.elite.dog.core.library.model;
 
 /**
- * @author bonino
+ * A set of constants used to retrieve / store information from parameter map
+ * associated to notification and/or command instances.
+ * 
+ * @author <a href="mailto:dario.bonino@gmail.com">Dario Bonino</a>
  *
  */
 public class ConfigurationConstants
 {
-	/**
-	 * the command name to which a specific configuration refers
-	 */
-	public static final String COMMAND_NAME = "realCommandName";
-	
-	/**
-	 * the notification name to which a specific configuration refers
-	 */
-	public static final String NOTIFICATION_NAME = "notificationName";
+    /**
+     * The command name to which a specific configuration refers
+     */
+    public static final String COMMAND_NAME = "realCommandName";
+
+    /**
+     * The unique id associated to the a command instance
+     */
+    public static final String COMMAND_ID = "commandId";
+
+    /**
+     * The command type as a simple name of a core library command class
+     */
+    public static final String COMMAND_CLASS = "commandClass";
+
+    /**
+     * The notification name to which a specific configuration refers
+     */
+    public static final String NOTIFICATION_NAME = "notificationName";
+    /**
+     * The unique notification id associated to a notification instance
+     */
+    public static final String NOTIFICATION_ID = "notificationId";
+    /**
+     * The notification type as simple name of a core library notification class
+     */
+    public static final String NOTIFICATION_CLASS = "notificationClass";
+
 }
