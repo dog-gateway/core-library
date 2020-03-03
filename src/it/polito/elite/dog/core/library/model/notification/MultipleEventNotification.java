@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ package it.polito.elite.dog.core.library.model.notification;
 import it.polito.elite.dog.core.library.model.notification.annotation.NotificationParam;
 public class MultipleEventNotification implements ParametricNotification
 {
-	public static String notificationName = "newEventSet";
+	public static String notificationName = "newEvent";
 
 	public static String notificationTopic="it/polito/elite/dog/core/library/model/notification/MultipleEventNotification";
 
@@ -103,17 +103,25 @@ public class MultipleEventNotification implements ParametricNotification
 		this.notificationId=notificationId;
 	}
 
-	private Object[] events;
+	private Object event;
+
+	private Object sensorId;
 
 
-	public MultipleEventNotification(Object[] events)
+	public MultipleEventNotification(Object event, Object sensorId)
 	{
 
-		this.events=events;
+		this.event=event;
+		this.sensorId=sensorId;
 	}
-	@NotificationParam("events")
-	public Object[] getEvents(){
-		return this.events;
+	@NotificationParam("event")
+	public Object getEvent(){
+		return this.event;
+	}
+
+	@NotificationParam("sensorId")
+	public Object getSensorId(){
+		return this.sensorId;
 	}
 
 	public Object getNotificationValue()

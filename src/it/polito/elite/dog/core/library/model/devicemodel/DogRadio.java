@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,25 +144,6 @@ public class DogRadio extends AbstractDevice implements Radio
 
 	/*Generated Notifications*/
 
-	/*Notification: StandByNotification*/
-	public void notifyStandby(String notificationId)
-	{
-		StandByNotification notificationEvent=new StandByNotification();
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyStandby()
-{
-		// call the more general method with a null notification id.
-		this.notifyStandby(null);
-	}
 	/*Notification: ChannelControlNotification*/
 	public void notifyChangedChannel(String channelId, String notificationId)
 	{
@@ -200,6 +181,25 @@ public class DogRadio extends AbstractDevice implements Radio
 {
 		// call the more general method with a null notification id.
 		this.notifyChangedLevel(newLevel , null);
+	}
+	/*Notification: StandByNotification*/
+	public void notifyStandby(String notificationId)
+	{
+		StandByNotification notificationEvent=new StandByNotification();
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Radio.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStandby()
+{
+		// call the more general method with a null notification id.
+		this.notifyStandby(null);
 	}
 	/*Notification: TuningStepUpNotification*/
 	public void notifyChannelStepDown(String notificationId)

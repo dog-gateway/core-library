@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -211,25 +211,6 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 		// call the more general method with a null notification id.
 		this.notifyNewPressureValue(pressureValue , null);
 	}
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID, String notificationId)
-	{
-		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyPressed(String buttonID)
-{
-		// call the more general method with a null notification id.
-		this.notifyPressed(buttonID , null);
-	}
 	/*Notification: TridimensionalGyroscopeNotification*/
 	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY, String notificationId)
 	{
@@ -248,6 +229,25 @@ public class DogCC2650SensorTag extends AbstractDevice implements CC2650SensorTa
 {
 		// call the more general method with a null notification id.
 		this.notifyNew3DGyroscopeValue(gyroZ , gyroX , gyroY , null);
+	}
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID, String notificationId)
+	{
+		PressedMNotification notificationEvent=new PressedMNotification(buttonID );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CC2650SensorTag.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyPressed(String buttonID)
+{
+		// call the more general method with a null notification id.
+		this.notifyPressed(buttonID , null);
 	}
 	/*Notification: TemperatureMeasurementMNotification*/
 	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID, String notificationId)

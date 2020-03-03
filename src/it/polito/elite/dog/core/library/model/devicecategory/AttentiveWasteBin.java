@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,20 +61,20 @@ public interface AttentiveWasteBin extends ColorDimmableLight, SmartWasteBin
 	public void notifyChangedColorHSB(HSBColor colorHSB);
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: OnNotification*/
 	public void notifyOn();
 	/*Notification: TemperatureMeasurementNotification*/
 	public void notifyNewTemperatureValue(Measure<?,?>  temperatureValue);
-	/*Notification: JoinGroupNotification*/
-	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: ColorRGBNotification*/
 	public void notifyChangedColorRGB(RGBColor colorRGB);
+	/*Notification: JoinGroupNotification*/
+	public void notifyJoinedGroup(Integer groupNumber);
 	/*Notification: DeleteSceneNotification*/
 	public void notifyDeletedScene(Integer sceneNumber);
 	public void updateStatus();

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,25 +155,6 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 
 	/*Generated Notifications*/
 
-	/*Notification: LeaveGroupNotification*/
-	public void notifyLeftGroup(Integer groupNumber, String notificationId)
-	{
-		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyLeftGroup(Integer groupNumber)
-{
-		// call the more general method with a null notification id.
-		this.notifyLeftGroup(groupNumber , null);
-	}
 	/*Notification: SpeedControlNotification*/
 	public void notifyChangedSpeed(Measure<?,?>  newSpeed, String notificationId)
 	{
@@ -192,6 +173,25 @@ public class DogCompositeThermostat extends AbstractDevice implements CompositeT
 {
 		// call the more general method with a null notification id.
 		this.notifyChangedSpeed(newSpeed , null);
+	}
+	/*Notification: LeaveGroupNotification*/
+	public void notifyLeftGroup(Integer groupNumber, String notificationId)
+	{
+		LeaveGroupNotification notificationEvent=new LeaveGroupNotification(groupNumber );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(CompositeThermostat.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyLeftGroup(Integer groupNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyLeftGroup(groupNumber , null);
 	}
 	/*Notification: CoolNotification*/
 	public void notifyCool(String notificationId)

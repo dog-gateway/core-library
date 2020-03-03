@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,10 +56,10 @@ public interface MeteringPowerOutlet extends EnergyMeteringPowerOutlet, PowerFac
 	public void notifyNewActivePowerValue(Measure<?,?>  powerValue);
 	/*Notification: SinglePhaseReactiveEnergyMeasurementNotification*/
 	public void notifyNewReactiveEnergyValue(Measure<?,?>  value);
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: SinglePhaseActiveEnergyMeasurementNotification*/

@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,10 +60,10 @@ public interface HeatingAndCoolingUnit extends Control, Actuator
 
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel);
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: SpeedControlNotification*/
 	public void notifyChangedSpeed(Measure<?,?>  newSpeed);
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber);
 	/*Notification: SpeedStepDownNotification*/
 	public void notifySpeedDown();
 	/*Notification: ChangedDesiredTemperatureNotification*/
@@ -76,19 +76,19 @@ public interface HeatingAndCoolingUnit extends Control, Actuator
 	public void notifyDeletedScene(Integer sceneNumber);
 	/*Notification: LevelStepUpNotification*/
 	public void notifyStepUp();
-	/*Notification: CoolNotification*/
-	public void notifyCool();
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber);
+	/*Notification: CoolNotification*/
+	public void notifyCool();
 	/*Notification: OffNotification*/
 	public void notifyOff();
 	/*Notification: SpeedStepUpNotification*/
 	public void notifySpeedUp();
 	/*Notification: StopHeatingCoolingNotification*/
 	public void notifyStoppedHeatingOrCooling();
-	/*Notification: HeatNotification*/
-	public void notifyHeat();
 	/*Notification: JoinGroupNotification*/
 	public void notifyJoinedGroup(Integer groupNumber);
+	/*Notification: HeatNotification*/
+	public void notifyHeat();
 	public void updateStatus();
 }

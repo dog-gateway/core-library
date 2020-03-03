@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,10 +58,10 @@ public interface CC2650SensorTag extends Wearable
 	public void notifyChangedRelativeHumidity(Measure<?,?>  relativeHumidity);
 	/*Notification: PressureMeasurementNotification*/
 	public void notifyNewPressureValue(Measure<?,?>  pressureValue);
-	/*Notification: PressedMNotification*/
-	public void notifyPressed(String buttonID);
 	/*Notification: TridimensionalGyroscopeNotification*/
 	public void notifyNew3DGyroscopeValue(Measure<?,?>  gyroZ, Measure<?,?>  gyroX, Measure<?,?>  gyroY);
+	/*Notification: PressedMNotification*/
+	public void notifyPressed(String buttonID);
 	/*Notification: TemperatureMeasurementMNotification*/
 	public void notifyChangedTemperatureAt(Measure<?,?>  temperatureValue, String sensorID);
 	/*Notification: LuminosityMeasurementNotification*/

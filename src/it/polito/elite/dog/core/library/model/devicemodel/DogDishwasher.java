@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -156,25 +156,6 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 
 	/*Generated Notifications*/
 
-	/*Notification: EventNotification*/
-	public void notifyNewEvent(Object event, String notificationId)
-	{
-		EventNotification notificationEvent=new EventNotification(event );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(Dishwasher.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyNewEvent(Object event)
-{
-		// call the more general method with a null notification id.
-		this.notifyNewEvent(event , null);
-	}
 	/*Notification: StandByNotification*/
 	public void notifyStandby(String notificationId)
 	{
@@ -193,6 +174,25 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 {
 		// call the more general method with a null notification id.
 		this.notifyStandby(null);
+	}
+	/*Notification: EventNotification*/
+	public void notifyNewEvent(Object event, String notificationId)
+	{
+		EventNotification notificationEvent=new EventNotification(event );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dishwasher.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewEvent(Object event)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewEvent(event , null);
 	}
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert, String notificationId)
@@ -271,9 +271,9 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		this.notifyOn(null);
 	}
 	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events, String notificationId)
+	public void notifyNewEvent(Object event, Object sensorId, String notificationId)
 	{
-		MultipleEventNotification notificationEvent=new MultipleEventNotification(events );
+		MultipleEventNotification notificationEvent=new MultipleEventNotification(event , sensorId );
 		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
 		// store the device class name
@@ -284,29 +284,10 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		notifyEventAdmin(notificationEvent);
 	}
 
-	public void notifyNewEventSet(Object[] events)
+	public void notifyNewEvent(Object event, Object sensorId)
 {
 		// call the more general method with a null notification id.
-		this.notifyNewEventSet(events , null);
-	}
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime, String notificationId)
-	{
-		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(Dishwasher.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime)
-{
-		// call the more general method with a null notification id.
-		this.notifyChangedRemainingTime(remainingTime , null);
+		this.notifyNewEvent(event , sensorId , null);
 	}
 	/*Notification: OffNotification*/
 	public void notifyOff(String notificationId)
@@ -327,10 +308,10 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		// call the more general method with a null notification id.
 		this.notifyOff(null);
 	}
-	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts, String notificationId)
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime, String notificationId)
 	{
-		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alerts );
+		RemainingTimeChangedNotification notificationEvent=new RemainingTimeChangedNotification(remainingTime );
 		// store the device uri
 		notificationEvent.setDeviceUri(this.deviceId);
 		// store the device class name
@@ -341,10 +322,29 @@ public class DogDishwasher extends AbstractDevice implements Dishwasher
 		notifyEventAdmin(notificationEvent);
 	}
 
-	public void notifyNewAlertSet(Object[] alerts)
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime)
 {
 		// call the more general method with a null notification id.
-		this.notifyNewAlertSet(alerts , null);
+		this.notifyChangedRemainingTime(remainingTime , null);
+	}
+	/*Notification: MultipleAlertNotification*/
+	public void notifyNewAlert(Object alertId, Object alert, String notificationId)
+	{
+		MultipleAlertNotification notificationEvent=new MultipleAlertNotification(alertId , alert );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Dishwasher.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyNewAlert(Object alertId, Object alert)
+{
+		// call the more general method with a null notification id.
+		this.notifyNewAlert(alertId , alert , null);
 	}
 	/*Notification: StartApplianceNotification*/
 	public void notifyStart(String notificationId)

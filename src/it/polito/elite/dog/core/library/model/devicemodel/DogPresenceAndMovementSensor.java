@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,25 +81,6 @@ public class DogPresenceAndMovementSensor extends AbstractDevice implements Pres
 		// call the more general method with a null notification id.
 		this.notifyCeasedMovement(null);
 	}
-	/*Notification: IsPresentNotification*/
-	public void notifyIsPresent(String notificationId)
-	{
-		IsPresentNotification notificationEvent=new IsPresentNotification();
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(PresenceAndMovementSensor.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyIsPresent()
-{
-		// call the more general method with a null notification id.
-		this.notifyIsPresent(null);
-	}
 	/*Notification: SimpleMovementNotification*/
 	public void notifyStartedMovement(String notificationId)
 	{
@@ -118,6 +99,25 @@ public class DogPresenceAndMovementSensor extends AbstractDevice implements Pres
 {
 		// call the more general method with a null notification id.
 		this.notifyStartedMovement(null);
+	}
+	/*Notification: IsPresentNotification*/
+	public void notifyIsPresent(String notificationId)
+	{
+		IsPresentNotification notificationEvent=new IsPresentNotification();
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(PresenceAndMovementSensor.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyIsPresent()
+{
+		// call the more general method with a null notification id.
+		this.notifyIsPresent(null);
 	}
 	/*Notification: NotPresentNotification*/
 	public void notifyNotPresent(String notificationId)

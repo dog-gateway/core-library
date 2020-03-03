@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ package it.polito.elite.dog.core.library.model.notification;
 import it.polito.elite.dog.core.library.model.notification.annotation.NotificationParam;
 public class MultipleAlertNotification implements ParametricNotification
 {
-	public static String notificationName = "newAlertSet";
+	public static String notificationName = "newAlert";
 
 	public static String notificationTopic="it/polito/elite/dog/core/library/model/notification/MultipleAlertNotification";
 
@@ -103,17 +103,25 @@ public class MultipleAlertNotification implements ParametricNotification
 		this.notificationId=notificationId;
 	}
 
-	private Object[] alerts;
+	private Object alertId;
+
+	private Object alert;
 
 
-	public MultipleAlertNotification(Object[] alerts)
+	public MultipleAlertNotification(Object alertId, Object alert)
 	{
 
-		this.alerts=alerts;
+		this.alertId=alertId;
+		this.alert=alert;
 	}
-	@NotificationParam("alerts")
-	public Object[] getAlerts(){
-		return this.alerts;
+	@NotificationParam("alertId")
+	public Object getAlertId(){
+		return this.alertId;
+	}
+
+	@NotificationParam("alert")
+	public Object getAlert(){
+		return this.alert;
 	}
 
 	public Object getNotificationValue()
