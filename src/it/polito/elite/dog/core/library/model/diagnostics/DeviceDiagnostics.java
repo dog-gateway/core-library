@@ -26,177 +26,201 @@ package it.polito.elite.dog.core.library.model.diagnostics;
  */
 public class DeviceDiagnostics<D> extends Diagnostics
 {
-    // the device diagnostics sub topic
-    private static final String DEVICE_SUBTOPIC = "/device";
+	// the device diagnostics sub topic
+	private static final String DEVICE_SUBTOPIC = "/device";
 
-    // the device protocol
-    private String protocol;
+	// the device protocol
+	private String protocol;
 
-    // the device class (simple name)
-    private String deviceClass;
+	// the device id
+	private String deviceId;
 
-    // the device driver (simple name)
-    private String deviceDriver;
+	// the device class (simple name)
+	private String deviceClass;
 
-    // the gateway to which the device is connected, may be null if the device
-    // is a gateway
-    private String deviceGateway;
+	// the device driver (simple name)
+	private String deviceDriver;
 
-    // the device connectivity
-    private boolean online;
+	// the gateway to which the device is connected, may be null if the device
+	// is a gateway
+	private String deviceGateway;
 
-    // the protocol specific diagnostic information
-    private D details;
+	// the device connectivity
+	private boolean online;
 
-    /**
-     * Build a new instance of {@link DeviceDiagnostics}
-     */
-    public DeviceDiagnostics()
-    {
-        super(DEVICE_SUBTOPIC);
-    }
+	// the protocol specific diagnostic information
+	private D details;
 
-    /**
-     * Provide the protocol used to communicate with the device. Can be used to
-     * discriminate the type of details carried by this object.
-     * 
-     * @return The protocol as a {@link String}, e.g., modbus or knx.
-     */
-    public String getProtocol()
-    {
-        return protocol;
-    }
+	/**
+	 * Build a new instance of {@link DeviceDiagnostics}
+	 */
+	public DeviceDiagnostics()
+	{
+		super(DEVICE_SUBTOPIC);
+	}
 
-    /**
-     * Sets the protocol used to communicate with the device. Can be used to
-     * discriminate the type of details carried by this object.
-     * 
-     * @param protocol
-     *            The protocol as a {@link String}, e.g., modbus or knx.
-     */
-    public void setProtocol(String protocol)
-    {
-        this.protocol = protocol;
-    }
+	/**
+	 * Provide the protocol used to communicate with the device. Can be used to
+	 * discriminate the type of details carried by this object.
+	 * 
+	 * @return The protocol as a {@link String}, e.g., modbus or knx.
+	 */
+	public String getProtocol()
+	{
+		return protocol;
+	}
 
-    /**
-     * Provides the simple name of the class of the device generating this
-     * {@link DeviceDiagnostics} information.
-     * 
-     * @return The device simple class name, obtained by calling the
-     *         {@link Class#getSimpleName()} method on the device instance.
-     */
-    public String getDeviceClass()
-    {
-        return deviceClass;
-    }
+	/**
+	 * Sets the protocol used to communicate with the device. Can be used to
+	 * discriminate the type of details carried by this object.
+	 * 
+	 * @param protocol
+	 *            The protocol as a {@link String}, e.g., modbus or knx.
+	 */
+	public void setProtocol(String protocol)
+	{
+		this.protocol = protocol;
+	}
 
-    /**
-     * Sets the simple name of the class of the device generating this
-     * {@link DeviceDiagnostics} information.
-     * 
-     * @param deviceClass
-     *            The device simple class name, obtained by calling the
-     *            {@link Class#getSimpleName()} method on the device instance.
-     */
-    public void setDeviceClass(String deviceClass)
-    {
-        this.deviceClass = deviceClass;
-    }
+	/**
+	 * Provides the unique id of the device generating this diagnostic message.
+	 * 
+	 * @return The device id as a {@link String}.
+	 */
+	public String getDeviceId()
+	{
+		return deviceId;
+	}
 
-    /**
-     * Provides the simple name of the device driver generating this
-     * {@link DeviceDiagnostics} information.
-     * 
-     * @return The device driver class name, obtained by calling the
-     *         {@link Class#getSimpleName()} method on the driver instance.
-     */
-    public String getDeviceDriver()
-    {
-        return deviceDriver;
-    }
+	/**
+	 * Sets the unique id of the device generating this diagnostic message.
+	 * 
+	 * @param deviceId
+	 *            The device id as a {@link String}.
+	 */
+	public void setDeviceId(String deviceId)
+	{
+		this.deviceId = deviceId;
+	}
 
-    /**
-     * Set the simple name of the device driver generating this
-     * {@link DeviceDiagnostics} information.
-     * 
-     * @param deviceDriver
-     *            The device driver class name, obtained by calling the
-     *            {@link Class#getSimpleName()} method on the driver instance.
-     */
-    public void setDeviceDriver(String deviceDriver)
-    {
-        this.deviceDriver = deviceDriver;
-    }
+	/**
+	 * Provides the simple name of the class of the device generating this
+	 * {@link DeviceDiagnostics} information.
+	 * 
+	 * @return The device simple class name, obtained by calling the
+	 *         {@link Class#getSimpleName()} method on the device instance.
+	 */
+	public String getDeviceClass()
+	{
+		return deviceClass;
+	}
 
-    /**
-     * Provide the identifier (human-readable, typically) of the gateway to
-     * which the device is connected.
-     * 
-     * @return The identifier of the gateway to which the device is connected.
-     */
-    public String getDeviceGateway()
-    {
-        return deviceGateway;
-    }
+	/**
+	 * Sets the simple name of the class of the device generating this
+	 * {@link DeviceDiagnostics} information.
+	 * 
+	 * @param deviceClass
+	 *            The device simple class name, obtained by calling the
+	 *            {@link Class#getSimpleName()} method on the device instance.
+	 */
+	public void setDeviceClass(String deviceClass)
+	{
+		this.deviceClass = deviceClass;
+	}
 
-    /**
-     * @param deviceGateway
-     *            the deviceGateway to set
-     */
-    public void setDeviceGateway(String deviceGateway)
-    {
-        this.deviceGateway = deviceGateway;
-    }
+	/**
+	 * Provides the simple name of the device driver generating this
+	 * {@link DeviceDiagnostics} information.
+	 * 
+	 * @return The device driver class name, obtained by calling the
+	 *         {@link Class#getSimpleName()} method on the driver instance.
+	 */
+	public String getDeviceDriver()
+	{
+		return deviceDriver;
+	}
 
-    /**
-     * Provides the connection status of the device.
-     * 
-     * @return True if the device is reachable and transmitting data, false
-     *         otherwise.
-     */
-    public boolean isOnline()
-    {
-        return online;
-    }
+	/**
+	 * Set the simple name of the device driver generating this
+	 * {@link DeviceDiagnostics} information.
+	 * 
+	 * @param deviceDriver
+	 *            The device driver class name, obtained by calling the
+	 *            {@link Class#getSimpleName()} method on the driver instance.
+	 */
+	public void setDeviceDriver(String deviceDriver)
+	{
+		this.deviceDriver = deviceDriver;
+	}
 
-    /**
-     * Sets the connection status of the device.
-     * 
-     * @param online
-     *            True if the device is reachable and transmitting data, false
-     *            otherwise.
-     */
-    public void setOnline(boolean online)
-    {
-        this.online = online;
-    }
+	/**
+	 * Provide the identifier (human-readable, typically) of the gateway to
+	 * which the device is connected.
+	 * 
+	 * @return The identifier of the gateway to which the device is connected.
+	 */
+	public String getDeviceGateway()
+	{
+		return deviceGateway;
+	}
 
-    /**
-     * Provides the technology-specific device diagnostics details associated to
-     * the device generating this {@link DeviceDiagnostics} instance. It is
-     * typically filled by the device-specific driver handling communication to
-     * the physical device.
-     * 
-     * @return The diagnostics details.
-     */
-    public D getDetails()
-    {
-        return details;
-    }
+	/**
+	 * @param deviceGateway
+	 *            the deviceGateway to set
+	 */
+	public void setDeviceGateway(String deviceGateway)
+	{
+		this.deviceGateway = deviceGateway;
+	}
 
-    /**
-     * Sets the technology-specific device diagnostics details associated to the
-     * device generating this {@link DeviceDiagnostics} instance. It is
-     * typically filled by the device-specific driver handling communication to
-     * the physical device
-     * 
-     * @param details
-     *            The diagnostics details to associate to this instance.
-     */
-    public void setDetails(D details)
-    {
-        this.details = details;
-    }
+	/**
+	 * Provides the connection status of the device.
+	 * 
+	 * @return True if the device is reachable and transmitting data, false
+	 *         otherwise.
+	 */
+	public boolean isOnline()
+	{
+		return online;
+	}
+
+	/**
+	 * Sets the connection status of the device.
+	 * 
+	 * @param online
+	 *            True if the device is reachable and transmitting data, false
+	 *            otherwise.
+	 */
+	public void setOnline(boolean online)
+	{
+		this.online = online;
+	}
+
+	/**
+	 * Provides the technology-specific device diagnostics details associated to
+	 * the device generating this {@link DeviceDiagnostics} instance. It is
+	 * typically filled by the device-specific driver handling communication to
+	 * the physical device.
+	 * 
+	 * @return The diagnostics details.
+	 */
+	public D getDetails()
+	{
+		return details;
+	}
+
+	/**
+	 * Sets the technology-specific device diagnostics details associated to the
+	 * device generating this {@link DeviceDiagnostics} instance. It is
+	 * typically filled by the device-specific driver handling communication to
+	 * the physical device
+	 * 
+	 * @param details
+	 *            The diagnostics details to associate to this instance.
+	 */
+	public void setDetails(D details)
+	{
+		this.details = details;
+	}
 
 }
