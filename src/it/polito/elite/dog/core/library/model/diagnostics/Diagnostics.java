@@ -28,50 +28,55 @@ import java.time.ZoneOffset;
  */
 public abstract class Diagnostics
 {
-    public static final String DIAGNOSTICS_ROOT_TOPIC = "it/polito/elite/dog/core/library/model/diagnostics";
+	public static final String DIAGNOSTICS_ROOT_TOPIC = "it/polito/elite/dog/core/library/model/diagnostics";
 
-    // the actual topic at which the Diagnostics information should be published
-    protected String actualTopic;
+	// the actual topic at which the Diagnostics information should be published
+	protected String actualTopic;
 
-    // the instant at which the diagnostic information was created
-    protected OffsetDateTime creationTime;
+	// the instant at which the diagnostic information was created
+	protected OffsetDateTime creationTime;
 
-    /**
-     * Create a new diagnostics instance, to be published on the given subtopic
-     * of the root diagnostic topic.
-     * 
-     * @param actualTopic
-     */
-    public Diagnostics(String actualTopic)
-    {
-        this.actualTopic = DIAGNOSTICS_ROOT_TOPIC
-                + (actualTopic.startsWith("/") ? actualTopic
-                        : "/" + actualTopic);
-        // the creation time in UTC
-        this.creationTime = OffsetDateTime.now(ZoneOffset.UTC);
-    }
+	/**
+	 * Create a new diagnostics instance, to be published on the given subtopic
+	 * of the root diagnostic topic.
+	 * 
+	 * @param actualTopic
+	 */
+	public Diagnostics(String actualTopic)
+	{
+		this.actualTopic = DIAGNOSTICS_ROOT_TOPIC
+				+ (actualTopic.startsWith("/") ? actualTopic
+						: "/" + actualTopic);
+		// the creation time in UTC
+		this.creationTime = OffsetDateTime.now(ZoneOffset.UTC);
+	}
 
-    /**
-     * Provides the topic at which this diagnostic information should be / has
-     * been published.
-     * 
-     * @return The topic defined according to the OSGi Event Admin
-     *         specification.
-     */
-    public String getTopic()
-    {
-        return actualTopic;
-    }
+	/**
+	 * Provides the topic at which this diagnostic information should be / has
+	 * been published.
+	 * 
+	 * @return The topic defined according to the OSGi Event Admin
+	 *         specification.
+	 */
+	public String getTopic()
+	{
+		return actualTopic;
+	}
 
-    /**
-     * Provides the time at which this {@link Diagnostics} information was
-     * created.
-     * 
-     * @return The creationTime as an {@link OffsetDateTime} instance.
-     */
-    public OffsetDateTime getCreationTime()
-    {
-        return creationTime;
-    }
+	/**
+	 * Provides the time at which this {@link Diagnostics} information was
+	 * created.
+	 * 
+	 * @return The creationTime as an {@link OffsetDateTime} instance.
+	 */
+	public OffsetDateTime getCreationTime()
+	{
+		return creationTime;
+	}
 
+	@Override
+	public String toString()
+	{
+		return "Diagnostics [creationTime=" + creationTime + "]";
+	}
 }

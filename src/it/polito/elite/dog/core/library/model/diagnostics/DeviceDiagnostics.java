@@ -223,4 +223,13 @@ public class DeviceDiagnostics<D> extends Diagnostics
 		this.details = details;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "DeviceDiagnostics [protocol=" + protocol + ", deviceId="
+				+ deviceId + ", deviceClass=" + deviceClass + ", deviceDriver="
+				+ deviceDriver + ", deviceGateway=" + deviceGateway
+				+ ", online=" + online + ", details=" + details.toString()
+				+ ", creationTime=" + creationTime + "]";
+	}
 }
