@@ -229,7 +229,8 @@ public class DeviceDiagnostics<D> extends Diagnostics
 		return "DeviceDiagnostics [protocol=" + protocol + ", deviceId="
 				+ deviceId + ", deviceClass=" + deviceClass + ", deviceDriver="
 				+ deviceDriver + ", deviceGateway=" + deviceGateway
-				+ ", online=" + online + ", details=" + details.toString()
+				+ ", online=" + online + ", details="
+				+ (details != null ? details.toString() : "null")
 				+ ", creationTime=" + creationTime + "]";
 	}
 }
