@@ -25,12 +25,16 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventConstants;
 
 import it.polito.elite.dog.core.library.model.DeviceCostants;
+import it.polito.elite.dog.core.library.model.diagnostics.Diagnostics;
 import it.polito.elite.dog.core.library.model.notification.Notification;
 import it.polito.elite.dog.core.library.model.notification.core.MonitorNotification;
 
 /**
  * This class helps to create Event. It hosts some static methods that allow
  * generating an Event with simpler code writing.
+ * 
+ * FIXME: change all timestamps to milliseconds from the Epoch as required by
+ * the OSGi specification.
  * 
  * @author <a href="mailto:dario.bonino@polito.it">Dario Bonino</a>
  * @author <a href="mailto:luigi.derussis@polito.it">Luigi De Russis</a>
@@ -50,10 +54,10 @@ public class EventFactory
      *            name of the bundle that create the Event
      * @return the event to send
      */
-    public static Event createEvent(Notification notification,
+    public static Event createNotificationEvent(Notification notification,
             String bundleSymbolicName)
     {
-        return EventFactory.createEvent(notification,
+        return EventFactory.createNotificationEvent(notification,
                 OffsetDateTime.now(ZoneOffset.UTC), bundleSymbolicName);
     }
 
@@ -66,10 +70,10 @@ public class EventFactory
      *            name of the bundle that create the Event
      * @return the event to send
      */
-    public static Event createEvent(Notification notification,
+    public static Event createNotificationEvent(Notification notification,
             OffsetDateTime timestamp, String bundleSymbolicName)
     {
-        return EventFactory.createEvent(notification, timestamp,
+        return EventFactory.createNotificationEvent(notification, timestamp,
                 EventUrgency.NORMAL, bundleSymbolicName);
     }
 
@@ -82,7 +86,7 @@ public class EventFactory
      *            name of the bundle that create the Event
      * @return the event to send
      */
-    public static Event createEvent(Notification notification,
+    public static Event createNotificationEvent(Notification notification,
             OffsetDateTime timestamp, EventUrgency urgency,
             String bundleSymbolicName)
     {
@@ -111,6 +115,81 @@ public class EventFactory
 
         Event modifiedEvent = new Event(notification.getNotificationTopic(),
                 eventProp);
+        return modifiedEvent;
+    }
+
+    /**
+     * Factory for creating a Diagnostics event.
+     * 
+     * @param event
+     *            The {@link Diagnostics} event to deliver over the OSGi event
+     *            admin.
+     * @param bundleSymbolicName
+     *            The name of the bundle that creates the Event.
+     * @return The {@link Event} instance to deliver over the OSGi event admin.
+     */
+    public static Event createDiagnosticsEvent(Diagnostics event,
+            String bundleSymbolicName)
+    {
+        return createDiagnosticsEvent(event,
+                event.getCreationTime() != null ? event.getCreationTime()
+                        : OffsetDateTime.now(ZoneOffset.UTC),
+                EventUrgency.NORMAL, bundleSymbolicName);
+    }
+
+    /**
+     * Factory for creating a Diagnostics event.
+     * 
+     * @param event
+     *            The {@link Diagnostics} event to deliver over the OSGi event
+     *            admin.
+     * @param timestamp
+     *            The timestamp associated to the Event as an
+     *            {@link OffsetDateTime} instance.
+     * @param bundleSymbolicName
+     *            The name of the bundle that creates the Event.
+     * @return The {@link Event} instance to deliver over the OSGi event admin.
+     */
+    public static Event createDiagnosticsEvent(Diagnostics event,
+            OffsetDateTime timestamp, String bundleSymbolicName)
+    {
+        return createDiagnosticsEvent(event, timestamp, EventUrgency.NORMAL,
+                bundleSymbolicName);
+    }
+
+    /**
+     * Factory for creating a Diagnostics event.
+     * 
+     * @param event
+     *            The {@link Diagnostics} event to deliver over the OSGi event
+     *            admin.
+     * @param bundleSymbolicName
+     *            The name of the bundle that creates the Event.
+     * @param timestamp
+     *            The timestamp associated to the Event as an
+     *            {@link OffsetDateTime} instance.
+     * @param urgency
+     *            The urgency level associated to the event.
+     * @return The {@link Event} instance to deliver over the OSGi event admin.
+     */
+    public static Event createDiagnosticsEvent(Diagnostics event,
+            OffsetDateTime timestamp, EventUrgency urgency,
+            String bundleSymbolicName)
+    {
+        HashMap<String, Object> eventProp = new HashMap<String, Object>();
+
+        // Add the event topic
+        eventProp.put(EventConstants.EVENT_TOPIC, event.getTopic());
+        // Insert the bundle name inside the event properties (OSGi Event Admin
+        // Service Specification 1.3)
+        eventProp.put(EventConstants.BUNDLE_SYMBOLICNAME, bundleSymbolicName);
+        // Add the whole Notification to the Event (OSGi Event Admin Service
+        // Specification 1.3)
+        eventProp.put(EventConstants.EVENT, event);
+        eventProp.put(EventConstants.TIMESTAMP, timestamp);
+        eventProp.put(DeviceCostants.URGENCY, urgency);
+
+        Event modifiedEvent = new Event(event.getTopic(), eventProp);
         return modifiedEvent;
     }
 
