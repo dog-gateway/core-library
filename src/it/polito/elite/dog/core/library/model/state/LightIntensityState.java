@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ package it.polito.elite.dog.core.library.model.state;
 import it.polito.elite.dog.core.library.model.statevalue.StateValue;
 
 
-import it.polito.elite.dog.core.library.model.statevalue.LevelStateValue;
 
 
 
@@ -35,7 +34,7 @@ import it.polito.elite.dog.core.library.model.statevalue.LevelStateValue;
 * @author it.polito.elite.domotics.ontologies.dogont.utilities.DogOnt2Dog
 *
 */
-public class LightIntensityState extends LevelState
+public class LightIntensityState extends ContinuousState
 {
 	/**
 	 * The unique class version for serialization
@@ -44,33 +43,6 @@ public class LightIntensityState extends LevelState
 	private static final long serialVersionUID = 1L;
 
 
-
-	/**
-	 * Class constructor for states inheriting from ContinuousState.
-	 */
-	public LightIntensityState(LevelStateValue levelstatevalue)
-	{
-		//call the super class constructor
-		super(levelstatevalue);
-	}
-	/**
-	 * Creates a state object in the Dog2.0 old way (before May 2012).
-	 * 
-	 * @param valueOfTheCurrentStateValue
-	 */
-	@Deprecated
-	public LightIntensityState(Object valueOfTheCurrentStateValue)
-	{
-		this.valueOfTheCurrentStateValue = valueOfTheCurrentStateValue;
-
-		if(!(valueOfTheCurrentStateValue instanceof String))
-		{
-			LevelStateValue sValue = new LevelStateValue();
-			sValue.setValue(valueOfTheCurrentStateValue);
-			this.currentStateValue[0]=sValue;
-
-		}
-	}
 
 	/**
 	 * Class constructor.

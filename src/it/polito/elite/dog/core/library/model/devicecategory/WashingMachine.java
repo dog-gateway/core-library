@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,10 +53,10 @@ public interface WashingMachine extends WhiteGoods
 
 	/*Generated Notifications*/
 
-	/*Notification: EventNotification*/
-	public void notifyNewEvent(Object event);
 	/*Notification: StandByNotification*/
 	public void notifyStandby();
+	/*Notification: EventNotification*/
+	public void notifyNewEvent(Object event);
 	/*Notification: AlertNotification*/
 	public void notifyNewAlert(Object alert);
 	/*Notification: PauseApplianceNotification*/
@@ -66,15 +66,15 @@ public interface WashingMachine extends WhiteGoods
 	/*Notification: OnNotification*/
 	public void notifyOn();
 	/*Notification: MultipleEventNotification*/
-	public void notifyNewEventSet(Object[] events);
+	public void notifyNewEvent(Object event, Object sensorId);
 	/*Notification: StoppedWashingNotification*/
 	public void notifyStoppedWashOrRinseCycle();
-	/*Notification: RemainingTimeChangedNotification*/
-	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: OffNotification*/
 	public void notifyOff();
+	/*Notification: RemainingTimeChangedNotification*/
+	public void notifyChangedRemainingTime(Measure<?,?>  remainingTime);
 	/*Notification: MultipleAlertNotification*/
-	public void notifyNewAlertSet(Object[] alerts);
+	public void notifyNewAlert(Object alertId, Object alert);
 	/*Notification: StartedHeatingCycleNotification*/
 	public void notifyStartedHeatingCycle();
 	/*Notification: StartApplianceNotification*/

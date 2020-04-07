@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,25 +110,6 @@ public class DogOnOffLight extends AbstractDevice implements OnOffLight
 
 	/*Generated Notifications*/
 
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber, String notificationId)
-	{
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(OnOffLight.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyStoredScene(Integer sceneNumber)
-{
-		// call the more general method with a null notification id.
-		this.notifyStoredScene(sceneNumber , null);
-	}
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber, String notificationId)
 	{
@@ -147,6 +128,25 @@ public class DogOnOffLight extends AbstractDevice implements OnOffLight
 {
 		// call the more general method with a null notification id.
 		this.notifyLeftGroup(groupNumber , null);
+	}
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber, String notificationId)
+	{
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(OnOffLight.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStoredScene(Integer sceneNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyStoredScene(sceneNumber , null);
 	}
 	/*Notification: OffNotification*/
 	public void notifyOff(String notificationId)

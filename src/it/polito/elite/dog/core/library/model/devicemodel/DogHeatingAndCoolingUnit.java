@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -211,25 +211,6 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// call the more general method with a null notification id.
 		this.notifyChangedLevel(newLevel , null);
 	}
-	/*Notification: StoreSceneNotification*/
-	public void notifyStoredScene(Integer sceneNumber, String notificationId)
-	{
-		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(HeatingAndCoolingUnit.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyStoredScene(Integer sceneNumber)
-{
-		// call the more general method with a null notification id.
-		this.notifyStoredScene(sceneNumber , null);
-	}
 	/*Notification: SpeedControlNotification*/
 	public void notifyChangedSpeed(Measure<?,?>  newSpeed, String notificationId)
 	{
@@ -248,6 +229,25 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 {
 		// call the more general method with a null notification id.
 		this.notifyChangedSpeed(newSpeed , null);
+	}
+	/*Notification: StoreSceneNotification*/
+	public void notifyStoredScene(Integer sceneNumber, String notificationId)
+	{
+		StoreSceneNotification notificationEvent=new StoreSceneNotification(sceneNumber );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatingAndCoolingUnit.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStoredScene(Integer sceneNumber)
+{
+		// call the more general method with a null notification id.
+		this.notifyStoredScene(sceneNumber , null);
 	}
 	/*Notification: SpeedStepDownNotification*/
 	public void notifySpeedDown(String notificationId)
@@ -363,25 +363,6 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// call the more general method with a null notification id.
 		this.notifyStepUp(null);
 	}
-	/*Notification: CoolNotification*/
-	public void notifyCool(String notificationId)
-	{
-		CoolNotification notificationEvent=new CoolNotification();
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(HeatingAndCoolingUnit.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyCool()
-{
-		// call the more general method with a null notification id.
-		this.notifyCool(null);
-	}
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber, String notificationId)
 	{
@@ -400,6 +381,25 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 {
 		// call the more general method with a null notification id.
 		this.notifyLeftGroup(groupNumber , null);
+	}
+	/*Notification: CoolNotification*/
+	public void notifyCool(String notificationId)
+	{
+		CoolNotification notificationEvent=new CoolNotification();
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatingAndCoolingUnit.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyCool()
+{
+		// call the more general method with a null notification id.
+		this.notifyCool(null);
 	}
 	/*Notification: OffNotification*/
 	public void notifyOff(String notificationId)
@@ -458,25 +458,6 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 		// call the more general method with a null notification id.
 		this.notifyStoppedHeatingOrCooling(null);
 	}
-	/*Notification: HeatNotification*/
-	public void notifyHeat(String notificationId)
-	{
-		HeatNotification notificationEvent=new HeatNotification();
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(HeatingAndCoolingUnit.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyHeat()
-{
-		// call the more general method with a null notification id.
-		this.notifyHeat(null);
-	}
 	/*Notification: JoinGroupNotification*/
 	public void notifyJoinedGroup(Integer groupNumber, String notificationId)
 	{
@@ -495,6 +476,25 @@ public class DogHeatingAndCoolingUnit extends AbstractDevice implements HeatingA
 {
 		// call the more general method with a null notification id.
 		this.notifyJoinedGroup(groupNumber , null);
+	}
+	/*Notification: HeatNotification*/
+	public void notifyHeat(String notificationId)
+	{
+		HeatNotification notificationEvent=new HeatNotification();
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(HeatingAndCoolingUnit.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyHeat()
+{
+		// call the more general method with a null notification id.
+		this.notifyHeat(null);
 	}
 	@Override
 	public void updateStatus()

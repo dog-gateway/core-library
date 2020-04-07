@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -121,25 +121,6 @@ public class DogDimmerSwitch extends AbstractDevice implements DimmerSwitch
 		// call the more general method with a null notification id.
 		this.notifyOff(null);
 	}
-	/*Notification: LevelStepDownNotification*/
-	public void notifyStepDown(String notificationId)
-	{
-		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(DimmerSwitch.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyStepDown()
-{
-		// call the more general method with a null notification id.
-		this.notifyStepDown(null);
-	}
 	/*Notification: OnNotification*/
 	public void notifyOn(String notificationId)
 	{
@@ -158,6 +139,25 @@ public class DogDimmerSwitch extends AbstractDevice implements DimmerSwitch
 {
 		// call the more general method with a null notification id.
 		this.notifyOn(null);
+	}
+	/*Notification: LevelStepDownNotification*/
+	public void notifyStepDown(String notificationId)
+	{
+		LevelStepDownNotification notificationEvent=new LevelStepDownNotification();
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(DimmerSwitch.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyStepDown()
+{
+		// call the more general method with a null notification id.
+		this.notifyStepDown(null);
 	}
 	@Override
 	public void updateStatus()

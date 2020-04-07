@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,6 +144,25 @@ public class DogTv extends AbstractDevice implements Tv
 
 	/*Generated Notifications*/
 
+	/*Notification: ChannelControlNotification*/
+	public void notifyChangedChannel(String channelId, String notificationId)
+	{
+		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(Tv.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedChannel(String channelId)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedChannel(channelId , null);
+	}
 	/*Notification: LevelControlNotification*/
 	public void notifyChangedLevel(Measure<?,?>  newLevel, String notificationId)
 	{
@@ -181,25 +200,6 @@ public class DogTv extends AbstractDevice implements Tv
 {
 		// call the more general method with a null notification id.
 		this.notifyStandby(null);
-	}
-	/*Notification: ChannelControlNotification*/
-	public void notifyChangedChannel(String channelId, String notificationId)
-	{
-		ChannelControlNotification notificationEvent=new ChannelControlNotification(channelId );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(Tv.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyChangedChannel(String channelId)
-{
-		// call the more general method with a null notification id.
-		this.notifyChangedChannel(channelId , null);
 	}
 	/*Notification: TuningStepUpNotification*/
 	public void notifyChannelStepDown(String notificationId)

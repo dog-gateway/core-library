@@ -1,7 +1,7 @@
 /*
  * Dog - Core
  *
- * Copyright (c) 2011-2019 Dario Bonino and Luigi De Russis
+ * Copyright (c) 2011-2020 Dario Bonino and Luigi De Russis
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -159,25 +159,6 @@ public class DogPumpController extends AbstractDevice implements PumpController
 		// call the more general method with a null notification id.
 		this.notifyDeletedScene(sceneNumber , null);
 	}
-	/*Notification: FlowRateMeasurementNotification*/
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue, String notificationId)
-	{
-		FlowRateMeasurementNotification notificationEvent=new FlowRateMeasurementNotification(flowRateValue );
-		// store the device uri
-		notificationEvent.setDeviceUri(this.deviceId);
-		// store the device class name
-		notificationEvent.setDeviceClassName(PumpController.class.getSimpleName());
-		// store the notification id, if specified.
-		notificationEvent.setNotificationId(notificationId);
-		// Send the notification through the EventAdmin
-		notifyEventAdmin(notificationEvent);
-	}
-
-	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue)
-{
-		// call the more general method with a null notification id.
-		this.notifyChangedFlowRateValue(flowRateValue , null);
-	}
 	/*Notification: LevelStepUpNotification*/
 	public void notifyStepUp(String notificationId)
 	{
@@ -196,6 +177,25 @@ public class DogPumpController extends AbstractDevice implements PumpController
 {
 		// call the more general method with a null notification id.
 		this.notifyStepUp(null);
+	}
+	/*Notification: FlowRateMeasurementNotification*/
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue, String notificationId)
+	{
+		FlowRateMeasurementNotification notificationEvent=new FlowRateMeasurementNotification(flowRateValue );
+		// store the device uri
+		notificationEvent.setDeviceUri(this.deviceId);
+		// store the device class name
+		notificationEvent.setDeviceClassName(PumpController.class.getSimpleName());
+		// store the notification id, if specified.
+		notificationEvent.setNotificationId(notificationId);
+		// Send the notification through the EventAdmin
+		notifyEventAdmin(notificationEvent);
+	}
+
+	public void notifyChangedFlowRateValue(Measure<?,?>  flowRateValue)
+{
+		// call the more general method with a null notification id.
+		this.notifyChangedFlowRateValue(flowRateValue , null);
 	}
 	/*Notification: LeaveGroupNotification*/
 	public void notifyLeftGroup(Integer groupNumber, String notificationId)
