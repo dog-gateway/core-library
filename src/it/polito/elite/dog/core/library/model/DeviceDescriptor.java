@@ -431,6 +431,35 @@ public class DeviceDescriptor
 	}
 	
 	/**
+	 * Update a device configuration parameter and its corresponding value
+	 * @param paramName The name of the parameter to update.
+	 * @param paramValue The parameter value.
+	 * @return true if the parameter was successfully updated, false otherwise.
+	 */
+	public boolean updateSimpleConfigurationParam(String paramName,
+            Set<String> paramValue)
+    {
+        boolean updated = false;
+        if (this.simpleConfigurationParams.containsKey(paramName)
+                && paramValue.size() == 1)
+        {
+            for (Configparam param : this.jaxbDevice.getParam())
+            {
+                // check if the param is the one searched
+                if (param.getName().equals(paramName))
+                {
+                    param.setValue(paramValue.iterator().next());
+                    this.simpleConfigurationParams.replace(paramName,
+                            paramValue);
+                    updated = true;
+                    break;
+                }
+            }
+        }
+        return updated;
+    }
+	
+	/**
 	 * Add one device configuration parameter and its corresponding value
 	 * 
 	 * @param name
